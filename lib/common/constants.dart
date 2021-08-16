@@ -27,9 +27,9 @@ const node_list_axia = [
     'endpoint': 'wss://polkadot.elara.patract.io',
   },
   {
-    'name': 'Moonriver',
+    'name': 'Altair',
     'ss58': 0,
-    'endpoint': 'wss://moonriver.api.onfinality.io/public-ws',
+    'endpoint': 'wss://fullnode.altair.centrifuge.io',
   },
   {
     'name': 'Prod node',
