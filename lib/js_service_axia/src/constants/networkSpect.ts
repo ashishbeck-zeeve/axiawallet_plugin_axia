@@ -41,7 +41,8 @@ export const UnknownNetworkKeys = Object.freeze({
 // genesisHash is used as Network key for Substrate networks
 export const SubstrateNetworkKeys = Object.freeze({
   KUSAMA: "0xb0a8d493285c2df73290dfb7e61f870f17b41801197a149ca93654499ea3dafe", // https://polkascan.io/pre/kusama-cc3/block/0
-  POLKADOT: "0x91b171bb158e2d3848fa23a9f1c25182fb8e20313b2c1eb49219da7a70ce90c3",
+  POLKADOT: "0x91b171bb158e2d3848fa23a9f1c25182fb8e20313b2c1eb49219da7a70ce90c369",
+  AXIA: "0x91b171bb158e2d3848fa23a9f1c25182fb8e20313b2c1eb49219da7a70ce90c3",
 });
 
 const unknownNetworkBase = {
@@ -76,6 +77,16 @@ const substrateNetworkBase = {
     prefix: 0,
     title: "Polkadot",
     unit: "DOT",
+  },
+  [SubstrateNetworkKeys.AXIA]: {
+    color: "#0D47A1",
+    decimals: 12,
+    genesisHash: null,
+    order: 1,
+    pathId: "axia",
+    prefix: 0,
+    title: "AXIA",
+    unit: "AXIA",
   },
 };
 
@@ -117,3 +128,4 @@ function getGenesis(name: string): string {
 }
 export const KUSAMA_GENESIS = getGenesis("kusama");
 export const POLKADOT_GENESIS = getGenesis("polkadot");
+export const AXIA_GENESIS = getGenesis("axia");

@@ -72,13 +72,12 @@ class PluginAxia extends PolkawalletPlugin {
           iconDisabled: Image.asset(
               'packages/polkawallet_plugin_axia/assets/images/public/${name}_gray.png'),
           jsCodeVersion: 21101,
-          isTestNet: true,
+          isTestNet: false,
           isXCMSupport: name == network_name_kusama,
         ),
         recoveryEnabled = name == network_name_kusama,
-        _cache = name == network_name_kusama
-            ? StoreCacheKusama()
-            : StoreCacheAxia();
+        _cache =
+            name == network_name_kusama ? StoreCacheKusama() : StoreCacheAxia();
 
   @override
   final PluginBasicData basic;

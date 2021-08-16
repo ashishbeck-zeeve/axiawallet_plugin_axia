@@ -27,14 +27,29 @@ const node_list_axia = [
     'endpoint': 'wss://polkadot.elara.patract.io',
   },
   {
-    'name': 'Polkadot (Live, hosted by Parity)',
+    'name': 'Moonriver',
     'ss58': 0,
-    'endpoint': 'wss://rpc.polkadot.io',
+    'endpoint': 'wss://moonriver.api.onfinality.io/public-ws',
   },
   {
-    'name': 'Polkadot (Live, hosted by onfinality)',
+    'name': 'Prod node',
     'ss58': 0,
-    'endpoint': 'wss://polkadot.api.onfinality.io/public-ws',
+    'endpoint': 'wss://fullnode.amber.centrifuge.io',
+  },
+  {
+    'name': 'Dev node',
+    'ss58': 0,
+    'endpoint': 'wss://wss.dev.axiaswap.io',
+  },
+  {
+    'name': 'Stage node',
+    'ss58': 0,
+    'endpoint': 'wss://wss.stage.axiaswap.io',
+  },
+  {
+    'name': 'Mobile node',
+    'ss58': 0,
+    'endpoint': 'wss://wss.mobile.axiaswap.io',
   },
 ];
 
