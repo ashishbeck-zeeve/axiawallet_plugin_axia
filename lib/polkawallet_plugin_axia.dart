@@ -169,8 +169,11 @@ class PluginAxia extends PolkawalletPlugin {
   }
 
   @override
-  Future<String> loadJSCode() => rootBundle.loadString(
-      'packages/polkawallet_plugin_axia/lib/js_service_axia/dist/main.js');
+  Future<String> loadJSCode() => null;
+
+  // @override
+  // Future<String> loadJSCode() => rootBundle.loadString(
+  //     'packages/polkawallet_plugin_axia/lib/js_service_axia/dist/main.js');
 
   PluginStore _store;
   PluginApi _service;

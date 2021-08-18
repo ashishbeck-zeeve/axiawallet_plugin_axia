@@ -39,12 +39,12 @@ const node_list_axia = [
   {
     'name': 'Dev node',
     'ss58': 0,
-    'endpoint': 'wss://wss.dev.axiaswap.io',
+    'endpoint': 'wss://wss.dev.axiaswap.io:3105',
   },
   {
     'name': 'Stage node',
     'ss58': 0,
-    'endpoint': 'wss://wss.stage.axiaswap.io',
+    'endpoint': 'wss://wss.stage.axiaswap.io:3205',
   },
   {
     'name': 'Mobile node',
