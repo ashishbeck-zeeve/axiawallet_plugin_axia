@@ -160,8 +160,9 @@ class _StakingActions extends State<StakingActions> {
   }
 
   List<Widget> _buildRewardsList() {
-    final int decimals = widget.plugin.networkState.tokenDecimals[0];
-    final String symbol = widget.plugin.networkState.tokenSymbol[0];
+    final int decimals = (widget.plugin.networkState.tokenDecimals ?? [12])[0];
+    final String symbol =
+        (widget.plugin.networkState.tokenSymbol ?? ['UNIT'])[0];
 
     List<Widget> res = [];
     if (widget.plugin.store.staking.txsRewards.length > 1) {
@@ -423,24 +424,24 @@ class _StakingActions extends State<StakingActions> {
       builder: (_) {
         List<Widget> list = <Widget>[
           _buildActionCard(),
-          Container(
-            color: Theme.of(context).cardColor,
-            padding: EdgeInsets.fromLTRB(16, 16, 16, 0),
-            child: MainTabBar(
-              tabs: [dic['txs'], dic['txs.reward']],
-              activeTab: _tab,
-              fontSize: 18,
-              lineWidth: 6,
-              onTap: (i) {
-                i == 0 ? _updateStakingTxs() : _updateStakingRewardTxs();
-                setState(() {
-                  _tab = i;
-                });
-              },
-            ),
-          ),
+          // Container(
+          //   color: Theme.of(context).cardColor,
+          //   padding: EdgeInsets.fromLTRB(16, 16, 16, 0),
+          //   child: MainTabBar(
+          //     tabs: [dic['txs'], dic['txs.reward']],
+          //     activeTab: _tab,
+          //     fontSize: 18,
+          //     lineWidth: 6,
+          //     onTap: (i) {
+          //       i == 0 ? _updateStakingTxs() : _updateStakingRewardTxs();
+          //       setState(() {
+          //         _tab = i;
+          //       });
+          //     },
+          //   ),
+          // ),
         ];
-        list.addAll(_tab == 0 ? _buildTxList() : _buildRewardsList());
+        // list.addAll(_tab == 0 ? _buildTxList() : _buildRewardsList());
         return RefreshIndicator(
           key: _refreshKey,
           onRefresh: _updateStakingInfo,

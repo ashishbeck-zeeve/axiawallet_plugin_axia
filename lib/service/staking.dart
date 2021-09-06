@@ -1,3 +1,6 @@
+import 'dart:developer';
+
+import 'package:flutter/foundation.dart';
 import 'package:polkawallet_plugin_axia/polkawallet_plugin_axia.dart';
 import 'package:polkawallet_plugin_axia/store/index.dart';
 import 'package:polkawallet_plugin_axia/utils/format.dart';
@@ -89,7 +92,10 @@ class ApiStaking {
   // this query takes a long time
   Future<void> queryElectedInfo() async {
     // fetch all validators details
+    print("+++++++ getting vals");
     final res = await api.staking.queryElectedInfo();
+    print("+++++++++++++ validator info is ${res['validatorIds']}");
+    log(res.toString());
     store.staking.setValidatorsInfo(res);
 
     queryNominations();

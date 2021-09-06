@@ -132,8 +132,8 @@ class _DemocracyState extends State<Democracy> {
     final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'gov');
     return Observer(
       builder: (_) {
-        final decimals = widget.plugin.networkState.tokenDecimals[0];
-        final symbol = widget.plugin.networkState.tokenSymbol[0];
+        final decimals = (widget.plugin.networkState.tokenDecimals ?? [12])[0];
+        final symbol = (widget.plugin.networkState.tokenSymbol ?? ['UNIT'])[0];
         final list = widget.plugin.store.gov.referendums;
         final bestNumber = widget.plugin.store.gov.bestNumber;
 

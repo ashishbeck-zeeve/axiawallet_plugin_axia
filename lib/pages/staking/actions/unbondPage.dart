@@ -46,8 +46,8 @@ class _UnBondPageState extends State<UnBondPage> {
   Widget build(BuildContext context) {
     final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'common');
     final dicStaking = I18n.of(context).getDic(i18n_full_dic_kusama, 'staking');
-    final symbol = widget.plugin.networkState.tokenSymbol[0];
-    final decimals = widget.plugin.networkState.tokenDecimals[0];
+    final symbol = (widget.plugin.networkState.tokenSymbol ?? ['UNIT'])[0];
+    final decimals = (widget.plugin.networkState.tokenDecimals ?? [12])[0];
 
     final stashInfo = widget.plugin.store.staking.ownStashInfo;
     double bonded = 0;

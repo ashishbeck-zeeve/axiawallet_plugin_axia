@@ -28,7 +28,7 @@ class ValidatorDetailPage extends StatelessWidget {
         builder: (_) {
           final dicStaking =
               I18n.of(context).getDic(i18n_full_dic_kusama, 'staking');
-          final int decimals = plugin.networkState.tokenDecimals[0];
+          final int decimals = (plugin.networkState.tokenDecimals ?? [12])[0];
           final ValidatorData detail =
               ModalRoute.of(context).settings.arguments;
 
@@ -175,7 +175,9 @@ class ValidatorDetailPage extends StatelessWidget {
                       title: UI.accountDisplayName(item['who'],
                           plugin.store.accounts.addressIndexMap[item['who']]),
                       trailing: Text(
-                          '${Fmt.balance(item['value'].toString(), plugin.networkState.tokenDecimals[0])} ${plugin.networkState.tokenSymbol[0]}'),
+                          '${Fmt.balance(item['value'].toString(), (plugin.networkState.tokenDecimals ?? [
+                                12
+                              ])[0])} ${(plugin.networkState.tokenSymbol ?? ["UNIT"])[0]}'),
                     );
                   } else {
                     final address = plugin

@@ -108,26 +108,26 @@ class Gov extends StatelessWidget {
                                 .pushNamed(TreasuryPage.route),
                           ),
                         ),
-                        Padding(
-                          padding: EdgeInsets.only(bottom: 16),
-                          child: GestureDetector(
-                            child: EntryPageCard(
-                              'Polkassembly',
-                              dic['polkassembly'],
-                              Image.asset(
-                                'packages/polkawallet_plugin_axia/assets/images/public/polkassembly.png',
-                                width: 48,
-                              ),
-                              color: Colors.transparent,
-                            ),
-                            onTap: () => Navigator.of(context).pushNamed(
-                              DAppWrapperPage.route,
-                              arguments:
-                                  'https://${plugin.basic.name}.polkassembly.io/',
-                              // "https://polkadot.js.org/apps/",
-                            ),
-                          ),
-                        ),
+                        // Padding(
+                        //   padding: EdgeInsets.only(bottom: 16),
+                        //   child: GestureDetector(
+                        //     child: EntryPageCard(
+                        //       'Polkassembly',
+                        //       dic['polkassembly'],
+                        //       Image.asset(
+                        //         'packages/polkawallet_plugin_axia/assets/images/public/polkassembly.png',
+                        //         width: 48,
+                        //       ),
+                        //       color: Colors.transparent,
+                        //     ),
+                        //     onTap: () => Navigator.of(context).pushNamed(
+                        //       DAppWrapperPage.route,
+                        //       arguments:
+                        //           'https://${plugin.basic.name}.polkassembly.io/',
+                        //       // "https://polkadot.js.org/apps/",
+                        //     ),
+                        //   ),
+                        // ),
                       ],
                     ),
             )

@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -50,10 +52,17 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
 
   int _tab = 0;
 
+  asyncLoadAccounts() async {
+    print('----------------------------- getting accounts');
+    final accounts = await widget.plugin.sdk.api.staking.asyncLoadAccounts();
+    print('----------------------------- $accounts');
+  }
+
   Future<void> _refreshData() async {
     if (_loading) {
       return;
     }
+    print("++++ refreshing");
     setState(() {
       _loading = true;
     });
@@ -365,7 +374,7 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
             widget.plugin.store.staking.validatorsInfo,
             stashId,
             NomStatus.active,
-            widget.plugin.networkState.tokenDecimals[0],
+            (widget.plugin.networkState.tokenDecimals ?? [12])[0],
             widget.plugin.store.accounts.addressIndexMap,
             widget.plugin.store.accounts.addressIconsMap,
           ),
@@ -379,7 +388,7 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
             widget.plugin.store.staking.validatorsInfo,
             stashId,
             NomStatus.over,
-            widget.plugin.networkState.tokenDecimals[0],
+            (widget.plugin.networkState.tokenDecimals ?? [12])[0],
             widget.plugin.store.accounts.addressIndexMap,
             widget.plugin.store.accounts.addressIconsMap,
           ),
@@ -393,7 +402,7 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
             widget.plugin.store.staking.validatorsInfo,
             stashId,
             NomStatus.inactive,
-            widget.plugin.networkState.tokenDecimals[0],
+            (widget.plugin.networkState.tokenDecimals ?? [12])[0],
             widget.plugin.store.accounts.addressIndexMap,
             widget.plugin.store.accounts.addressIconsMap,
           ),
@@ -407,7 +416,7 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
             widget.plugin.store.staking.validatorsInfo,
             stashId,
             NomStatus.waiting,
-            widget.plugin.networkState.tokenDecimals[0],
+            (widget.plugin.networkState.tokenDecimals ?? [12])[0],
             widget.plugin.store.accounts.addressIndexMap,
             widget.plugin.store.accounts.addressIconsMap,
           ),
@@ -433,6 +442,7 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _refreshData();
+      //asyncLoadAccounts();
     });
   }
 
@@ -441,7 +451,8 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
     final dicStaking = I18n.of(context).getDic(i18n_full_dic_kusama, 'staking');
     return Observer(
       builder: (_) {
-        final int decimals = widget.plugin.networkState.tokenDecimals[0];
+        final int decimals =
+            (widget.plugin.networkState.tokenDecimals ?? [12])[0];
         final List<Tab> _listTabs = <Tab>[
           Tab(
             text:

@@ -19,8 +19,8 @@ class StakingDetailPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final dicStaking = I18n.of(context).getDic(i18n_full_dic_kusama, 'staking');
-    final decimals = plugin.networkState.tokenDecimals[0];
-    final symbol = plugin.networkState.tokenSymbol[0];
+    final decimals = (plugin.networkState.tokenDecimals ?? [12])[0];
+    final symbol = (plugin.networkState.tokenSymbol ?? ["UNIT"])[0];
     final TxData detail = ModalRoute.of(context).settings.arguments;
     List<TxDetailInfoItem> info = <TxDetailInfoItem>[
       TxDetailInfoItem(label: dicStaking['action'], content: Text(detail.call)),

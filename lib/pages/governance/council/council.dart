@@ -98,7 +98,7 @@ class _CouncilState extends State<Council> {
   }
 
   Widget _buildTopCard(String tokenView) {
-    final decimals = widget.plugin.networkState.tokenDecimals[0] ?? 12;
+    final decimals = (widget.plugin.networkState.tokenDecimals ?? [12])[0] ?? 12;
     final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'gov');
 
     final userVotes = widget.plugin.store.gov.userCouncilVotes;
@@ -228,8 +228,8 @@ class _CouncilState extends State<Council> {
   Widget build(BuildContext context) {
     final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'gov');
     return Observer(builder: (_) {
-      final decimals = widget.plugin.networkState.tokenDecimals[0];
-      final symbol = widget.plugin.networkState.tokenSymbol[0];
+      final decimals = (widget.plugin.networkState.tokenDecimals ?? [12])[0];
+      final symbol = (widget.plugin.networkState.tokenSymbol ?? ['UNIT'])[0];
       return RefreshIndicator(
         key: _refreshKey,
         onRefresh: _fetchCouncilInfo,

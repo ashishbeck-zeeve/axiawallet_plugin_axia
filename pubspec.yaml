@@ -26,10 +26,19 @@ dependencies:
       url: https://github.com/ashishbeck/ui.git
 #       ref: 39dedfb392bf9f809f7bbcaa82dc7fcbe3860c9b
 #    path: ../ui
+    path: ../sdk_fork
+  # polkawallet_sdk:
+  #   git:
+  #     url: https://github.com/ashishbeck/sdk.git
+  polkawallet_ui:
+    # git:
+    #   url: https://github.com/ashishbeck/ui.git
+#      ref: 39dedfb392bf9f809f7bbcaa82dc7fcbe3860c9b
+    path: ../ui
 
-#dependency_overrides:
+# dependency_overrides:
 #  polkawallet_sdk:
-#    path: ../sdk
+#    path: ../sdk_fork
 
 dev_dependencies:
   build_runner: ^2.0.3

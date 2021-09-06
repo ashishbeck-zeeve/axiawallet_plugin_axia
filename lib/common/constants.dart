@@ -31,26 +31,26 @@ const node_list_axia = [
     'ss58': 0,
     'endpoint': 'wss://fullnode.altair.centrifuge.io',
   },
-  {
-    'name': 'Prod node',
-    'ss58': 0,
-    'endpoint': 'wss://fullnode.amber.centrifuge.io',
-  },
-  {
-    'name': 'Dev node',
-    'ss58': 0,
-    'endpoint': 'wss://wss.dev.axiaswap.io:3105',
-  },
+  // {
+  //   'name': 'Prod node',
+  //   'ss58': 0,
+  //   'endpoint': 'wss://fullnode.amber.centrifuge.io',
+  // },
+  // {
+  //   'name': 'Dev node',
+  //   'ss58': 0,
+  //   'endpoint': 'wss://wss.dev.axiaswap.io',
+  // },
   {
     'name': 'Stage node',
     'ss58': 0,
-    'endpoint': 'wss://wss.stage.axiaswap.io:3205',
+    'endpoint': 'wss://wss.stage.axiaswap.io',
   },
-  {
-    'name': 'Mobile node',
-    'ss58': 0,
-    'endpoint': 'wss://wss.mobile.axiaswap.io',
-  },
+  // {
+  //   'name': 'Mobile node',
+  //   'ss58': 0,
+  //   'endpoint': 'wss://wss.mobile.axiaswap.io',
+  // },
 ];
 
 const home_nav_items = ['staking', 'governance'];
@@ -74,6 +74,6 @@ const MaterialColor kusama_black = const MaterialColor(
 const String genesis_hash_kusama =
     '0xb0a8d493285c2df73290dfb7e61f870f17b41801197a149ca93654499ea3dafe';
 const String genesis_hash_axia =
-    '0xb0a8d493285c2df73290dfb7e61f870f17b41801197a149ca93654499ea3dafe';
+    '0xf5839524af48f669364221d038bd93f95c615e794cf00d01a862affb973fd92c';
 const String network_name_kusama = 'kusama';
 const String network_name_axia = 'axia';
