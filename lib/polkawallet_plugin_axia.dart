@@ -1,8 +1,10 @@
 library polkawallet_plugin_axia;
 
 import 'dart:async';
+import 'dart:convert';
 import 'dart:math';
 
+import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -85,9 +87,18 @@ class PluginAxia extends PolkawalletPlugin {
   @override
   final bool recoveryEnabled;
 
+  var customNodes = [];
   @override
-  List<NetworkParams> get nodeList {
+  Future<List<NetworkParams>> get nodeList async {
     if (basic.name == network_name_axia) {
+      if (customNodes.isEmpty) {
+        customNodes = await _checkCustomEndpoints();
+        node_list_axia += customNodes;
+        print(customNodes);
+        return _randomList(node_list_axia)
+            .map((e) => NetworkParams.fromJson(e))
+            .toList();
+      }
       return _randomList(node_list_axia)
           .map((e) => NetworkParams.fromJson(e))
           .toList();
@@ -95,6 +106,15 @@ class PluginAxia extends PolkawalletPlugin {
     return _randomList(node_list_kusama)
         .map((e) => NetworkParams.fromJson(e))
         .toList();
+  }
+
+  Future<List> _checkCustomEndpoints() async {
+    var url = Uri.parse("https://pastebin.com/raw/FwYWiPJQ");
+    var response = await http.get(url);
+    // print("customEndPoints are ${response.body}");
+    var data = jsonDecode(response.body)["data"];
+    print(data.runtimeType);
+    return data;
   }
 
   @override

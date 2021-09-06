@@ -20,7 +20,7 @@ const node_list_kusama = [
     'endpoint': 'wss://kusama.api.onfinality.io/public-ws',
   },
 ];
-const node_list_axia = [
+List<dynamic> node_list_axia = [
   {
     'name': 'Polkadot (Live, hosted by PatractLabs)',
     'ss58': 0,
