@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:polkawallet_plugin_axia/polkawallet_plugin_axia.dart';
-import 'package:polkawallet_plugin_axia/utils/i18n/index.dart';
-import 'package:polkawallet_sdk/storage/keyring.dart';
-import 'package:polkawallet_sdk/utils/i18n.dart';
-import 'package:polkawallet_ui/components/addressFormItem.dart';
-import 'package:polkawallet_ui/components/txButton.dart';
-import 'package:polkawallet_ui/utils/format.dart';
+import 'package:axiawallet_plugin_axia/axiawallet_plugin_axia.dart';
+import 'package:axiawallet_plugin_axia/utils/i18n/index.dart';
+import 'package:axiawallet_sdk/storage/keyring.dart';
+import 'package:axiawallet_sdk/utils/i18n.dart';
+import 'package:axiawallet_ui/components/addressFormItem.dart';
+import 'package:axiawallet_ui/components/txButton.dart';
+import 'package:axiawallet_ui/utils/format.dart';
 
 class PayoutPage extends StatefulWidget {
   PayoutPage(this.plugin, this.keyring);
@@ -95,7 +95,7 @@ class _PayoutPageState extends State<PayoutPage> {
 
   String _getEraText(Map selected) {
     if (selected['unit'] == 'eras') {
-      final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'staking');
+      final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'staking');
       return '${dic['reward.max']} ${selected['text']} ${selected['unit']}';
     } else {
       return '${selected['text']} ${selected['unit']}';
@@ -112,7 +112,8 @@ class _PayoutPageState extends State<PayoutPage> {
   }
 
   Future<TxConfirmParams> _getParams() async {
-    final dicStaking = I18n.of(context).getDic(i18n_full_dic_kusama, 'staking');
+    final dicStaking =
+        I18n.of(context).getDic(i18n_full_dic_axialunar, 'staking');
     final decimals = (widget.plugin.networkState.tokenDecimals ?? [12])[0];
 
     List rewards = _rewards['validators'];
@@ -167,8 +168,9 @@ class _PayoutPageState extends State<PayoutPage> {
 
   @override
   Widget build(BuildContext context) {
-    final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'common');
-    final dicStaking = I18n.of(context).getDic(i18n_full_dic_kusama, 'staking');
+    final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'common');
+    final dicStaking =
+        I18n.of(context).getDic(i18n_full_dic_axialunar, 'staking');
     final decimals = (widget.plugin.networkState.tokenDecimals ?? [12])[0];
 
     BigInt rewardTotal;

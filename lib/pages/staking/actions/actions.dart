@@ -4,33 +4,33 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:polkawallet_plugin_axia/pages/staking/actions/bondExtraPage.dart';
-import 'package:polkawallet_plugin_axia/pages/staking/actions/payoutPage.dart';
-import 'package:polkawallet_plugin_axia/pages/staking/actions/rebondPage.dart';
-import 'package:polkawallet_plugin_axia/pages/staking/actions/redeemPage.dart';
-import 'package:polkawallet_plugin_axia/pages/staking/actions/rewardDetailPage.dart';
-import 'package:polkawallet_plugin_axia/pages/staking/actions/rewardsChart.dart';
-import 'package:polkawallet_plugin_axia/pages/staking/actions/setControllerPage.dart';
-import 'package:polkawallet_plugin_axia/pages/staking/actions/setPayeePage.dart';
-import 'package:polkawallet_plugin_axia/pages/staking/actions/stakePage.dart';
-import 'package:polkawallet_plugin_axia/pages/staking/actions/stakingDetailPage.dart';
-import 'package:polkawallet_plugin_axia/pages/staking/actions/unbondPage.dart';
-import 'package:polkawallet_plugin_axia/polkawallet_plugin_axia.dart';
-import 'package:polkawallet_plugin_axia/utils/i18n/index.dart';
-import 'package:polkawallet_sdk/api/subscan.dart';
-import 'package:polkawallet_sdk/api/types/staking/ownStashInfo.dart';
-import 'package:polkawallet_sdk/storage/keyring.dart';
-import 'package:polkawallet_sdk/storage/types/keyPairData.dart';
-import 'package:polkawallet_sdk/utils/i18n.dart';
-import 'package:polkawallet_ui/components/MainTabBar.dart';
-import 'package:polkawallet_ui/components/addressIcon.dart';
-import 'package:polkawallet_ui/components/infoItem.dart';
-import 'package:polkawallet_ui/components/listTail.dart';
-import 'package:polkawallet_ui/components/outlinedCircle.dart';
-import 'package:polkawallet_ui/components/roundedCard.dart';
-import 'package:polkawallet_ui/utils/format.dart';
-import 'package:polkawallet_ui/utils/i18n.dart';
-import 'package:polkawallet_ui/utils/index.dart';
+import 'package:axiawallet_plugin_axia/pages/staking/actions/bondExtraPage.dart';
+import 'package:axiawallet_plugin_axia/pages/staking/actions/payoutPage.dart';
+import 'package:axiawallet_plugin_axia/pages/staking/actions/rebondPage.dart';
+import 'package:axiawallet_plugin_axia/pages/staking/actions/redeemPage.dart';
+import 'package:axiawallet_plugin_axia/pages/staking/actions/rewardDetailPage.dart';
+import 'package:axiawallet_plugin_axia/pages/staking/actions/rewardsChart.dart';
+import 'package:axiawallet_plugin_axia/pages/staking/actions/setControllerPage.dart';
+import 'package:axiawallet_plugin_axia/pages/staking/actions/setPayeePage.dart';
+import 'package:axiawallet_plugin_axia/pages/staking/actions/stakePage.dart';
+import 'package:axiawallet_plugin_axia/pages/staking/actions/stakingDetailPage.dart';
+import 'package:axiawallet_plugin_axia/pages/staking/actions/unbondPage.dart';
+import 'package:axiawallet_plugin_axia/axiawallet_plugin_axia.dart';
+import 'package:axiawallet_plugin_axia/utils/i18n/index.dart';
+import 'package:axiawallet_sdk/api/subscan.dart';
+import 'package:axiawallet_sdk/api/types/staking/ownStashInfo.dart';
+import 'package:axiawallet_sdk/storage/keyring.dart';
+import 'package:axiawallet_sdk/storage/types/keyPairData.dart';
+import 'package:axiawallet_sdk/utils/i18n.dart';
+import 'package:axiawallet_ui/components/MainTabBar.dart';
+import 'package:axiawallet_ui/components/addressIcon.dart';
+import 'package:axiawallet_ui/components/infoItem.dart';
+import 'package:axiawallet_ui/components/listTail.dart';
+import 'package:axiawallet_ui/components/outlinedCircle.dart';
+import 'package:axiawallet_ui/components/roundedCard.dart';
+import 'package:axiawallet_ui/utils/format.dart';
+import 'package:axiawallet_ui/utils/i18n.dart';
+import 'package:axiawallet_ui/utils/index.dart';
 
 class StakingActions extends StatefulWidget {
   StakingActions(this.plugin, this.keyring);
@@ -115,7 +115,7 @@ class _StakingActions extends State<StakingActions> {
   }
 
   List<Widget> _buildTxList() {
-    final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'common');
+    final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'common');
     List<Widget> res = [];
     res.addAll(widget.plugin.store.staking.txs.map((i) {
       return Container(
@@ -127,9 +127,9 @@ class _StakingActions extends State<StakingActions> {
             padding: EdgeInsets.only(top: 4),
             child: i.success
                 ? SvgPicture.asset(
-                    'packages/polkawallet_plugin_axia/assets/images/staking/ok.svg')
+                    'packages/axiawallet_plugin_axia/assets/images/staking/ok.svg')
                 : SvgPicture.asset(
-                    'packages/polkawallet_plugin_axia/assets/images/staking/error.svg'),
+                    'packages/axiawallet_plugin_axia/assets/images/staking/error.svg'),
           ),
           title: Text(i.call),
           subtitle: Text(Fmt.dateTime(
@@ -204,7 +204,7 @@ class _StakingActions extends State<StakingActions> {
             width: 32,
             padding: EdgeInsets.only(top: 4),
             child: SvgPicture.asset(
-                'packages/polkawallet_plugin_axia/assets/images/staking/${isReward ? 'reward' : 'slash'}.svg'),
+                'packages/axiawallet_plugin_axia/assets/images/staking/${isReward ? 'reward' : 'slash'}.svg'),
           ),
           title: Text(i.eventId),
           subtitle: Text(Fmt.dateTime(
@@ -230,7 +230,7 @@ class _StakingActions extends State<StakingActions> {
   }
 
   Widget _buildActionCard() {
-    var dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'staking');
+    var dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'staking');
     final bool hasData = widget.plugin.store.staking.ownStashInfo != null;
 
     bool isStash = true;
@@ -418,30 +418,30 @@ class _StakingActions extends State<StakingActions> {
   @override
   Widget build(BuildContext context) {
     final Map<String, String> dic =
-        I18n.of(context).getDic(i18n_full_dic_kusama, 'staking');
+        I18n.of(context).getDic(i18n_full_dic_axialunar, 'staking');
 
     return Observer(
       builder: (_) {
         List<Widget> list = <Widget>[
           _buildActionCard(),
-          // Container(
-          //   color: Theme.of(context).cardColor,
-          //   padding: EdgeInsets.fromLTRB(16, 16, 16, 0),
-          //   child: MainTabBar(
-          //     tabs: [dic['txs'], dic['txs.reward']],
-          //     activeTab: _tab,
-          //     fontSize: 18,
-          //     lineWidth: 6,
-          //     onTap: (i) {
-          //       i == 0 ? _updateStakingTxs() : _updateStakingRewardTxs();
-          //       setState(() {
-          //         _tab = i;
-          //       });
-          //     },
-          //   ),
-          // ),
+//          Container(
+//            color: Theme.of(context).cardColor,
+//            padding: EdgeInsets.fromLTRB(16, 16, 16, 0),
+//            child: MainTabBar(
+//              tabs: [dic['txs'], dic['txs.reward']],
+//              activeTab: _tab,
+//              fontSize: 18,
+//              lineWidth: 6,
+//              onTap: (i) {
+//                i == 0 ? _updateStakingTxs() : _updateStakingRewardTxs();
+//                setState(() {
+//                  _tab = i;
+//                });
+//              },
+//            ),
+//          ),
         ];
-        // list.addAll(_tab == 0 ? _buildTxList() : _buildRewardsList());
+//        list.addAll(_tab == 0 ? _buildTxList() : _buildRewardsList());
         return RefreshIndicator(
           key: _refreshKey,
           onRefresh: _updateStakingInfo,
@@ -481,7 +481,7 @@ class RowAccount02 extends StatelessWidget {
   final Future<void> Function(KeyPairData acc) onChangeAccount;
 
   void _showActions(BuildContext context) {
-    final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'staking');
+    final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'staking');
     final actionAccountTitle =
         isController && !isSelfControl ? dic['stash'] : dic['controller'];
     final changeAccountText =
@@ -524,7 +524,7 @@ class RowAccount02 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'staking');
+    final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'staking');
     final stashId = stashInfo.stashId ?? accountId;
     final controllerId = stashInfo.controllerId ?? accountId;
     final String address02 =
@@ -614,8 +614,8 @@ class StakingInfoPanel extends StatelessWidget {
   final Function(Future<dynamic> Function()) onAction;
 
   void _showUnlocking(BuildContext context) {
-    final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'staking');
-    final dicGov = I18n.of(context).getDic(i18n_full_dic_kusama, 'gov');
+    final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'staking');
+    final dicGov = I18n.of(context).getDic(i18n_full_dic_axialunar, 'gov');
     final unlockDetail = List.of(stashInfo.unbondings['mapped'])
         .map((e) {
           return '${dic['bond.unlocking']}:  ${Fmt.balance(e[0], decimals)}\n'
@@ -649,7 +649,7 @@ class StakingInfoPanel extends StatelessWidget {
         ],
         cancelButton: CupertinoActionSheetAction(
           child: Text(I18n.of(context)
-              .getDic(i18n_full_dic_kusama, 'common')['cancel']),
+              .getDic(i18n_full_dic_axialunar, 'common')['cancel']),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -660,7 +660,7 @@ class StakingInfoPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'staking');
+    final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'staking');
     Color actionButtonColor = Theme.of(context).primaryColor;
 
     String dest = stashInfo.destination;
@@ -826,7 +826,7 @@ class StakingActionsPanel extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'staking');
+    final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'staking');
 
     num actionButtonWidth = (MediaQuery.of(context).size.width - 64) / 3;
     Color actionButtonColor = Theme.of(context).primaryColor;
@@ -951,7 +951,7 @@ class StakingActionsPanel extends StatelessWidget {
                     ],
                     cancelButton: CupertinoActionSheetAction(
                       child: Text(I18n.of(context)
-                          .getDic(i18n_full_dic_kusama, 'common')['cancel']),
+                          .getDic(i18n_full_dic_axialunar, 'common')['cancel']),
                       onPressed: () {
                         Navigator.pop(context);
                       },

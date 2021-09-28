@@ -3,18 +3,18 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:polkawallet_plugin_axia/pages/staking/validators/validatorDetailPage.dart';
-import 'package:polkawallet_plugin_axia/pages/staking/validators/validatorListFilter.dart';
-import 'package:polkawallet_plugin_axia/polkawallet_plugin_axia.dart';
-import 'package:polkawallet_plugin_axia/store/staking/types/validatorData.dart';
-import 'package:polkawallet_plugin_axia/utils/format.dart';
-import 'package:polkawallet_plugin_axia/utils/i18n/index.dart';
-import 'package:polkawallet_sdk/storage/keyring.dart';
-import 'package:polkawallet_sdk/utils/i18n.dart';
-import 'package:polkawallet_ui/components/addressIcon.dart';
-import 'package:polkawallet_ui/components/roundedButton.dart';
-import 'package:polkawallet_ui/components/txButton.dart';
-import 'package:polkawallet_ui/utils/index.dart';
+import 'package:axiawallet_plugin_axia/pages/staking/validators/validatorDetailPage.dart';
+import 'package:axiawallet_plugin_axia/pages/staking/validators/validatorListFilter.dart';
+import 'package:axiawallet_plugin_axia/axiawallet_plugin_axia.dart';
+import 'package:axiawallet_plugin_axia/store/staking/types/validatorData.dart';
+import 'package:axiawallet_plugin_axia/utils/format.dart';
+import 'package:axiawallet_plugin_axia/utils/i18n/index.dart';
+import 'package:axiawallet_sdk/storage/keyring.dart';
+import 'package:axiawallet_sdk/utils/i18n.dart';
+import 'package:axiawallet_ui/components/addressIcon.dart';
+import 'package:axiawallet_ui/components/roundedButton.dart';
+import 'package:axiawallet_ui/components/txButton.dart';
+import 'package:axiawallet_ui/utils/index.dart';
 
 class NominateForm extends StatefulWidget {
   NominateForm(this.plugin, this.keyring, {this.onNext});
@@ -36,7 +36,8 @@ class _NominateFormState extends State<NominateForm> {
   List<bool> _filters = [true, false];
 
   void _setNominee() {
-    final dicStaking = I18n.of(context).getDic(i18n_full_dic_kusama, 'staking');
+    final dicStaking =
+        I18n.of(context).getDic(i18n_full_dic_axialunar, 'staking');
     final targets = _selected.map((i) => i.accountId).toList();
     widget.onNext(TxConfirmParams(
       txTitle: dicStaking['action.nominate'],
@@ -48,7 +49,8 @@ class _NominateFormState extends State<NominateForm> {
   }
 
   Widget _buildListItem(BuildContext context, ValidatorData validator) {
-    final dicStaking = I18n.of(context).getDic(i18n_full_dic_kusama, 'staking');
+    final dicStaking =
+        I18n.of(context).getDic(i18n_full_dic_axialunar, 'staking');
     final Map accInfo =
         widget.plugin.store.accounts.addressIndexMap[validator.accountId];
     final accIcon =
@@ -115,7 +117,7 @@ class _NominateFormState extends State<NominateForm> {
                           actions: [
                             CupertinoButton(
                               child: Text(I18n.of(context).getDic(
-                                  i18n_full_dic_kusama, 'common')['ok']),
+                                  i18n_full_dic_axialunar, 'common')['ok']),
                               onPressed: () {
                                 Navigator.of(context).pop();
                               },
@@ -186,7 +188,8 @@ class _NominateFormState extends State<NominateForm> {
 
   @override
   Widget build(BuildContext context) {
-    var dicStaking = I18n.of(context).getDic(i18n_full_dic_kusama, 'staking');
+    var dicStaking =
+        I18n.of(context).getDic(i18n_full_dic_axialunar, 'staking');
 
     List<ValidatorData> list = [];
     list.addAll(_selected);

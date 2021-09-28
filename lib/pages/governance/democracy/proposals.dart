@@ -1,9 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:polkawallet_plugin_axia/pages/governance/democracy/proposalPanel.dart';
-import 'package:polkawallet_plugin_axia/polkawallet_plugin_axia.dart';
-import 'package:polkawallet_ui/components/listTail.dart';
+import 'package:axiawallet_plugin_axia/pages/governance/democracy/proposalPanel.dart';
+import 'package:axiawallet_plugin_axia/axiawallet_plugin_axia.dart';
+import 'package:axiawallet_ui/components/listTail.dart';
 
 class Proposals extends StatefulWidget {
   Proposals(this.plugin);

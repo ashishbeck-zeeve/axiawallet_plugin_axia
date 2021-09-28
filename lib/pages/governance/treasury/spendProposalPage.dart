@@ -1,24 +1,24 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:polkawallet_plugin_axia/pages/governance/council/motionDetailPage.dart';
-import 'package:polkawallet_plugin_axia/pages/governance/govExternalLinks.dart';
-import 'package:polkawallet_plugin_axia/polkawallet_plugin_axia.dart';
-import 'package:polkawallet_plugin_axia/utils/i18n/index.dart';
-import 'package:polkawallet_sdk/api/types/gov/genExternalLinksParams.dart';
-import 'package:polkawallet_sdk/api/types/gov/treasuryOverviewData.dart';
-import 'package:polkawallet_sdk/storage/keyring.dart';
-import 'package:polkawallet_sdk/storage/types/keyPairData.dart';
-import 'package:polkawallet_sdk/utils/i18n.dart';
-import 'package:polkawallet_ui/components/addressIcon.dart';
-import 'package:polkawallet_ui/components/borderedTitle.dart';
-import 'package:polkawallet_ui/components/infoItem.dart';
-import 'package:polkawallet_ui/components/roundedButton.dart';
-import 'package:polkawallet_ui/components/roundedCard.dart';
-import 'package:polkawallet_ui/components/txButton.dart';
-import 'package:polkawallet_ui/pages/txConfirmPage.dart';
-import 'package:polkawallet_ui/utils/format.dart';
-import 'package:polkawallet_ui/utils/i18n.dart';
-import 'package:polkawallet_ui/utils/index.dart';
+import 'package:axiawallet_plugin_axia/pages/governance/council/motionDetailPage.dart';
+import 'package:axiawallet_plugin_axia/pages/governance/govExternalLinks.dart';
+import 'package:axiawallet_plugin_axia/axiawallet_plugin_axia.dart';
+import 'package:axiawallet_plugin_axia/utils/i18n/index.dart';
+import 'package:axiawallet_sdk/api/types/gov/genExternalLinksParams.dart';
+import 'package:axiawallet_sdk/api/types/gov/treasuryOverviewData.dart';
+import 'package:axiawallet_sdk/storage/keyring.dart';
+import 'package:axiawallet_sdk/storage/types/keyPairData.dart';
+import 'package:axiawallet_sdk/utils/i18n.dart';
+import 'package:axiawallet_ui/components/addressIcon.dart';
+import 'package:axiawallet_ui/components/borderedTitle.dart';
+import 'package:axiawallet_ui/components/infoItem.dart';
+import 'package:axiawallet_ui/components/roundedButton.dart';
+import 'package:axiawallet_ui/components/roundedCard.dart';
+import 'package:axiawallet_ui/components/txButton.dart';
+import 'package:axiawallet_ui/pages/txConfirmPage.dart';
+import 'package:axiawallet_ui/utils/format.dart';
+import 'package:axiawallet_ui/utils/i18n.dart';
+import 'package:axiawallet_ui/utils/index.dart';
 
 class SpendProposalPage extends StatefulWidget {
   SpendProposalPage(this.plugin, this.keyring);
@@ -50,7 +50,7 @@ class _SpendProposalPageState extends State<SpendProposalPage> {
   }
 
   Future<void> _showActions({bool isVote = false}) async {
-    final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'gov');
+    final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'gov');
     final SpendProposalData proposal =
         ModalRoute.of(context).settings.arguments;
     CouncilProposalData proposalData = CouncilProposalData();
@@ -100,7 +100,7 @@ class _SpendProposalPageState extends State<SpendProposalPage> {
   }
 
   Future<void> _onSendToCouncil(bool approve) async {
-    final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'gov');
+    final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'gov');
     final SpendProposalData proposal =
         ModalRoute.of(context).settings.arguments;
     final String txName =
@@ -121,7 +121,7 @@ class _SpendProposalPageState extends State<SpendProposalPage> {
   }
 
   Future<void> _onVote(bool approve) async {
-    final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'gov');
+    final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'gov');
     final SpendProposalData proposal =
         ModalRoute.of(context).settings.arguments;
     final CouncilMotionData councilProposal = proposal.council[0];
@@ -149,7 +149,7 @@ class _SpendProposalPageState extends State<SpendProposalPage> {
 
   @override
   Widget build(BuildContext context) {
-    final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'gov');
+    final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'gov');
     final symbol =
         (widget.plugin.networkState.tokenSymbol ?? ['UNIT'])[0] ?? '';
     final decimals =

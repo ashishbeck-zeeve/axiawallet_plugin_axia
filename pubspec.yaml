@@ -1,5 +1,5 @@
-name: polkawallet_plugin_axia
-description: The axia network flutter plugin for polkawallet app.
+name: axiawallet_plugin_axia
+description: The axia network flutter plugin for axiawallet app.
 version: 0.2.5
 homepage:
 
@@ -18,19 +18,19 @@ dependencies:
   flutter_svg: ^0.22.0
   get_storage: ^2.0.2
   json_annotation: ^4.0.1
-  polkawallet_sdk:
+  axiawallet_sdk:
     git:
       url: https://github.com/ashishbeck/sdk.git
-  polkawallet_ui:
+  axiawallet_ui:
     git:
       url: https://github.com/ashishbeck/ui.git
 #      ref: 39dedfb392bf9f809f7bbcaa82dc7fcbe3860c9b
     # path: ../ui
 
 dependency_overrides:
- polkawallet_sdk:
+ axiawallet_sdk:
    path: ../sdk_fork
- polkawallet_ui:
+ axiawallet_ui:
    path: ../ui
 
 dev_dependencies:
@@ -41,9 +41,9 @@ dev_dependencies:
     sdk: flutter
 
 #dependency_overrides:
-#  polkawallet_ui:
+#  axiawallet_ui:
 #    path: ../ui
-#  polkawallet_sdk:
+#  axiawallet_sdk:
 #    path: ../sdk
 
 # For information on the generic Dart part of this file, see the
@@ -52,16 +52,16 @@ dev_dependencies:
 # The following section is specific to Flutter.
 flutter:
   assets:
-    - lib/js_service_axia/dist/main.js
-    - assets/images/public/bg_kusama.png
-    - assets/images/public/bg_polkadot.png
+#    - lib/js_service_axia/dist/main.js
+    - assets/images/public/bg_axialunar.png
+    - assets/images/public/bg_axiasolar.png
     - assets/images/public/bg_axia.png
-    - assets/images/public/kusama.png
-    - assets/images/public/kusama_gray.png
+    - assets/images/public/axialunar.png
+    - assets/images/public/axialunar_gray.png
     - assets/images/public/axia.png
     - assets/images/public/axia_gray.png
-    - assets/images/public/polkadot.png
-    - assets/images/public/polkadot_gray.png
+    - assets/images/public/axiasolar.png
+    - assets/images/public/axiasolar_gray.png
     - assets/images/public/staking.png
     - assets/images/public/staking_black.png
     - assets/images/public/staking_pink.png

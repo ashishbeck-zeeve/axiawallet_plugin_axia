@@ -1,4 +1,4 @@
-library polkawallet_plugin_axia;
+library axiawallet_plugin_axia;
 
 import 'dart:async';
 import 'dart:convert';
@@ -9,77 +9,79 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:polkawallet_plugin_axia/common/constants.dart';
-import 'package:polkawallet_plugin_axia/pages/governance.dart';
-import 'package:polkawallet_plugin_axia/pages/governance/council/candidateDetailPage.dart';
-import 'package:polkawallet_plugin_axia/pages/governance/council/candidateListPage.dart';
-import 'package:polkawallet_plugin_axia/pages/governance/council/councilPage.dart';
-import 'package:polkawallet_plugin_axia/pages/governance/council/councilVotePage.dart';
-import 'package:polkawallet_plugin_axia/pages/governance/council/motionDetailPage.dart';
-import 'package:polkawallet_plugin_axia/pages/governance/democracy/democracyPage.dart';
-import 'package:polkawallet_plugin_axia/pages/governance/democracy/proposalDetailPage.dart';
-import 'package:polkawallet_plugin_axia/pages/governance/democracy/referendumVotePage.dart';
-import 'package:polkawallet_plugin_axia/pages/governance/treasury/spendProposalPage.dart';
-import 'package:polkawallet_plugin_axia/pages/governance/treasury/submitProposalPage.dart';
-import 'package:polkawallet_plugin_axia/pages/governance/treasury/submitTipPage.dart';
-import 'package:polkawallet_plugin_axia/pages/governance/treasury/tipDetailPage.dart';
-import 'package:polkawallet_plugin_axia/pages/governance/treasury/treasuryPage.dart';
-import 'package:polkawallet_plugin_axia/pages/staking.dart';
-import 'package:polkawallet_plugin_axia/pages/staking/actions/bondExtraPage.dart';
-import 'package:polkawallet_plugin_axia/pages/staking/actions/controllerSelectPage.dart';
-import 'package:polkawallet_plugin_axia/pages/staking/actions/payoutPage.dart';
-import 'package:polkawallet_plugin_axia/pages/staking/actions/rebondPage.dart';
-import 'package:polkawallet_plugin_axia/pages/staking/actions/redeemPage.dart';
-import 'package:polkawallet_plugin_axia/pages/staking/actions/rewardDetailPage.dart';
-import 'package:polkawallet_plugin_axia/pages/staking/actions/setControllerPage.dart';
-import 'package:polkawallet_plugin_axia/pages/staking/actions/setPayeePage.dart';
-import 'package:polkawallet_plugin_axia/pages/staking/actions/stakePage.dart';
-import 'package:polkawallet_plugin_axia/pages/staking/actions/stakingDetailPage.dart';
-import 'package:polkawallet_plugin_axia/pages/staking/actions/unbondPage.dart';
-import 'package:polkawallet_plugin_axia/pages/staking/validators/nominatePage.dart';
-import 'package:polkawallet_plugin_axia/pages/staking/validators/validatorChartsPage.dart';
-import 'package:polkawallet_plugin_axia/pages/staking/validators/validatorDetailPage.dart';
-import 'package:polkawallet_plugin_axia/service/index.dart';
-import 'package:polkawallet_plugin_axia/store/cache/storeCache.dart';
-import 'package:polkawallet_plugin_axia/store/index.dart';
-import 'package:polkawallet_plugin_axia/utils/i18n/index.dart';
-import 'package:polkawallet_sdk/api/types/networkParams.dart';
-import 'package:polkawallet_sdk/plugin/homeNavItem.dart';
-import 'package:polkawallet_sdk/plugin/index.dart';
-import 'package:polkawallet_sdk/storage/keyring.dart';
-import 'package:polkawallet_sdk/storage/types/keyPairData.dart';
-import 'package:polkawallet_sdk/utils/i18n.dart';
-import 'package:polkawallet_ui/pages/dAppWrapperPage.dart';
-import 'package:polkawallet_ui/pages/txConfirmPage.dart';
-import 'package:polkawallet_ui/pages/walletExtensionSignPage.dart';
+import 'package:axiawallet_plugin_axia/common/constants.dart';
+import 'package:axiawallet_plugin_axia/pages/governance.dart';
+import 'package:axiawallet_plugin_axia/pages/governance/council/candidateDetailPage.dart';
+import 'package:axiawallet_plugin_axia/pages/governance/council/candidateListPage.dart';
+import 'package:axiawallet_plugin_axia/pages/governance/council/councilPage.dart';
+import 'package:axiawallet_plugin_axia/pages/governance/council/councilVotePage.dart';
+import 'package:axiawallet_plugin_axia/pages/governance/council/motionDetailPage.dart';
+import 'package:axiawallet_plugin_axia/pages/governance/democracy/democracyPage.dart';
+import 'package:axiawallet_plugin_axia/pages/governance/democracy/proposalDetailPage.dart';
+import 'package:axiawallet_plugin_axia/pages/governance/democracy/referendumVotePage.dart';
+import 'package:axiawallet_plugin_axia/pages/governance/treasury/spendProposalPage.dart';
+import 'package:axiawallet_plugin_axia/pages/governance/treasury/submitProposalPage.dart';
+import 'package:axiawallet_plugin_axia/pages/governance/treasury/submitTipPage.dart';
+import 'package:axiawallet_plugin_axia/pages/governance/treasury/tipDetailPage.dart';
+import 'package:axiawallet_plugin_axia/pages/governance/treasury/treasuryPage.dart';
+import 'package:axiawallet_plugin_axia/pages/staking.dart';
+import 'package:axiawallet_plugin_axia/pages/staking/actions/bondExtraPage.dart';
+import 'package:axiawallet_plugin_axia/pages/staking/actions/controllerSelectPage.dart';
+import 'package:axiawallet_plugin_axia/pages/staking/actions/payoutPage.dart';
+import 'package:axiawallet_plugin_axia/pages/staking/actions/rebondPage.dart';
+import 'package:axiawallet_plugin_axia/pages/staking/actions/redeemPage.dart';
+import 'package:axiawallet_plugin_axia/pages/staking/actions/rewardDetailPage.dart';
+import 'package:axiawallet_plugin_axia/pages/staking/actions/setControllerPage.dart';
+import 'package:axiawallet_plugin_axia/pages/staking/actions/setPayeePage.dart';
+import 'package:axiawallet_plugin_axia/pages/staking/actions/stakePage.dart';
+import 'package:axiawallet_plugin_axia/pages/staking/actions/stakingDetailPage.dart';
+import 'package:axiawallet_plugin_axia/pages/staking/actions/unbondPage.dart';
+import 'package:axiawallet_plugin_axia/pages/staking/validators/nominatePage.dart';
+import 'package:axiawallet_plugin_axia/pages/staking/validators/validatorChartsPage.dart';
+import 'package:axiawallet_plugin_axia/pages/staking/validators/validatorDetailPage.dart';
+import 'package:axiawallet_plugin_axia/service/index.dart';
+import 'package:axiawallet_plugin_axia/store/cache/storeCache.dart';
+import 'package:axiawallet_plugin_axia/store/index.dart';
+import 'package:axiawallet_plugin_axia/utils/i18n/index.dart';
+import 'package:axiawallet_sdk/api/types/networkParams.dart';
+import 'package:axiawallet_sdk/plugin/homeNavItem.dart';
+import 'package:axiawallet_sdk/plugin/index.dart';
+import 'package:axiawallet_sdk/storage/keyring.dart';
+import 'package:axiawallet_sdk/storage/types/keyPairData.dart';
+import 'package:axiawallet_sdk/utils/i18n.dart';
+import 'package:axiawallet_ui/pages/dAppWrapperPage.dart';
+import 'package:axiawallet_ui/pages/txConfirmPage.dart';
+import 'package:axiawallet_ui/pages/walletExtensionSignPage.dart';
 
-class PluginAxia extends PolkawalletPlugin {
-  /// the kusama plugin support two networks: kusama & axia, //polkadot,
+class PluginAxia extends AXIAWalletPlugin {
+  /// the axialunar plugin support two networks: axialunar & axia, //axiasolar,
   /// so we need to identify the active network to connect & display UI.
-  PluginAxia({name = 'axia'})
+  PluginAxia({name = 'axiasolar'})
       : basic = PluginBasicData(
           name: name,
-          genesisHash: name == network_name_kusama
-              ? genesis_hash_kusama
-              : genesis_hash_axia,
-          ss58: name == network_name_kusama ? 2 : 0,
-          primaryColor:
-              name == network_name_kusama ? kusama_black : Colors.lightBlue,
+          genesisHash: name == network_name_axialunar
+              ? genesis_hash_axialunar
+              : genesis_hash_axiasolar,
+          ss58: name == network_name_axialunar ? 2 : 0,
+          primaryColor: name == network_name_axialunar
+              ? axialunar_black
+              : Colors.lightBlue,
           gradientColor:
-              name == network_name_kusama ? Color(0xFF555555) : Colors.blue,
+              name == network_name_axialunar ? Color(0xFF555555) : Colors.blue,
           backgroundImage: AssetImage(
-              'packages/polkawallet_plugin_axia/assets/images/public/bg_$name.png'),
+              'packages/axiawallet_plugin_axia/assets/images/public/bg_$name.png'),
           icon: Image.asset(
-              'packages/polkawallet_plugin_axia/assets/images/public/$name.png'),
+              'packages/axiawallet_plugin_axia/assets/images/public/$name.png'),
           iconDisabled: Image.asset(
-              'packages/polkawallet_plugin_axia/assets/images/public/${name}_gray.png'),
+              'packages/axiawallet_plugin_axia/assets/images/public/${name}_gray.png'),
           jsCodeVersion: 21101,
           isTestNet: true,
-          isXCMSupport: name == network_name_kusama,
+          isXCMSupport: name == network_name_axialunar,
         ),
-        recoveryEnabled = name == network_name_kusama,
-        _cache =
-            name == network_name_kusama ? StoreCacheKusama() : StoreCacheAxia();
+        recoveryEnabled = name == network_name_axialunar,
+        _cache = name == network_name_axialunar
+            ? StoreCacheAXIALunar()
+            : StoreCacheAXIASolar();
 
   @override
   final PluginBasicData basic;
@@ -90,20 +92,20 @@ class PluginAxia extends PolkawalletPlugin {
   var customNodes = [];
   @override
   Future<List<NetworkParams>> get nodeList async {
-    if (basic.name == network_name_axia) {
+    if (basic.name == network_name_axiasolar) {
       if (customNodes.isEmpty) {
         customNodes = await _checkCustomEndpoints();
-        node_list_axia += customNodes;
+        node_list_axiasolar += customNodes;
         print(customNodes);
-        return _randomList(node_list_axia)
+        return _randomList(node_list_axiasolar)
             .map((e) => NetworkParams.fromJson(e))
             .toList();
       }
-      return _randomList(node_list_axia)
+      return _randomList(node_list_axiasolar)
           .map((e) => NetworkParams.fromJson(e))
           .toList();
     }
-    return _randomList(node_list_kusama)
+    return _randomList(node_list_axialunar)
         .map((e) => NetworkParams.fromJson(e))
         .toList();
   }
@@ -120,25 +122,25 @@ class PluginAxia extends PolkawalletPlugin {
   @override
   final Map<String, Widget> tokenIcons = {
     'KSM': Image.asset(
-        'packages/polkawallet_plugin_axia/assets/images/tokens/KSM.png'),
+        'packages/axiawallet_plugin_axia/assets/images/tokens/KSM.png'),
     'DOT': Image.asset(
-        'packages/polkawallet_plugin_axia/assets/images/tokens/AXIA.png'),
+        'packages/axiawallet_plugin_axia/assets/images/tokens/AXIA.png'),
     'AXIA': Image.asset(
-        'packages/polkawallet_plugin_axia/assets/images/tokens/AXIA.png'),
+        'packages/axiawallet_plugin_axia/assets/images/tokens/AXIA.png'),
   };
 
   @override
   List<HomeNavItem> getNavItems(BuildContext context, Keyring keyring) {
     return home_nav_items.map((e) {
-      final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'common');
+      final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'common');
       return HomeNavItem(
         text: dic[e],
         icon: SvgPicture.asset(
-          'packages/polkawallet_plugin_axia/assets/images/public/nav_$e.svg',
+          'packages/axiawallet_plugin_axia/assets/images/public/nav_$e.svg',
           color: Theme.of(context).disabledColor,
         ),
         iconActive: SvgPicture.asset(
-          'packages/polkawallet_plugin_axia/assets/images/public/nav_$e.svg',
+          'packages/axiawallet_plugin_axia/assets/images/public/nav_$e.svg',
           color: basic.primaryColor,
         ),
         content: e == 'staking' ? Staking(this, keyring) : Gov(this),
@@ -193,7 +195,7 @@ class PluginAxia extends PolkawalletPlugin {
 
   // @override
   // Future<String> loadJSCode() => rootBundle.loadString(
-  //     'packages/polkawallet_plugin_axia/lib/js_service_axia/dist/main.js');
+  //     'packages/axiawallet_plugin_axia/lib/js_service_axia/dist/main.js');
 
   PluginStore _store;
   PluginApi _service;
@@ -204,9 +206,9 @@ class PluginAxia extends PolkawalletPlugin {
 
   @override
   Future<void> onWillStart(Keyring keyring) async {
-    await GetStorage.init(basic.name == network_name_axia
-        ? plugin_axia_storage_key
-        : plugin_kusama_storage_key);
+    await GetStorage.init(basic.name == network_name_axiasolar
+        ? plugin_axiasolar_storage_key
+        : plugin_axialunar_storage_key);
 
     _store = PluginStore(_cache);
 
@@ -216,10 +218,10 @@ class PluginAxia extends PolkawalletPlugin {
       _store.staking.loadCache(keyring.current.pubKey);
       _store.gov.clearState();
       _store.gov.loadCache();
-      print('kusama plugin cache data loaded');
+      print('axialunar plugin cache data loaded');
     } catch (err) {
       print(err);
-      print('load kusama cache data failed');
+      print('load axialunar cache data failed');
     }
 
     _service = PluginApi(this, keyring);

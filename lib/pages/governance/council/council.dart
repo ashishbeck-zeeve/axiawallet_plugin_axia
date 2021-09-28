@@ -1,23 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:polkawallet_plugin_axia/common/components/infoItem.dart';
-import 'package:polkawallet_plugin_axia/pages/governance/council/candidateDetailPage.dart';
-import 'package:polkawallet_plugin_axia/pages/governance/council/councilVotePage.dart';
-import 'package:polkawallet_plugin_axia/polkawallet_plugin_axia.dart';
-import 'package:polkawallet_plugin_axia/utils/i18n/index.dart';
-import 'package:polkawallet_sdk/utils/i18n.dart';
-import 'package:polkawallet_ui/components/addressIcon.dart';
-import 'package:polkawallet_ui/components/borderedTitle.dart';
-import 'package:polkawallet_ui/components/infoItem.dart';
-import 'package:polkawallet_ui/components/outlinedButtonSmall.dart';
-import 'package:polkawallet_ui/components/roundedButton.dart';
-import 'package:polkawallet_ui/components/roundedCard.dart';
-import 'package:polkawallet_ui/components/txButton.dart';
-import 'package:polkawallet_ui/pages/txConfirmPage.dart';
-import 'package:polkawallet_ui/utils/format.dart';
-import 'package:polkawallet_ui/utils/i18n.dart';
-import 'package:polkawallet_ui/utils/index.dart';
+import 'package:axiawallet_plugin_axia/common/components/infoItem.dart';
+import 'package:axiawallet_plugin_axia/pages/governance/council/candidateDetailPage.dart';
+import 'package:axiawallet_plugin_axia/pages/governance/council/councilVotePage.dart';
+import 'package:axiawallet_plugin_axia/axiawallet_plugin_axia.dart';
+import 'package:axiawallet_plugin_axia/utils/i18n/index.dart';
+import 'package:axiawallet_sdk/utils/i18n.dart';
+import 'package:axiawallet_ui/components/addressIcon.dart';
+import 'package:axiawallet_ui/components/borderedTitle.dart';
+import 'package:axiawallet_ui/components/infoItem.dart';
+import 'package:axiawallet_ui/components/outlinedButtonSmall.dart';
+import 'package:axiawallet_ui/components/roundedButton.dart';
+import 'package:axiawallet_ui/components/roundedCard.dart';
+import 'package:axiawallet_ui/components/txButton.dart';
+import 'package:axiawallet_ui/pages/txConfirmPage.dart';
+import 'package:axiawallet_ui/utils/format.dart';
+import 'package:axiawallet_ui/utils/i18n.dart';
+import 'package:axiawallet_ui/utils/index.dart';
 
 class Council extends StatefulWidget {
   Council(this.plugin);
@@ -42,7 +42,7 @@ class _CouncilState extends State<Council> {
   }
 
   Future<void> _submitCancelVotes() async {
-    final govDic = I18n.of(context).getDic(i18n_full_dic_kusama, 'gov');
+    final govDic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'gov');
     final moduleName = await widget.plugin.service.getRuntimeModuleName(
         ['electionsPhragmen', 'elections', 'phragmenElection']);
     final params = TxConfirmParams(
@@ -67,7 +67,7 @@ class _CouncilState extends State<Council> {
         return CupertinoAlertDialog(
           title: Container(),
           content: Text(I18n.of(context)
-              .getDic(i18n_full_dic_kusama, 'gov')['vote.remove.confirm']),
+              .getDic(i18n_full_dic_axialunar, 'gov')['vote.remove.confirm']),
           actions: [
             CupertinoButton(
               child: Text(dic['cancel']),
@@ -98,8 +98,9 @@ class _CouncilState extends State<Council> {
   }
 
   Widget _buildTopCard(String tokenView) {
-    final decimals = (widget.plugin.networkState.tokenDecimals ?? [12])[0] ?? 12;
-    final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'gov');
+    final decimals =
+        (widget.plugin.networkState.tokenDecimals ?? [12])[0] ?? 12;
+    final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'gov');
 
     final userVotes = widget.plugin.store.gov.userCouncilVotes;
     BigInt voteAmount = BigInt.zero;
@@ -226,7 +227,7 @@ class _CouncilState extends State<Council> {
 
   @override
   Widget build(BuildContext context) {
-    final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'gov');
+    final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'gov');
     return Observer(builder: (_) {
       final decimals = (widget.plugin.networkState.tokenDecimals ?? [12])[0];
       final symbol = (widget.plugin.networkState.tokenSymbol ?? ['UNIT'])[0];
@@ -350,7 +351,7 @@ class CandidateItem extends StatelessWidget {
       subtitle: balance.length == 1
           ? null
           : Text(
-              '${I18n.of(context).getDic(i18n_full_dic_kusama, 'gov')['backing']}: ${Fmt.token(
+              '${I18n.of(context).getDic(i18n_full_dic_axialunar, 'gov')['backing']}: ${Fmt.token(
               BigInt.parse(balance[1].toString()),
               decimals,
               length: 0,

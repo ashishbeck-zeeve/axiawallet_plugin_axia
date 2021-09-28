@@ -1,10 +1,10 @@
 import 'package:mobx/mobx.dart';
-import 'package:polkawallet_plugin_axia/store/cache/storeCache.dart';
-import 'package:polkawallet_plugin_axia/store/staking/types/txData.dart';
-import 'package:polkawallet_plugin_axia/store/staking/types/validatorData.dart';
-import 'package:polkawallet_sdk/api/types/staking/accountBondedInfo.dart';
-import 'package:polkawallet_sdk/api/types/staking/ownStashInfo.dart';
-import 'package:polkawallet_sdk/api/types/txData.dart';
+import 'package:axiawallet_plugin_axia/store/cache/storeCache.dart';
+import 'package:axiawallet_plugin_axia/store/staking/types/txData.dart';
+import 'package:axiawallet_plugin_axia/store/staking/types/validatorData.dart';
+import 'package:axiawallet_sdk/api/types/staking/accountBondedInfo.dart';
+import 'package:axiawallet_sdk/api/types/staking/ownStashInfo.dart';
+import 'package:axiawallet_sdk/api/types/txData.dart';
 
 part 'staking.g.dart';
 

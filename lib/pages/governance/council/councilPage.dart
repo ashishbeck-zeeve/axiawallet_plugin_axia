@@ -1,14 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:polkawallet_plugin_axia/pages/governance/council/council.dart';
-import 'package:polkawallet_plugin_axia/pages/governance/council/motions.dart';
-import 'package:polkawallet_plugin_axia/polkawallet_plugin_axia.dart';
-import 'package:polkawallet_plugin_axia/utils/i18n/index.dart';
-import 'package:polkawallet_sdk/storage/keyring.dart';
-import 'package:polkawallet_sdk/utils/i18n.dart';
-import 'package:polkawallet_ui/ui.dart';
-import 'package:polkawallet_ui/components/topTaps.dart';
+import 'package:axiawallet_plugin_axia/pages/governance/council/council.dart';
+import 'package:axiawallet_plugin_axia/pages/governance/council/motions.dart';
+import 'package:axiawallet_plugin_axia/axiawallet_plugin_axia.dart';
+import 'package:axiawallet_plugin_axia/utils/i18n/index.dart';
+import 'package:axiawallet_sdk/storage/keyring.dart';
+import 'package:axiawallet_sdk/utils/i18n.dart';
+import 'package:axiawallet_ui/ui.dart';
+import 'package:axiawallet_ui/components/topTaps.dart';
 
 class CouncilPage extends StatefulWidget {
   CouncilPage(this.plugin, this.keyring);
@@ -38,7 +38,7 @@ class _GovernanceState extends State<CouncilPage> {
 
   @override
   Widget build(BuildContext context) {
-    final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'gov');
+    final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'gov');
     final tabs = [dic['council'], dic['council.motions']];
     return Scaffold(
       body: PageWrapperWithBackground(SafeArea(

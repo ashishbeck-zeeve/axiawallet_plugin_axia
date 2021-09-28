@@ -3,20 +3,20 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:polkawallet_plugin_axia/pages/governance/council/council.dart';
-import 'package:polkawallet_plugin_axia/pages/governance/govExternalLinks.dart';
-import 'package:polkawallet_plugin_axia/polkawallet_plugin_axia.dart';
-import 'package:polkawallet_plugin_axia/utils/i18n/index.dart';
-import 'package:polkawallet_sdk/api/types/gov/genExternalLinksParams.dart';
-import 'package:polkawallet_sdk/api/types/gov/treasuryOverviewData.dart';
-import 'package:polkawallet_sdk/storage/keyring.dart';
-import 'package:polkawallet_sdk/utils/i18n.dart';
-import 'package:polkawallet_ui/components/borderedTitle.dart';
-import 'package:polkawallet_ui/components/roundedButton.dart';
-import 'package:polkawallet_ui/components/roundedCard.dart';
-import 'package:polkawallet_ui/components/txButton.dart';
-import 'package:polkawallet_ui/pages/txConfirmPage.dart';
-import 'package:polkawallet_ui/utils/format.dart';
+import 'package:axiawallet_plugin_axia/pages/governance/council/council.dart';
+import 'package:axiawallet_plugin_axia/pages/governance/govExternalLinks.dart';
+import 'package:axiawallet_plugin_axia/axiawallet_plugin_axia.dart';
+import 'package:axiawallet_plugin_axia/utils/i18n/index.dart';
+import 'package:axiawallet_sdk/api/types/gov/genExternalLinksParams.dart';
+import 'package:axiawallet_sdk/api/types/gov/treasuryOverviewData.dart';
+import 'package:axiawallet_sdk/storage/keyring.dart';
+import 'package:axiawallet_sdk/utils/i18n.dart';
+import 'package:axiawallet_ui/components/borderedTitle.dart';
+import 'package:axiawallet_ui/components/roundedButton.dart';
+import 'package:axiawallet_ui/components/roundedCard.dart';
+import 'package:axiawallet_ui/components/txButton.dart';
+import 'package:axiawallet_ui/pages/txConfirmPage.dart';
+import 'package:axiawallet_ui/utils/format.dart';
 
 class MotionDetailPage extends StatefulWidget {
   MotionDetailPage(this.plugin, this.keyring);
@@ -69,7 +69,7 @@ class _MotionDetailPageState extends State<MotionDetailPage> {
   }
 
   void _onVote(bool approve) async {
-    final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'gov');
+    final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'gov');
     final CouncilMotionData motion = ModalRoute.of(context).settings.arguments;
     final args = TxConfirmParams(
       module: 'council',
@@ -97,7 +97,7 @@ class _MotionDetailPageState extends State<MotionDetailPage> {
 
   @override
   Widget build(BuildContext context) {
-    final Map dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'gov');
+    final Map dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'gov');
     final CouncilMotionData motion = ModalRoute.of(context).settings.arguments;
     return Observer(
       builder: (BuildContext context) {
@@ -286,7 +286,8 @@ class _ProposalArgsListState extends State<ProposalArgsList> {
                   ? Icons.keyboard_arrow_down
                   : Icons.keyboard_arrow_right,
             ),
-            Text(I18n.of(context).getDic(i18n_full_dic_kusama, 'gov')['detail'])
+            Text(I18n.of(context)
+                .getDic(i18n_full_dic_axialunar, 'gov')['detail'])
           ],
         ),
         onTap: () {
@@ -336,7 +337,7 @@ class ProposalVoteButtonsRow extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Map dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'gov');
+    final Map dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'gov');
     return Row(
       children: <Widget>[
         Expanded(
@@ -418,7 +419,7 @@ class _ProposalVotingListState extends State<ProposalVotingList> {
 
   @override
   Widget build(BuildContext context) {
-    final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'gov');
+    final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'gov');
     final symbol = (widget.plugin.networkState.tokenSymbol ?? ['UNIT'])[0];
     final decimals = (widget.plugin.networkState.tokenDecimals ?? [12])[0];
     final String voteCountAye =

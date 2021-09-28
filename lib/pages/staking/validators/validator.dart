@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:polkawallet_plugin_axia/pages/staking/validators/validatorDetailPage.dart';
-import 'package:polkawallet_plugin_axia/store/staking/types/validatorData.dart';
-import 'package:polkawallet_plugin_axia/utils/i18n/index.dart';
-import 'package:polkawallet_sdk/utils/i18n.dart';
-import 'package:polkawallet_ui/components/addressIcon.dart';
-import 'package:polkawallet_ui/utils/format.dart';
-import 'package:polkawallet_ui/utils/index.dart';
+import 'package:axiawallet_plugin_axia/pages/staking/validators/validatorDetailPage.dart';
+import 'package:axiawallet_plugin_axia/store/staking/types/validatorData.dart';
+import 'package:axiawallet_plugin_axia/utils/i18n/index.dart';
+import 'package:axiawallet_sdk/utils/i18n.dart';
+import 'package:axiawallet_ui/components/addressIcon.dart';
+import 'package:axiawallet_ui/utils/format.dart';
+import 'package:axiawallet_ui/utils/index.dart';
 
 class Validator extends StatelessWidget {
   Validator(
@@ -27,7 +27,7 @@ class Validator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'staking');
+    final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'staking');
     return GestureDetector(
       child: Container(
         color: Colors.white,

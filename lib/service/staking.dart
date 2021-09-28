@@ -1,11 +1,11 @@
 import 'dart:developer';
 
 import 'package:flutter/foundation.dart';
-import 'package:polkawallet_plugin_axia/polkawallet_plugin_axia.dart';
-import 'package:polkawallet_plugin_axia/store/index.dart';
-import 'package:polkawallet_plugin_axia/utils/format.dart';
-import 'package:polkawallet_sdk/api/api.dart';
-import 'package:polkawallet_sdk/storage/keyring.dart';
+import 'package:axiawallet_plugin_axia/axiawallet_plugin_axia.dart';
+import 'package:axiawallet_plugin_axia/store/index.dart';
+import 'package:axiawallet_plugin_axia/utils/format.dart';
+import 'package:axiawallet_sdk/api/api.dart';
+import 'package:axiawallet_sdk/storage/keyring.dart';
 
 class ApiStaking {
   ApiStaking(this.plugin, this.keyring)
@@ -14,7 +14,7 @@ class ApiStaking {
 
   final PluginAxia plugin;
   final Keyring keyring;
-  final PolkawalletApi api;
+  final AXIAWalletApi api;
   final PluginStore store;
 
   Future<List> fetchAccountRewardsEraOptions() async {

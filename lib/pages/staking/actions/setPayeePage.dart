@@ -2,16 +2,16 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:polkawallet_plugin_axia/polkawallet_plugin_axia.dart';
-import 'package:polkawallet_plugin_axia/utils/i18n/index.dart';
-import 'package:polkawallet_sdk/api/types/staking/ownStashInfo.dart';
-import 'package:polkawallet_sdk/storage/keyring.dart';
-import 'package:polkawallet_sdk/storage/types/keyPairData.dart';
-import 'package:polkawallet_sdk/utils/i18n.dart';
-import 'package:polkawallet_ui/components/addressFormItem.dart';
-import 'package:polkawallet_ui/components/addressInputField.dart';
-import 'package:polkawallet_ui/components/textTag.dart';
-import 'package:polkawallet_ui/components/txButton.dart';
+import 'package:axiawallet_plugin_axia/axiawallet_plugin_axia.dart';
+import 'package:axiawallet_plugin_axia/utils/i18n/index.dart';
+import 'package:axiawallet_sdk/api/types/staking/ownStashInfo.dart';
+import 'package:axiawallet_sdk/storage/keyring.dart';
+import 'package:axiawallet_sdk/storage/types/keyPairData.dart';
+import 'package:axiawallet_sdk/utils/i18n.dart';
+import 'package:axiawallet_ui/components/addressFormItem.dart';
+import 'package:axiawallet_ui/components/addressInputField.dart';
+import 'package:axiawallet_ui/components/textTag.dart';
+import 'package:axiawallet_ui/components/txButton.dart';
 
 class SetPayeePage extends StatefulWidget {
   SetPayeePage(this.plugin, this.keyring);
@@ -27,7 +27,7 @@ class _SetPayeePageState extends State<SetPayeePage> {
   String _rewardAccount;
 
   Future<TxConfirmParams> _getTxParams() async {
-    final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'staking');
+    final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'staking');
     final rewardToOptions =
         PayeeSelector.options.map((i) => dic['reward.$i']).toList();
     final OwnStashInfoData currentPayee =
@@ -51,7 +51,7 @@ class _SetPayeePageState extends State<SetPayeePage> {
               actions: <Widget>[
                 CupertinoButton(
                   child: Text(I18n.of(context)
-                      .getDic(i18n_full_dic_kusama, 'common')['ok']),
+                      .getDic(i18n_full_dic_axialunar, 'common')['ok']),
                   onPressed: () => Navigator.of(context).pop(),
                 ),
               ],
@@ -87,7 +87,7 @@ class _SetPayeePageState extends State<SetPayeePage> {
 
   @override
   Widget build(BuildContext context) {
-    final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'staking');
+    final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'staking');
 
     return Scaffold(
       appBar: AppBar(
@@ -156,7 +156,7 @@ class _PayeeSelectorState extends State<PayeeSelector> {
 
   @override
   Widget build(BuildContext context) {
-    final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'staking');
+    final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'staking');
 
     final rewardToOptions =
         PayeeSelector.options.map((i) => dic['reward.$i']).toList();

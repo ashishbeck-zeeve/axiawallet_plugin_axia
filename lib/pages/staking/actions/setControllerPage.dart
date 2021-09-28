@@ -1,13 +1,13 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:polkawallet_plugin_axia/pages/staking/actions/controllerSelectPage.dart';
-import 'package:polkawallet_plugin_axia/polkawallet_plugin_axia.dart';
-import 'package:polkawallet_plugin_axia/utils/i18n/index.dart';
-import 'package:polkawallet_sdk/storage/keyring.dart';
-import 'package:polkawallet_sdk/storage/types/keyPairData.dart';
-import 'package:polkawallet_sdk/utils/i18n.dart';
-import 'package:polkawallet_ui/components/addressFormItem.dart';
-import 'package:polkawallet_ui/components/txButton.dart';
+import 'package:axiawallet_plugin_axia/pages/staking/actions/controllerSelectPage.dart';
+import 'package:axiawallet_plugin_axia/axiawallet_plugin_axia.dart';
+import 'package:axiawallet_plugin_axia/utils/i18n/index.dart';
+import 'package:axiawallet_sdk/storage/keyring.dart';
+import 'package:axiawallet_sdk/storage/types/keyPairData.dart';
+import 'package:axiawallet_sdk/utils/i18n.dart';
+import 'package:axiawallet_ui/components/addressFormItem.dart';
+import 'package:axiawallet_ui/components/txButton.dart';
 
 class SetControllerPage extends StatefulWidget {
   SetControllerPage(this.plugin, this.keyring);
@@ -44,7 +44,7 @@ class _SetControllerPageState extends State<SetControllerPage> {
 
   @override
   Widget build(BuildContext context) {
-    final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'staking');
+    final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'staking');
 
     return Scaffold(
       appBar: AppBar(
@@ -93,7 +93,7 @@ class _SetControllerPageState extends State<SetControllerPage> {
                             actions: <Widget>[
                               CupertinoButton(
                                 child: Text(I18n.of(context).getDic(
-                                    i18n_full_dic_kusama, 'common')['ok']),
+                                    i18n_full_dic_axialunar, 'common')['ok']),
                                 onPressed: () => Navigator.of(context).pop(),
                               ),
                             ],

@@ -1,8 +1,8 @@
-import 'package:polkawallet_plugin_axia/polkawallet_plugin_axia.dart';
-import 'package:polkawallet_plugin_axia/store/index.dart';
-import 'package:polkawallet_sdk/api/api.dart';
-import 'package:polkawallet_sdk/api/types/gov/treasuryOverviewData.dart';
-import 'package:polkawallet_sdk/storage/keyring.dart';
+import 'package:axiawallet_plugin_axia/axiawallet_plugin_axia.dart';
+import 'package:axiawallet_plugin_axia/store/index.dart';
+import 'package:axiawallet_sdk/api/api.dart';
+import 'package:axiawallet_sdk/api/types/gov/treasuryOverviewData.dart';
+import 'package:axiawallet_sdk/storage/keyring.dart';
 
 class ApiGov {
   ApiGov(this.plugin, this.keyring)
@@ -11,7 +11,7 @@ class ApiGov {
 
   final PluginAxia plugin;
   final Keyring keyring;
-  final PolkawalletApi api;
+  final AXIAWalletApi api;
   final PluginStore store;
 
   Future<void> updateIconsAndIndices(List addresses) async {

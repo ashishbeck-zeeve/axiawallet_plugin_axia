@@ -1,12 +1,12 @@
 import 'package:flutter/cupertino.dart';
-import 'package:polkawallet_plugin_axia/polkawallet_plugin_axia.dart';
-import 'package:polkawallet_plugin_axia/service/gov.dart';
-import 'package:polkawallet_plugin_axia/service/staking.dart';
-import 'package:polkawallet_sdk/storage/keyring.dart';
-import 'package:polkawallet_sdk/storage/types/keyPairData.dart';
-import 'package:polkawallet_sdk/utils/i18n.dart';
-import 'package:polkawallet_ui/components/passwordInputDialog.dart';
-import 'package:polkawallet_ui/utils/i18n.dart';
+import 'package:axiawallet_plugin_axia/axiawallet_plugin_axia.dart';
+import 'package:axiawallet_plugin_axia/service/gov.dart';
+import 'package:axiawallet_plugin_axia/service/staking.dart';
+import 'package:axiawallet_sdk/storage/keyring.dart';
+import 'package:axiawallet_sdk/storage/types/keyPairData.dart';
+import 'package:axiawallet_sdk/utils/i18n.dart';
+import 'package:axiawallet_ui/components/passwordInputDialog.dart';
+import 'package:axiawallet_ui/utils/i18n.dart';
 
 class PluginApi {
   PluginApi(PluginAxia plugin, Keyring keyring)
@@ -34,8 +34,9 @@ class PluginApi {
   }
 
   Future<String> getRuntimeModuleName(List<String> modules) async {
-    final res = await Future.wait(modules.map((e) =>
-        plugin.sdk.webView.evalJavascript('(api.tx.$e != undefined ? {} : null)', wrapPromise: false)));
+    final res = await Future.wait(modules.map((e) => plugin.sdk.webView
+        .evalJavascript('(api.tx.$e != undefined ? {} : null)',
+            wrapPromise: false)));
     print(res);
     return modules[res.indexWhere((e) => e != null)];
   }

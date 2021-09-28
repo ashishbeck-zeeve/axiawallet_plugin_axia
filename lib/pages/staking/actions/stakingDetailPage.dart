@@ -2,13 +2,13 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:polkawallet_plugin_axia/polkawallet_plugin_axia.dart';
-import 'package:polkawallet_plugin_axia/utils/i18n/index.dart';
-import 'package:polkawallet_sdk/api/types/txData.dart';
-import 'package:polkawallet_sdk/storage/keyring.dart';
-import 'package:polkawallet_sdk/utils/i18n.dart';
-import 'package:polkawallet_ui/components/txDetail.dart';
-import 'package:polkawallet_ui/utils/format.dart';
+import 'package:axiawallet_plugin_axia/axiawallet_plugin_axia.dart';
+import 'package:axiawallet_plugin_axia/utils/i18n/index.dart';
+import 'package:axiawallet_sdk/api/types/txData.dart';
+import 'package:axiawallet_sdk/storage/keyring.dart';
+import 'package:axiawallet_sdk/utils/i18n.dart';
+import 'package:axiawallet_ui/components/txDetail.dart';
+import 'package:axiawallet_ui/utils/format.dart';
 
 class StakingDetailPage extends StatelessWidget {
   StakingDetailPage(this.plugin, this.keyring);
@@ -18,7 +18,8 @@ class StakingDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final dicStaking = I18n.of(context).getDic(i18n_full_dic_kusama, 'staking');
+    final dicStaking =
+        I18n.of(context).getDic(i18n_full_dic_axialunar, 'staking');
     final decimals = (plugin.networkState.tokenDecimals ?? [12])[0];
     final symbol = (plugin.networkState.tokenSymbol ?? ["UNIT"])[0];
     final TxData detail = ModalRoute.of(context).settings.arguments;

@@ -1,5 +1,5 @@
-import 'package:polkawallet_plugin_axia/store/staking/types/validatorData.dart';
-import 'package:polkawallet_ui/utils/index.dart';
+import 'package:axiawallet_plugin_axia/store/staking/types/validatorData.dart';
+import 'package:axiawallet_ui/utils/index.dart';
 
 class PluginFmt {
   static Map formatRewardsChartData(Map chartData) {

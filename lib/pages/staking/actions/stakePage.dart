@@ -2,14 +2,14 @@ import 'dart:convert';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:polkawallet_plugin_axia/pages/staking/actions/bondPage.dart';
-import 'package:polkawallet_plugin_axia/pages/staking/actions/nominateForm.dart';
-import 'package:polkawallet_plugin_axia/polkawallet_plugin_axia.dart';
-import 'package:polkawallet_plugin_axia/utils/i18n/index.dart';
-import 'package:polkawallet_sdk/storage/keyring.dart';
-import 'package:polkawallet_sdk/utils/i18n.dart';
-import 'package:polkawallet_ui/components/txButton.dart';
-import 'package:polkawallet_ui/pages/txConfirmPage.dart';
+import 'package:axiawallet_plugin_axia/pages/staking/actions/bondPage.dart';
+import 'package:axiawallet_plugin_axia/pages/staking/actions/nominateForm.dart';
+import 'package:axiawallet_plugin_axia/axiawallet_plugin_axia.dart';
+import 'package:axiawallet_plugin_axia/utils/i18n/index.dart';
+import 'package:axiawallet_sdk/storage/keyring.dart';
+import 'package:axiawallet_sdk/utils/i18n.dart';
+import 'package:axiawallet_ui/components/txButton.dart';
+import 'package:axiawallet_ui/pages/txConfirmPage.dart';
 
 class StakePage extends StatefulWidget {
   StakePage(this.plugin, this.keyring);
@@ -28,7 +28,7 @@ class _StakePageState extends State<StakePage> {
   TxConfirmParams _bondParams;
 
   Future<void> _onStake(TxConfirmParams nominateParams) async {
-    final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'common');
+    final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'common');
     final txBond = 'api.tx.staking.bond(...${jsonEncode(_bondParams.params)})';
     final txNominate =
         'api.tx.staking.nominate(...${jsonEncode(nominateParams.params)})';
@@ -59,7 +59,7 @@ class _StakePageState extends State<StakePage> {
 
   @override
   Widget build(BuildContext context) {
-    final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'common');
+    final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'common');
 
     return Scaffold(
       appBar: AppBar(

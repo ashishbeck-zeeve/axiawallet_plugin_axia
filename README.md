@@ -1,6 +1,6 @@
-# polkawallet_plugin_kusama
+# axiawallet_plugin_axialunar
 
-Basic plugin for polkawallet/app. Support Polkadot & Kusama.
+Basic plugin for axiawallet/app. Support AXIASolar & AXIALunar.
 
 ## Getting Started
 

@@ -1,16 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:polkawallet_plugin_axia/pages/governance/democracy/proposalDetailPage.dart';
-import 'package:polkawallet_plugin_axia/polkawallet_plugin_axia.dart';
-import 'package:polkawallet_plugin_axia/utils/i18n/index.dart';
-import 'package:polkawallet_ui/components/addressIcon.dart';
-import 'package:polkawallet_ui/components/roundedCard.dart';
-import 'package:polkawallet_ui/utils/format.dart';
-import 'package:polkawallet_ui/utils/index.dart';
-import 'package:polkawallet_sdk/api/types/gov/proposalInfoData.dart';
-import 'package:polkawallet_sdk/api/types/gov/treasuryOverviewData.dart';
-import 'package:polkawallet_sdk/utils/i18n.dart';
+import 'package:axiawallet_plugin_axia/pages/governance/democracy/proposalDetailPage.dart';
+import 'package:axiawallet_plugin_axia/axiawallet_plugin_axia.dart';
+import 'package:axiawallet_plugin_axia/utils/i18n/index.dart';
+import 'package:axiawallet_ui/components/addressIcon.dart';
+import 'package:axiawallet_ui/components/roundedCard.dart';
+import 'package:axiawallet_ui/utils/format.dart';
+import 'package:axiawallet_ui/utils/index.dart';
+import 'package:axiawallet_sdk/api/types/gov/proposalInfoData.dart';
+import 'package:axiawallet_sdk/api/types/gov/treasuryOverviewData.dart';
+import 'package:axiawallet_sdk/utils/i18n.dart';
 
 class ProposalPanel extends StatelessWidget {
   ProposalPanel(this.plugin, this.proposal);
@@ -21,7 +21,7 @@ class ProposalPanel extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Observer(
         builder: (_) {
-          final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'gov');
+          final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'gov');
           final decimals = (plugin.networkState.tokenDecimals ?? [12])[0];
           final symbol = (plugin.networkState.tokenSymbol ?? ["UNIT"])[0] ?? '';
           final CouncilProposalData proposalMeta = proposal.image?.proposal;

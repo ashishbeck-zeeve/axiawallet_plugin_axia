@@ -3,18 +3,18 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:polkawallet_plugin_axia/pages/governance/democracy/referendumPanel.dart';
-import 'package:polkawallet_plugin_axia/pages/governance/govExternalLinks.dart';
-import 'package:polkawallet_plugin_axia/polkawallet_plugin_axia.dart';
-import 'package:polkawallet_plugin_axia/utils/i18n/index.dart';
-import 'package:polkawallet_sdk/api/types/gov/genExternalLinksParams.dart';
-import 'package:polkawallet_sdk/storage/keyring.dart';
-import 'package:polkawallet_sdk/utils/i18n.dart';
-import 'package:polkawallet_ui/components/listTail.dart';
-import 'package:polkawallet_ui/components/outlinedButtonSmall.dart';
-import 'package:polkawallet_ui/components/roundedCard.dart';
-import 'package:polkawallet_ui/components/txButton.dart';
-import 'package:polkawallet_ui/pages/txConfirmPage.dart';
+import 'package:axiawallet_plugin_axia/pages/governance/democracy/referendumPanel.dart';
+import 'package:axiawallet_plugin_axia/pages/governance/govExternalLinks.dart';
+import 'package:axiawallet_plugin_axia/axiawallet_plugin_axia.dart';
+import 'package:axiawallet_plugin_axia/utils/i18n/index.dart';
+import 'package:axiawallet_sdk/api/types/gov/genExternalLinksParams.dart';
+import 'package:axiawallet_sdk/storage/keyring.dart';
+import 'package:axiawallet_sdk/utils/i18n.dart';
+import 'package:axiawallet_ui/components/listTail.dart';
+import 'package:axiawallet_ui/components/outlinedButtonSmall.dart';
+import 'package:axiawallet_ui/components/roundedCard.dart';
+import 'package:axiawallet_ui/components/txButton.dart';
+import 'package:axiawallet_ui/pages/txConfirmPage.dart';
 
 class Democracy extends StatefulWidget {
   Democracy(this.plugin, this.keyring);
@@ -70,7 +70,7 @@ class _DemocracyState extends State<Democracy> {
   }
 
   Future<void> _submitCancelVote(int id) async {
-    final govDic = I18n.of(context).getDic(i18n_full_dic_kusama, 'gov');
+    final govDic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'gov');
     final params = TxConfirmParams(
       module: 'democracy',
       call: 'removeVote',
@@ -86,7 +86,7 @@ class _DemocracyState extends State<Democracy> {
   }
 
   void _onUnlock() async {
-    final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'gov');
+    final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'gov');
     final txs = _unlocks
         .map(
             (e) => 'api.tx.democracy.removeVote(${BigInt.parse(e.toString())})')
@@ -129,7 +129,7 @@ class _DemocracyState extends State<Democracy> {
 
   @override
   Widget build(BuildContext context) {
-    final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'gov');
+    final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'gov');
     return Observer(
       builder: (_) {
         final decimals = (widget.plugin.networkState.tokenDecimals ?? [12])[0];

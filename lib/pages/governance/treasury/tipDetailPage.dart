@@ -1,21 +1,21 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:polkawallet_plugin_axia/pages/governance/council/candidateDetailPage.dart';
-import 'package:polkawallet_plugin_axia/polkawallet_plugin_axia.dart';
-import 'package:polkawallet_plugin_axia/utils/i18n/index.dart';
-import 'package:polkawallet_sdk/api/types/gov/treasuryTipData.dart';
-import 'package:polkawallet_sdk/storage/keyring.dart';
-import 'package:polkawallet_sdk/storage/types/keyPairData.dart';
-import 'package:polkawallet_sdk/utils/i18n.dart';
-import 'package:polkawallet_ui/components/addressIcon.dart';
-import 'package:polkawallet_ui/components/borderedTitle.dart';
-import 'package:polkawallet_ui/components/roundedButton.dart';
-import 'package:polkawallet_ui/components/roundedCard.dart';
-import 'package:polkawallet_ui/components/txButton.dart';
-import 'package:polkawallet_ui/pages/txConfirmPage.dart';
-import 'package:polkawallet_ui/utils/format.dart';
-import 'package:polkawallet_ui/utils/index.dart';
+import 'package:axiawallet_plugin_axia/pages/governance/council/candidateDetailPage.dart';
+import 'package:axiawallet_plugin_axia/axiawallet_plugin_axia.dart';
+import 'package:axiawallet_plugin_axia/utils/i18n/index.dart';
+import 'package:axiawallet_sdk/api/types/gov/treasuryTipData.dart';
+import 'package:axiawallet_sdk/storage/keyring.dart';
+import 'package:axiawallet_sdk/storage/types/keyPairData.dart';
+import 'package:axiawallet_sdk/utils/i18n.dart';
+import 'package:axiawallet_ui/components/addressIcon.dart';
+import 'package:axiawallet_ui/components/borderedTitle.dart';
+import 'package:axiawallet_ui/components/roundedButton.dart';
+import 'package:axiawallet_ui/components/roundedCard.dart';
+import 'package:axiawallet_ui/components/txButton.dart';
+import 'package:axiawallet_ui/pages/txConfirmPage.dart';
+import 'package:axiawallet_ui/utils/format.dart';
+import 'package:axiawallet_ui/utils/index.dart';
 
 class TipDetailPage extends StatefulWidget {
   TipDetailPage(this.plugin, this.keyring);
@@ -37,8 +37,8 @@ class _TipDetailPageState extends State<TipDetailPage> {
     showCupertinoDialog(
       context: context,
       builder: (BuildContext context) {
-        final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'common');
-        final dicGov = I18n.of(context).getDic(i18n_full_dic_kusama, 'gov');
+        final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'common');
+        final dicGov = I18n.of(context).getDic(i18n_full_dic_axialunar, 'gov');
         return CupertinoAlertDialog(
           title: Padding(
             padding: EdgeInsets.only(bottom: 16),
@@ -90,7 +90,7 @@ class _TipDetailPageState extends State<TipDetailPage> {
     showCupertinoDialog(
       context: context,
       builder: (BuildContext context) {
-        final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'common');
+        final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'common');
         return CupertinoAlertDialog(
           title: Container(),
           content: Text(dic['input.invalid']),
@@ -111,7 +111,7 @@ class _TipDetailPageState extends State<TipDetailPage> {
   }
 
   Future<void> _onEndorseSubmit() async {
-    final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'gov');
+    final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'gov');
     final decimals = (widget.plugin.networkState.tokenDecimals ?? [12])[0];
     final TreasuryTipData tipData = ModalRoute.of(context).settings.arguments;
     String amt = _tipInputCtrl.text.trim();
@@ -142,7 +142,7 @@ class _TipDetailPageState extends State<TipDetailPage> {
   }
 
   Future<void> _onCancel() async {
-    var dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'gov');
+    var dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'gov');
     final TreasuryTipData tipData = ModalRoute.of(context).settings.arguments;
     final args = TxConfirmParams(
       module: 'tips',
@@ -159,7 +159,7 @@ class _TipDetailPageState extends State<TipDetailPage> {
   }
 
   Future<void> _onCloseTip() async {
-    final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'gov');
+    final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'gov');
     final TreasuryTipData tipData = ModalRoute.of(context).settings.arguments;
     final args = TxConfirmParams(
       module: 'tips',
@@ -176,7 +176,7 @@ class _TipDetailPageState extends State<TipDetailPage> {
   }
 
   Future<void> _onTip(BigInt median) async {
-    final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'gov');
+    final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'gov');
     final decimals = (widget.plugin.networkState.tokenDecimals ?? [12])[0];
     final TreasuryTipData tipData = ModalRoute.of(context).settings.arguments;
     final args = TxConfirmParams(
@@ -198,7 +198,7 @@ class _TipDetailPageState extends State<TipDetailPage> {
 
   @override
   Widget build(BuildContext context) {
-    final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'gov');
+    final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'gov');
     final symbol = (widget.plugin.networkState.tokenSymbol ?? ['UNIT'])[0];
     final decimals = (widget.plugin.networkState.tokenDecimals ?? [12])[0];
     final TreasuryTipData tipData = ModalRoute.of(context).settings.arguments;
@@ -377,7 +377,7 @@ class _TipDetailPageState extends State<TipDetailPage> {
                                   child: RoundedButton(
                                     color: Colors.orange,
                                     text: I18n.of(context).getDic(
-                                        i18n_full_dic_kusama,
+                                        i18n_full_dic_axialunar,
                                         'common')['cancel'],
                                     onPressed: isFinder ? _onCancel : null,
                                   ),

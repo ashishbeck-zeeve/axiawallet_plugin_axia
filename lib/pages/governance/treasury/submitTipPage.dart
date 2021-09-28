@@ -1,15 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:polkawallet_plugin_axia/polkawallet_plugin_axia.dart';
-import 'package:polkawallet_plugin_axia/utils/i18n/index.dart';
-import 'package:polkawallet_sdk/storage/keyring.dart';
-import 'package:polkawallet_sdk/storage/types/keyPairData.dart';
-import 'package:polkawallet_sdk/utils/i18n.dart';
-import 'package:polkawallet_ui/components/addressFormItem.dart';
-import 'package:polkawallet_ui/components/txButton.dart';
-import 'package:polkawallet_ui/pages/accountListPage.dart';
-import 'package:polkawallet_ui/utils/format.dart';
-import 'package:polkawallet_ui/utils/index.dart';
+import 'package:axiawallet_plugin_axia/axiawallet_plugin_axia.dart';
+import 'package:axiawallet_plugin_axia/utils/i18n/index.dart';
+import 'package:axiawallet_sdk/storage/keyring.dart';
+import 'package:axiawallet_sdk/storage/types/keyPairData.dart';
+import 'package:axiawallet_sdk/utils/i18n.dart';
+import 'package:axiawallet_ui/components/addressFormItem.dart';
+import 'package:axiawallet_ui/components/txButton.dart';
+import 'package:axiawallet_ui/pages/accountListPage.dart';
+import 'package:axiawallet_ui/utils/format.dart';
+import 'package:axiawallet_ui/utils/index.dart';
 
 class SubmitTipPage extends StatefulWidget {
   SubmitTipPage(this.plugin, this.keyring);
@@ -33,7 +33,7 @@ class _SubmitTipPageState extends State<SubmitTipPage> {
 
   Future<TxConfirmParams> _getTxParams() async {
     if (_formKey.currentState.validate()) {
-      final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'gov');
+      final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'gov');
       final int decimals =
           (widget.plugin.networkState.tokenDecimals ?? [12])[0];
       final bool isCouncil = ModalRoute.of(context).settings.arguments;
@@ -92,8 +92,9 @@ class _SubmitTipPageState extends State<SubmitTipPage> {
 
   @override
   Widget build(BuildContext context) {
-    final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'gov');
-    final dicCommon = I18n.of(context).getDic(i18n_full_dic_kusama, 'common');
+    final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'gov');
+    final dicCommon =
+        I18n.of(context).getDic(i18n_full_dic_axialunar, 'common');
     final decimals = (widget.plugin.networkState.tokenDecimals ?? [12])[0];
     final symbol = (widget.plugin.networkState.tokenSymbol ?? ['UNIT'])[0];
     final bool isCouncil = ModalRoute.of(context).settings.arguments;

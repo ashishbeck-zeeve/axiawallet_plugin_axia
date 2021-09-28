@@ -1,24 +1,25 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:polkawallet_plugin_axia/pages/governance/council/councilPage.dart';
-import 'package:polkawallet_plugin_axia/pages/governance/democracy/democracyPage.dart';
-import 'package:polkawallet_plugin_axia/pages/governance/treasury/treasuryPage.dart';
-import 'package:polkawallet_plugin_axia/utils/i18n/index.dart';
-import 'package:polkawallet_sdk/plugin/index.dart';
-import 'package:polkawallet_sdk/utils/i18n.dart';
-import 'package:polkawallet_ui/components/entryPageCard.dart';
-import 'package:polkawallet_ui/pages/dAppWrapperPage.dart';
+import 'package:axiawallet_plugin_axia/pages/governance/council/councilPage.dart';
+import 'package:axiawallet_plugin_axia/pages/governance/democracy/democracyPage.dart';
+import 'package:axiawallet_plugin_axia/pages/governance/treasury/treasuryPage.dart';
+import 'package:axiawallet_plugin_axia/utils/i18n/index.dart';
+import 'package:axiawallet_sdk/plugin/index.dart';
+import 'package:axiawallet_sdk/utils/i18n.dart';
+import 'package:axiawallet_ui/components/entryPageCard.dart';
+import 'package:axiawallet_ui/pages/dAppWrapperPage.dart';
 
 class Gov extends StatelessWidget {
   Gov(this.plugin);
 
-  final PolkawalletPlugin plugin;
+  final AXIAWalletPlugin plugin;
 
   @override
   Widget build(BuildContext context) {
-    final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'gov');
-    final dicCommon = I18n.of(context).getDic(i18n_full_dic_kusama, 'common');
+    final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'gov');
+    final dicCommon =
+        I18n.of(context).getDic(i18n_full_dic_axialunar, 'common');
 
     return Scaffold(
       backgroundColor: Colors.transparent,
@@ -31,8 +32,8 @@ class Gov extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
                   Text(
-                    I18n.of(context)
-                        .getDic(i18n_full_dic_kusama, 'common')['governance'],
+                    I18n.of(context).getDic(
+                        i18n_full_dic_axialunar, 'common')['governance'],
                     style: TextStyle(
                       fontSize: 20,
                       color: Theme.of(context).cardColor,
@@ -64,7 +65,7 @@ class Gov extends StatelessWidget {
                               dic['democracy'],
                               dic['democracy.brief'],
                               SvgPicture.asset(
-                                'packages/polkawallet_plugin_axia/assets/images/gov/democracy.svg',
+                                'packages/axiawallet_plugin_axia/assets/images/gov/democracy.svg',
                                 width: 96,
                                 color: Theme.of(context).primaryColor,
                               ),
@@ -81,7 +82,7 @@ class Gov extends StatelessWidget {
                               dic['council'],
                               dic['council.brief'],
                               SvgPicture.asset(
-                                'packages/polkawallet_plugin_axia/assets/images/gov/council.svg',
+                                'packages/axiawallet_plugin_axia/assets/images/gov/council.svg',
                                 width: 96,
                                 color: Theme.of(context).primaryColor,
                               ),
@@ -98,7 +99,7 @@ class Gov extends StatelessWidget {
                               dic['treasury'],
                               dic['treasury.brief'],
                               SvgPicture.asset(
-                                'packages/polkawallet_plugin_axia/assets/images/gov/treasury.svg',
+                                'packages/axiawallet_plugin_axia/assets/images/gov/treasury.svg',
                                 width: 96,
                                 color: Theme.of(context).primaryColor,
                               ),
@@ -115,7 +116,7 @@ class Gov extends StatelessWidget {
                         //       'Polkassembly',
                         //       dic['polkassembly'],
                         //       Image.asset(
-                        //         'packages/polkawallet_plugin_axia/assets/images/public/polkassembly.png',
+                        //         'packages/axiawallet_plugin_axia/assets/images/public/polkassembly.png',
                         //         width: 48,
                         //       ),
                         //       color: Colors.transparent,
@@ -124,7 +125,7 @@ class Gov extends StatelessWidget {
                         //       DAppWrapperPage.route,
                         //       arguments:
                         //           'https://${plugin.basic.name}.polkassembly.io/',
-                        //       // "https://polkadot.js.org/apps/",
+                        //       // "https://axiasolar.js.org/apps/",
                         //     ),
                         //   ),
                         // ),

@@ -1,18 +1,18 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:polkawallet_plugin_axia/pages/staking/actions/setPayeePage.dart';
-import 'package:polkawallet_plugin_axia/polkawallet_plugin_axia.dart';
-import 'package:polkawallet_plugin_axia/utils/i18n/index.dart';
-import 'package:polkawallet_sdk/storage/keyring.dart';
-import 'package:polkawallet_sdk/storage/types/keyPairData.dart';
-import 'package:polkawallet_sdk/utils/i18n.dart';
-import 'package:polkawallet_ui/components/addressFormItem.dart';
-import 'package:polkawallet_ui/components/roundedButton.dart';
-import 'package:polkawallet_ui/components/textTag.dart';
-import 'package:polkawallet_ui/components/txButton.dart';
-import 'package:polkawallet_ui/pages/accountListPage.dart';
-import 'package:polkawallet_ui/utils/format.dart';
-import 'package:polkawallet_ui/utils/index.dart';
+import 'package:axiawallet_plugin_axia/pages/staking/actions/setPayeePage.dart';
+import 'package:axiawallet_plugin_axia/axiawallet_plugin_axia.dart';
+import 'package:axiawallet_plugin_axia/utils/i18n/index.dart';
+import 'package:axiawallet_sdk/storage/keyring.dart';
+import 'package:axiawallet_sdk/storage/types/keyPairData.dart';
+import 'package:axiawallet_sdk/utils/i18n.dart';
+import 'package:axiawallet_ui/components/addressFormItem.dart';
+import 'package:axiawallet_ui/components/roundedButton.dart';
+import 'package:axiawallet_ui/components/textTag.dart';
+import 'package:axiawallet_ui/components/txButton.dart';
+import 'package:axiawallet_ui/pages/accountListPage.dart';
+import 'package:axiawallet_ui/utils/format.dart';
+import 'package:axiawallet_ui/utils/index.dart';
 
 class BondPage extends StatefulWidget {
   BondPage(this.plugin, this.keyring, {this.onNext});
@@ -57,8 +57,9 @@ class _BondPageState extends State<BondPage> {
 
   @override
   Widget build(BuildContext context) {
-    final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'common');
-    final dicStaking = I18n.of(context).getDic(i18n_full_dic_kusama, 'staking');
+    final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'common');
+    final dicStaking =
+        I18n.of(context).getDic(i18n_full_dic_axialunar, 'staking');
     final symbol = (widget.plugin.networkState.tokenSymbol ?? ['UNIT'])[0];
     final decimals = (widget.plugin.networkState.tokenDecimals ?? [12])[0];
 
@@ -91,7 +92,7 @@ class _BondPageState extends State<BondPage> {
                       Expanded(
                           child: TextTag(
                         I18n.of(context).getDic(
-                            i18n_full_dic_kusama, 'staking')['stake.warn'],
+                            i18n_full_dic_axialunar, 'staking')['stake.warn'],
                         color: Colors.deepOrange,
                         fontSize: 12,
                         margin: EdgeInsets.all(0),

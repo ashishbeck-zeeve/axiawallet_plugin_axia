@@ -3,22 +3,22 @@ import 'dart:convert';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:polkawallet_plugin_axia/pages/governance/council/motionDetailPage.dart';
-import 'package:polkawallet_plugin_axia/pages/governance/govExternalLinks.dart';
-import 'package:polkawallet_plugin_axia/polkawallet_plugin_axia.dart';
-import 'package:polkawallet_plugin_axia/store/accounts.dart';
-import 'package:polkawallet_plugin_axia/utils/i18n/index.dart';
-import 'package:polkawallet_sdk/storage/keyring.dart';
-import 'package:polkawallet_sdk/api/types/gov/genExternalLinksParams.dart';
-import 'package:polkawallet_sdk/api/types/gov/proposalInfoData.dart';
-import 'package:polkawallet_sdk/utils/i18n.dart';
-import 'package:polkawallet_ui/components/addressIcon.dart';
-import 'package:polkawallet_ui/components/borderedTitle.dart';
-import 'package:polkawallet_ui/components/roundedCard.dart';
-import 'package:polkawallet_ui/components/txButton.dart';
-import 'package:polkawallet_ui/pages/txConfirmPage.dart';
-import 'package:polkawallet_ui/utils/format.dart';
-import 'package:polkawallet_ui/utils/index.dart';
+import 'package:axiawallet_plugin_axia/pages/governance/council/motionDetailPage.dart';
+import 'package:axiawallet_plugin_axia/pages/governance/govExternalLinks.dart';
+import 'package:axiawallet_plugin_axia/axiawallet_plugin_axia.dart';
+import 'package:axiawallet_plugin_axia/store/accounts.dart';
+import 'package:axiawallet_plugin_axia/utils/i18n/index.dart';
+import 'package:axiawallet_sdk/storage/keyring.dart';
+import 'package:axiawallet_sdk/api/types/gov/genExternalLinksParams.dart';
+import 'package:axiawallet_sdk/api/types/gov/proposalInfoData.dart';
+import 'package:axiawallet_sdk/utils/i18n.dart';
+import 'package:axiawallet_ui/components/addressIcon.dart';
+import 'package:axiawallet_ui/components/borderedTitle.dart';
+import 'package:axiawallet_ui/components/roundedCard.dart';
+import 'package:axiawallet_ui/components/txButton.dart';
+import 'package:axiawallet_ui/pages/txConfirmPage.dart';
+import 'package:axiawallet_ui/utils/format.dart';
+import 'package:axiawallet_ui/utils/index.dart';
 
 class ProposalDetailPage extends StatefulWidget {
   ProposalDetailPage(this.plugin, this.keyring);
@@ -57,7 +57,7 @@ class _ProposalDetailPageState extends State<ProposalDetailPage> {
   }
 
   Future<void> _onSwitch() async {
-    final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'gov');
+    final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'gov');
     final ProposalInfoData proposal = ModalRoute.of(context).settings.arguments;
     final TxConfirmParams params = TxConfirmParams(
       module: 'democracy',
@@ -82,7 +82,7 @@ class _ProposalDetailPageState extends State<ProposalDetailPage> {
 
   @override
   Widget build(BuildContext context) {
-    var dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'gov');
+    var dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'gov');
     final ProposalInfoData proposalPara =
         ModalRoute.of(context).settings.arguments;
     return Scaffold(
@@ -247,7 +247,7 @@ class ProposalSecondsList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Map dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'gov');
+    final Map dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'gov');
     final List seconding = proposal.seconds.toList();
     seconding.removeAt(0);
     return Container(

@@ -1,11 +1,11 @@
 import 'package:mobx/mobx.dart';
-import 'package:polkawallet_plugin_axia/store/cache/storeCache.dart';
+import 'package:axiawallet_plugin_axia/store/cache/storeCache.dart';
 
-import 'package:polkawallet_sdk/api/types/gov/proposalInfoData.dart';
-import 'package:polkawallet_sdk/api/types/gov/councilInfoData.dart';
-import 'package:polkawallet_sdk/api/types/gov/referendumInfoData.dart';
-import 'package:polkawallet_sdk/api/types/gov/treasuryOverviewData.dart';
-import 'package:polkawallet_sdk/api/types/gov/treasuryTipData.dart';
+import 'package:axiawallet_sdk/api/types/gov/proposalInfoData.dart';
+import 'package:axiawallet_sdk/api/types/gov/councilInfoData.dart';
+import 'package:axiawallet_sdk/api/types/gov/referendumInfoData.dart';
+import 'package:axiawallet_sdk/api/types/gov/treasuryOverviewData.dart';
+import 'package:axiawallet_sdk/api/types/gov/treasuryTipData.dart';
 
 part 'governance.g.dart';
 

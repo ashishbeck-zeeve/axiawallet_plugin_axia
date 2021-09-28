@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:polkawallet_ui/components/jumpToBrowserLink.dart';
+import 'package:axiawallet_ui/components/jumpToBrowserLink.dart';
 
 class GovExternalLinks extends StatelessWidget {
   GovExternalLinks(this.links);

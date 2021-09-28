@@ -1,16 +1,16 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:polkawallet_plugin_axia/pages/governance/treasury/tipDetailPage.dart';
-import 'package:polkawallet_plugin_axia/polkawallet_plugin_axia.dart';
-import 'package:polkawallet_plugin_axia/utils/i18n/index.dart';
-import 'package:polkawallet_sdk/api/types/gov/treasuryTipData.dart';
-import 'package:polkawallet_sdk/storage/keyring.dart';
-import 'package:polkawallet_sdk/utils/i18n.dart';
-import 'package:polkawallet_ui/components/addressIcon.dart';
-import 'package:polkawallet_ui/components/listTail.dart';
-import 'package:polkawallet_ui/components/roundedCard.dart';
-import 'package:polkawallet_ui/utils/index.dart';
+import 'package:axiawallet_plugin_axia/pages/governance/treasury/tipDetailPage.dart';
+import 'package:axiawallet_plugin_axia/axiawallet_plugin_axia.dart';
+import 'package:axiawallet_plugin_axia/utils/i18n/index.dart';
+import 'package:axiawallet_sdk/api/types/gov/treasuryTipData.dart';
+import 'package:axiawallet_sdk/storage/keyring.dart';
+import 'package:axiawallet_sdk/utils/i18n.dart';
+import 'package:axiawallet_ui/components/addressIcon.dart';
+import 'package:axiawallet_ui/components/listTail.dart';
+import 'package:axiawallet_ui/components/roundedCard.dart';
+import 'package:axiawallet_ui/utils/index.dart';
 
 class MoneyTips extends StatefulWidget {
   MoneyTips(this.plugin, this.keyring);
@@ -87,7 +87,8 @@ class _ProposalsState extends State<MoneyTips> {
                                 tip.tips.length.toString(),
                                 style: Theme.of(context).textTheme.headline4,
                               ),
-                              Text(I18n.of(context).getDic(i18n_full_dic_kusama,
+                              Text(I18n.of(context).getDic(
+                                  i18n_full_dic_axialunar,
                                   'gov')['treasury.tipper'])
                             ],
                           ),

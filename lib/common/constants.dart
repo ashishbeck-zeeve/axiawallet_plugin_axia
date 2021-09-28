@@ -3,28 +3,28 @@ import 'package:flutter/material.dart';
 const int SECONDS_OF_DAY = 24 * 60 * 60; // seconds of one day
 const int SECONDS_OF_YEAR = 365 * 24 * 60 * 60; // seconds of one year
 
-const node_list_kusama = [
+const node_list_axialunar = [
   {
-    'name': 'Kusama (Polkadot Canary, hosted by PatractLabs)',
+    'name': 'AXIALunar (AXIASolar Canary, hosted by PatractLabs)',
     'ss58': 2,
-    'endpoint': 'wss://kusama.elara.patract.io',
+    'endpoint': 'wss://axialunar.elara.patract.io',
   },
   {
-    'name': 'Kusama (Polkadot Canary, hosted by Parity)',
+    'name': 'AXIALunar (AXIASolar Canary, hosted by Parity)',
     'ss58': 2,
-    'endpoint': 'wss://kusama-rpc.polkadot.io/',
+    'endpoint': 'wss://axialunar-rpc.axiasolar.io/',
   },
   {
-    'name': 'Kusama (Polkadot Canary, hosted by onfinality)',
+    'name': 'AXIALunar (AXIASolar Canary, hosted by onfinality)',
     'ss58': 2,
-    'endpoint': 'wss://kusama.api.onfinality.io/public-ws',
+    'endpoint': 'wss://axialunar.api.onfinality.io/public-ws',
   },
 ];
-List<dynamic> node_list_axia = [
+List<dynamic> node_list_axiasolar = [
   {
-    'name': 'Polkadot (Live, hosted by PatractLabs)',
+    'name': 'AXIASolar (Live, hosted by PatractLabs)',
     'ss58': 0,
-    'endpoint': 'wss://polkadot.elara.patract.io',
+    'endpoint': 'wss://axiasolar.elara.patract.io',
   },
   {
     'name': 'Altair',
@@ -44,7 +44,7 @@ List<dynamic> node_list_axia = [
   {
     'name': 'Stage node',
     'ss58': 0,
-    'endpoint': 'wss://wss.stage.axiaswap.io',
+    'endpoint': 'wss://wss.stage.axiacoin.network ',
   },
   // {
   //   'name': 'Mobile node',
@@ -55,7 +55,7 @@ List<dynamic> node_list_axia = [
 
 const home_nav_items = ['staking', 'governance'];
 
-const MaterialColor kusama_black = const MaterialColor(
+const MaterialColor axialunar_black = const MaterialColor(
   0xFF222222,
   const <int, Color>{
     50: const Color(0xFF555555),
@@ -71,9 +71,9 @@ const MaterialColor kusama_black = const MaterialColor(
   },
 );
 
-const String genesis_hash_kusama =
+const String genesis_hash_axialunar =
     '0xb0a8d493285c2df73290dfb7e61f870f17b41801197a149ca93654499ea3dafe';
-const String genesis_hash_axia =
+const String genesis_hash_axiasolar =
     '0xf5839524af48f669364221d038bd93f95c615e794cf00d01a862affb973fd92c';
-const String network_name_kusama = 'kusama';
-const String network_name_axia = 'axia';
+const String network_name_axialunar = 'axialunar';
+const String network_name_axiasolar = 'axiasolar';

@@ -1,15 +1,15 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:polkawallet_plugin_axia/pages/governance/council/motionDetailPage.dart';
-import 'package:polkawallet_plugin_axia/pages/governance/democracy/referendumVotePage.dart';
-import 'package:polkawallet_plugin_axia/utils/i18n/index.dart';
-import 'package:polkawallet_sdk/utils/i18n.dart';
-import 'package:polkawallet_sdk/api/types/gov/referendumInfoData.dart';
-import 'package:polkawallet_ui/components/infoItem.dart';
-import 'package:polkawallet_ui/components/outlinedButtonSmall.dart';
-import 'package:polkawallet_ui/components/roundedCard.dart';
-import 'package:polkawallet_ui/components/tapTooltip.dart';
-import 'package:polkawallet_ui/utils/format.dart';
+import 'package:axiawallet_plugin_axia/pages/governance/council/motionDetailPage.dart';
+import 'package:axiawallet_plugin_axia/pages/governance/democracy/referendumVotePage.dart';
+import 'package:axiawallet_plugin_axia/utils/i18n/index.dart';
+import 'package:axiawallet_sdk/utils/i18n.dart';
+import 'package:axiawallet_sdk/api/types/gov/referendumInfoData.dart';
+import 'package:axiawallet_ui/components/infoItem.dart';
+import 'package:axiawallet_ui/components/outlinedButtonSmall.dart';
+import 'package:axiawallet_ui/components/roundedCard.dart';
+import 'package:axiawallet_ui/components/tapTooltip.dart';
+import 'package:axiawallet_ui/utils/format.dart';
 
 class ReferendumPanel extends StatelessWidget {
   ReferendumPanel({
@@ -37,7 +37,7 @@ class ReferendumPanel extends StatelessWidget {
     final endLeft = BigInt.parse(data.status['end'].toString()) - bestNumber;
     final activateLeft =
         endLeft + BigInt.parse(data.status['delay'].toString());
-    var dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'gov');
+    var dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'gov');
     List<Widget> list = <Widget>[
       Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: <Widget>[
         Text(
@@ -332,7 +332,8 @@ class _ReferendumArgsList extends State<ReferendumArgsList> {
                   ? Icons.keyboard_arrow_down
                   : Icons.keyboard_arrow_right,
             ),
-            Text(I18n.of(context).getDic(i18n_full_dic_kusama, 'gov')['detail'])
+            Text(I18n.of(context)
+                .getDic(i18n_full_dic_axialunar, 'gov')['detail'])
           ],
         ),
         onTap: () {

@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:polkawallet_plugin_axia/pages/governance/democracy/democracy.dart';
-import 'package:polkawallet_plugin_axia/pages/governance/democracy/proposals.dart';
-import 'package:polkawallet_plugin_axia/polkawallet_plugin_axia.dart';
-import 'package:polkawallet_plugin_axia/utils/i18n/index.dart';
-import 'package:polkawallet_sdk/storage/keyring.dart';
-import 'package:polkawallet_sdk/utils/i18n.dart';
-import 'package:polkawallet_ui/ui.dart';
-import 'package:polkawallet_ui/components/topTaps.dart';
+import 'package:axiawallet_plugin_axia/pages/governance/democracy/democracy.dart';
+import 'package:axiawallet_plugin_axia/pages/governance/democracy/proposals.dart';
+import 'package:axiawallet_plugin_axia/axiawallet_plugin_axia.dart';
+import 'package:axiawallet_plugin_axia/utils/i18n/index.dart';
+import 'package:axiawallet_sdk/storage/keyring.dart';
+import 'package:axiawallet_sdk/utils/i18n.dart';
+import 'package:axiawallet_ui/ui.dart';
+import 'package:axiawallet_ui/components/topTaps.dart';
 
 class DemocracyPage extends StatefulWidget {
   DemocracyPage(this.plugin, this.keyring);
@@ -24,7 +24,7 @@ class _DemocracyPageState extends State<DemocracyPage> {
 
   @override
   Widget build(BuildContext context) {
-    final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'gov');
+    final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'gov');
     final tabs = [dic['democracy.referendum'], dic['democracy.proposal']];
 
     return Scaffold(

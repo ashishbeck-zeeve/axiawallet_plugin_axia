@@ -1,23 +1,23 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:polkawallet_plugin_axia/common/constants.dart';
-import 'package:polkawallet_plugin_axia/pages/governance/treasury/spendProposalPage.dart';
-import 'package:polkawallet_plugin_axia/pages/governance/treasury/submitProposalPage.dart';
-import 'package:polkawallet_plugin_axia/pages/governance/treasury/submitTipPage.dart';
-import 'package:polkawallet_plugin_axia/polkawallet_plugin_axia.dart';
-import 'package:polkawallet_plugin_axia/utils/i18n/index.dart';
-import 'package:polkawallet_sdk/api/types/gov/treasuryOverviewData.dart';
-import 'package:polkawallet_sdk/storage/keyring.dart';
-import 'package:polkawallet_sdk/utils/i18n.dart';
-import 'package:polkawallet_ui/components/addressIcon.dart';
-import 'package:polkawallet_ui/components/borderedTitle.dart';
-import 'package:polkawallet_ui/components/infoItem.dart';
-import 'package:polkawallet_ui/components/listTail.dart';
-import 'package:polkawallet_ui/components/roundedButton.dart';
-import 'package:polkawallet_ui/components/roundedCard.dart';
-import 'package:polkawallet_ui/utils/format.dart';
-import 'package:polkawallet_ui/utils/index.dart';
+import 'package:axiawallet_plugin_axia/common/constants.dart';
+import 'package:axiawallet_plugin_axia/pages/governance/treasury/spendProposalPage.dart';
+import 'package:axiawallet_plugin_axia/pages/governance/treasury/submitProposalPage.dart';
+import 'package:axiawallet_plugin_axia/pages/governance/treasury/submitTipPage.dart';
+import 'package:axiawallet_plugin_axia/axiawallet_plugin_axia.dart';
+import 'package:axiawallet_plugin_axia/utils/i18n/index.dart';
+import 'package:axiawallet_sdk/api/types/gov/treasuryOverviewData.dart';
+import 'package:axiawallet_sdk/storage/keyring.dart';
+import 'package:axiawallet_sdk/utils/i18n.dart';
+import 'package:axiawallet_ui/components/addressIcon.dart';
+import 'package:axiawallet_ui/components/borderedTitle.dart';
+import 'package:axiawallet_ui/components/infoItem.dart';
+import 'package:axiawallet_ui/components/listTail.dart';
+import 'package:axiawallet_ui/components/roundedButton.dart';
+import 'package:axiawallet_ui/components/roundedCard.dart';
+import 'package:axiawallet_ui/utils/format.dart';
+import 'package:axiawallet_ui/utils/index.dart';
 
 class SpendProposals extends StatefulWidget {
   SpendProposals(this.plugin, this.keyring);
@@ -62,11 +62,13 @@ class _ProposalsState extends State<SpendProposals> {
 
   @override
   Widget build(BuildContext context) {
-    final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'gov');
+    final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'gov');
     return Observer(
       builder: (BuildContext context) {
-        final decimals = (widget.plugin.networkState.tokenDecimals ?? [12])[0] ?? 10;
-        final symbol = (widget.plugin.networkState.tokenSymbol ?? ['UNIT'])[0] ?? '';
+        final decimals =
+            (widget.plugin.networkState.tokenDecimals ?? [12])[0] ?? 10;
+        final symbol =
+            (widget.plugin.networkState.tokenSymbol ?? ['UNIT'])[0] ?? '';
         final balance = Fmt.balance(
           widget.plugin.store.gov.treasuryOverview.balance,
           decimals,
@@ -205,7 +207,7 @@ class _OverviewCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Map dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'gov');
+    final Map dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'gov');
     return RoundedCard(
       padding: EdgeInsets.all(16),
       margin: EdgeInsets.all(16),

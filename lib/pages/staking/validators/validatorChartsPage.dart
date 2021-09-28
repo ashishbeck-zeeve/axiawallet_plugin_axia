@@ -2,13 +2,13 @@ import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:polkawallet_plugin_axia/common/components/chartLabel.dart';
-import 'package:polkawallet_plugin_axia/pages/staking/validators/validatorRewardsChart.dart';
-import 'package:polkawallet_plugin_axia/polkawallet_plugin_axia.dart';
-import 'package:polkawallet_plugin_axia/store/staking/types/validatorData.dart';
-import 'package:polkawallet_plugin_axia/utils/i18n/index.dart';
-import 'package:polkawallet_sdk/storage/keyring.dart';
-import 'package:polkawallet_sdk/utils/i18n.dart';
+import 'package:axiawallet_plugin_axia/common/components/chartLabel.dart';
+import 'package:axiawallet_plugin_axia/pages/staking/validators/validatorRewardsChart.dart';
+import 'package:axiawallet_plugin_axia/axiawallet_plugin_axia.dart';
+import 'package:axiawallet_plugin_axia/store/staking/types/validatorData.dart';
+import 'package:axiawallet_plugin_axia/utils/i18n/index.dart';
+import 'package:axiawallet_sdk/storage/keyring.dart';
+import 'package:axiawallet_sdk/utils/i18n.dart';
 
 class ValidatorChartsPage extends StatelessWidget {
   ValidatorChartsPage(this.plugin, this.keyring);
@@ -26,7 +26,8 @@ class ValidatorChartsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) => Observer(
         builder: (_) {
-          final dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'staking');
+          final dic =
+              I18n.of(context).getDic(i18n_full_dic_axialunar, 'staking');
           final ValidatorData detail =
               ModalRoute.of(context).settings.arguments;
 

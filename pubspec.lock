@@ -36,6 +36,20 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "3.0.1"
+  axiawallet_sdk:
+    dependency: "direct main"
+    description:
+      path: "../sdk_fork"
+      relative: true
+    source: path
+    version: "0.2.9"
+  axiawallet_ui:
+    dependency: "direct main"
+    description:
+      path: "../ui"
+      relative: true
+    source: path
+    version: "0.2.5"
   boolean_selector:
     dependency: transitive
     description:
@@ -264,7 +278,7 @@ packages:
       path: "."
       ref: a125851ca20038767ac4efa2e20d12116a390414
       resolved-ref: a125851ca20038767ac4efa2e20d12116a390414
-      url: "https://github.com/polkawallet-io/flutter_qr_reader.git"
+      url: "https://github.com/ashishbeck/flutter_qr_reader.git"
     source: git
     version: "1.0.6"
   flutter_svg:
@@ -578,20 +592,6 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.0"
-  polkawallet_sdk:
-    dependency: "direct main"
-    description:
-      path: "../sdk_fork"
-      relative: true
-    source: path
-    version: "0.2.9"
-  polkawallet_ui:
-    dependency: "direct main"
-    description:
-      path: "../ui"
-      relative: true
-    source: path
-    version: "0.2.5"
   pool:
     dependency: transitive
     description:
@@ -626,16 +626,16 @@ packages:
       name: qr
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "1.3.0"
+    version: "2.1.0"
   qr_flutter:
     dependency: transitive
     description:
       path: "."
-      ref: master
-      resolved-ref: "8e482e2d54636f1825c59f43de393b7bebbf2ba4"
-      url: "https://github.com/polkawallet-io/qr.flutter.git"
+      ref: "5ab4132f5df8d47a48ed75faa6d7281b40429eec"
+      resolved-ref: "5ab4132f5df8d47a48ed75faa6d7281b40429eec"
+      url: "https://github.com/ashishbeck/qr.flutter.git"
     source: git
-    version: "3.2.1"
+    version: "4.0.0"
   shared_preferences:
     dependency: transitive
     description:

@@ -2,14 +2,14 @@ import 'dart:async';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:polkawallet_plugin_axia/pages/governance/council/council.dart';
-import 'package:polkawallet_plugin_axia/polkawallet_plugin_axia.dart';
-import 'package:polkawallet_plugin_axia/utils/format.dart';
-import 'package:polkawallet_plugin_axia/utils/i18n/index.dart';
-import 'package:polkawallet_sdk/storage/keyring.dart';
-import 'package:polkawallet_sdk/utils/i18n.dart';
-import 'package:polkawallet_ui/components/roundedButton.dart';
-import 'package:polkawallet_ui/utils/i18n.dart';
+import 'package:axiawallet_plugin_axia/pages/governance/council/council.dart';
+import 'package:axiawallet_plugin_axia/axiawallet_plugin_axia.dart';
+import 'package:axiawallet_plugin_axia/utils/format.dart';
+import 'package:axiawallet_plugin_axia/utils/i18n/index.dart';
+import 'package:axiawallet_sdk/storage/keyring.dart';
+import 'package:axiawallet_sdk/utils/i18n.dart';
+import 'package:axiawallet_ui/components/roundedButton.dart';
+import 'package:axiawallet_ui/utils/i18n.dart';
 
 class CandidateListPage extends StatefulWidget {
   CandidateListPage(this.plugin, this.keyring);
@@ -68,7 +68,7 @@ class _CandidateList extends State<CandidateListPage> {
 
   @override
   Widget build(BuildContext context) {
-    var dic = I18n.of(context).getDic(i18n_full_dic_kusama, 'gov');
+    var dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'gov');
     final decimals = (widget.plugin.networkState.tokenDecimals ?? [12])[0];
     final symbol = (widget.plugin.networkState.tokenSymbol ?? ['UNIT'])[0];
 
@@ -97,7 +97,7 @@ class _CandidateList extends State<CandidateListPage> {
                     child: CupertinoTextField(
                       padding: EdgeInsets.fromLTRB(16, 6, 16, 6),
                       placeholder: I18n.of(context)
-                          .getDic(i18n_full_dic_kusama, 'staking')['filter'],
+                          .getDic(i18n_full_dic_axialunar, 'staking')['filter'],
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(24)),
                         border: Border.all(

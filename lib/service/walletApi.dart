@@ -3,9 +3,10 @@ import 'dart:convert';
 import 'package:http/http.dart';
 
 class WalletApi {
-  static const String _endpoint = 'https://api.polkawallet.io';
+  static const String _endpoint = 'https://api.axiawallet.io';
 
   static Future<Map> getRecommended() async {
+    return null;
     try {
       Response res = await get(Uri.parse('$_endpoint/recommended.json'));
       if (res == null) {
