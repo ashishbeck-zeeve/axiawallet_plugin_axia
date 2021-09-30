@@ -55,11 +55,11 @@ flutter:
 #    - lib/js_service_axia/dist/main.js
     - assets/images/public/bg_axialunar.png
     - assets/images/public/bg_axiasolar.png
-    - assets/images/public/bg_axia.png
+    # - assets/images/public/bg_axia.png
     - assets/images/public/axialunar.png
     - assets/images/public/axialunar_gray.png
-    - assets/images/public/axia.png
-    - assets/images/public/axia_gray.png
+    # - assets/images/public/axia.png
+    # - assets/images/public/axia_gray.png
     - assets/images/public/axiasolar.png
     - assets/images/public/axiasolar_gray.png
     - assets/images/public/staking.png

@@ -627,12 +627,12 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.1.0"
-  qr_flutter:
+  qr_flutter_fork:
     dependency: transitive
     description:
       path: "."
-      ref: "5ab4132f5df8d47a48ed75faa6d7281b40429eec"
-      resolved-ref: "5ab4132f5df8d47a48ed75faa6d7281b40429eec"
+      ref: master
+      resolved-ref: "62ab3987ffc0dc57e5eb41bab314d55bb31470b7"
       url: "https://github.com/ashishbeck/qr.flutter.git"
     source: git
     version: "4.0.0"
