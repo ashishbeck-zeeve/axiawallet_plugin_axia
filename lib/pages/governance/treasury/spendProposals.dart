@@ -68,7 +68,7 @@ class _ProposalsState extends State<SpendProposals> {
         final decimals =
             (widget.plugin.networkState.tokenDecimals ?? [12])[0] ?? 10;
         final symbol =
-            (widget.plugin.networkState.tokenSymbol ?? ['UNIT'])[0] ?? '';
+            (widget.plugin.networkState.tokenSymbol ?? ['AXC'])[0] ?? '';
         final balance = Fmt.balance(
           widget.plugin.store.gov.treasuryOverview.balance,
           decimals,

@@ -1,7 +1,7 @@
 import 'package:get_storage/get_storage.dart';
 
 const String plugin_axialunar_storage_key = 'plugin_axialunar';
-const String plugin_axiasolar_storage_key = 'plugin_axiasolar';
+const String plugin_axia_storage_key = 'plugin_axia';
 
 abstract class StoreCache {
   static final _storage = () => GetStorage(plugin_axialunar_storage_key);
@@ -35,8 +35,8 @@ class StoreCacheAXIALunar extends StoreCache {
   final stakingRewardTxs = {}.val('stakingRewardTxs', getBox: _storage);
 }
 
-class StoreCacheAXIASolar extends StoreCache {
-  static final _storage = () => GetStorage(plugin_axiasolar_storage_key);
+class StoreCacheAXIA extends StoreCache {
+  static final _storage = () => GetStorage(plugin_axia_storage_key);
 
   /// staking network state
   final stakingOverview = {}.val('stakingOverview', getBox: _storage);

@@ -230,7 +230,7 @@ class _CouncilState extends State<Council> {
     final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'gov');
     return Observer(builder: (_) {
       final decimals = (widget.plugin.networkState.tokenDecimals ?? [12])[0];
-      final symbol = (widget.plugin.networkState.tokenSymbol ?? ['UNIT'])[0];
+      final symbol = (widget.plugin.networkState.tokenSymbol ?? ['AXC'])[0];
       return RefreshIndicator(
         key: _refreshKey,
         onRefresh: _fetchCouncilInfo,

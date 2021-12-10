@@ -74,7 +74,7 @@ class _SubmitProposalPageState extends State<SubmitProposalPage> {
     final dicCommon =
         I18n.of(context).getDic(i18n_full_dic_axialunar, 'common');
     final decimals = (widget.plugin.networkState.tokenDecimals ?? [12])[0];
-    final symbol = (widget.plugin.networkState.tokenSymbol ?? ['UNIT'])[0];
+    final symbol = (widget.plugin.networkState.tokenSymbol ?? ['AXC'])[0];
     final bondPercentage = Fmt.balanceInt(
             widget.plugin.networkConst['treasury']['proposalBond'].toString()) *
         BigInt.from(100) ~/

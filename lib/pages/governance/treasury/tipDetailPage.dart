@@ -32,7 +32,7 @@ class _TipDetailPageState extends State<TipDetailPage> {
   final TextEditingController _tipInputCtrl = TextEditingController();
 
   Future<void> _onEndorse() async {
-    final symbol = (widget.plugin.networkState.tokenSymbol ?? ['UNIT'])[0];
+    final symbol = (widget.plugin.networkState.tokenSymbol ?? ['AXC'])[0];
     final decimals = (widget.plugin.networkState.tokenDecimals ?? [12])[0];
     showCupertinoDialog(
       context: context,
@@ -199,7 +199,7 @@ class _TipDetailPageState extends State<TipDetailPage> {
   @override
   Widget build(BuildContext context) {
     final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'gov');
-    final symbol = (widget.plugin.networkState.tokenSymbol ?? ['UNIT'])[0];
+    final symbol = (widget.plugin.networkState.tokenSymbol ?? ['AXC'])[0];
     final decimals = (widget.plugin.networkState.tokenDecimals ?? [12])[0];
     final TreasuryTipData tipData = ModalRoute.of(context).settings.arguments;
     final who = KeyPairData();

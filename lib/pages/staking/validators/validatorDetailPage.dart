@@ -177,7 +177,7 @@ class ValidatorDetailPage extends StatelessWidget {
                       trailing: Text(
                           '${Fmt.balance(item['value'].toString(), (plugin.networkState.tokenDecimals ?? [
                                 12
-                              ])[0])} ${(plugin.networkState.tokenSymbol ?? ["UNIT"])[0]}'),
+                              ])[0])} ${(plugin.networkState.tokenSymbol ?? ["AXC"])[0]}'),
                     );
                   } else {
                     final address = plugin

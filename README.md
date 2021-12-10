@@ -1,6 +1,6 @@
 # axiawallet_plugin_axia
 
-Basic plugin for axiawallet/app. Support AXIASolar & AXIALunar.
+Basic plugin for axiawallet/app. Support AXIA & AXIALunar.
 
 ## Getting Started
 

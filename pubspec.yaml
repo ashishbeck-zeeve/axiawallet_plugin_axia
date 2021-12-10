@@ -54,14 +54,14 @@ flutter:
   assets:
 #    - lib/js_service_axia/dist/main.js
     - assets/images/public/bg_axialunar.png
-    - assets/images/public/bg_axiasolar.png
+    - assets/images/public/bg_axia.png
     # - assets/images/public/bg_axia.png
     - assets/images/public/axialunar.png
     - assets/images/public/axialunar_gray.png
     # - assets/images/public/axia.png
     # - assets/images/public/axia_gray.png
-    - assets/images/public/axiasolar.png
-    - assets/images/public/axiasolar_gray.png
+    - assets/images/public/axia.png
+    - assets/images/public/axia_gray.png
     - assets/images/public/staking.png
     - assets/images/public/staking_black.png
     - assets/images/public/staking_pink.png
@@ -78,6 +78,7 @@ flutter:
     - assets/images/tokens/KSM.png
     - assets/images/tokens/DOT.png
     - assets/images/tokens/AXIA.png
+    - assets/images/tokens/AXC.png
     - assets/images/public/polkassembly.png
     - assets/images/public/nav_staking.svg
     - assets/images/public/nav_governance.svg

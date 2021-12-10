@@ -28,7 +28,7 @@ class _RebondPageState extends State<RebondPage> {
     final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'common');
     final dicStaking =
         I18n.of(context).getDic(i18n_full_dic_axialunar, 'staking');
-    final symbol = (widget.plugin.networkState.tokenSymbol ?? ['UNIT'])[0];
+    final symbol = (widget.plugin.networkState.tokenSymbol ?? ['AXC'])[0];
     final decimals = (widget.plugin.networkState.tokenDecimals ?? [12])[0];
 
     BigInt redeemable = BigInt.zero;

@@ -21,7 +21,7 @@ class RewardDetailPage extends StatelessWidget {
     final dicStaking =
         I18n.of(context).getDic(i18n_full_dic_axialunar, 'staking');
     final decimals = (plugin.networkState.tokenDecimals ?? [12])[0];
-    final symbol = (plugin.networkState.tokenSymbol ?? ["UNIT"])[0];
+    final symbol = (plugin.networkState.tokenSymbol ?? ["AXC"])[0];
     final TxRewardData detail = ModalRoute.of(context).settings.arguments;
 
     return TxDetail(

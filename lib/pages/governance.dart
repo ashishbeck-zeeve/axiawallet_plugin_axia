@@ -125,7 +125,7 @@ class Gov extends StatelessWidget {
                         //       DAppWrapperPage.route,
                         //       arguments:
                         //           'https://${plugin.basic.name}.polkassembly.io/',
-                        //       // "https://axiasolar.js.org/apps/",
+                        //       // "https://axia.js.org/apps/",
                         //     ),
                         //   ),
                         // ),

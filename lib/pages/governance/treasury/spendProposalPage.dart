@@ -150,8 +150,7 @@ class _SpendProposalPageState extends State<SpendProposalPage> {
   @override
   Widget build(BuildContext context) {
     final dic = I18n.of(context).getDic(i18n_full_dic_axialunar, 'gov');
-    final symbol =
-        (widget.plugin.networkState.tokenSymbol ?? ['UNIT'])[0] ?? '';
+    final symbol = (widget.plugin.networkState.tokenSymbol ?? ['AXC'])[0] ?? '';
     final decimals =
         (widget.plugin.networkState.tokenDecimals ?? [12])[0] ?? 10;
     final SpendProposalData proposal =

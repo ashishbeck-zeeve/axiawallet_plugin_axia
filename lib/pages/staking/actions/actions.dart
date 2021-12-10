@@ -162,7 +162,7 @@ class _StakingActions extends State<StakingActions> {
   List<Widget> _buildRewardsList() {
     final int decimals = (widget.plugin.networkState.tokenDecimals ?? [12])[0];
     final String symbol =
-        (widget.plugin.networkState.tokenSymbol ?? ['UNIT'])[0];
+        (widget.plugin.networkState.tokenSymbol ?? ['AXC'])[0];
 
     List<Widget> res = [];
     if (widget.plugin.store.staking.txsRewards.length > 1) {

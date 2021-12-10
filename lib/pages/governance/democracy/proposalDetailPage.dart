@@ -102,7 +102,7 @@ class _ProposalDetailPageState extends State<ProposalDetailPage> {
               final decimals =
                   (widget.plugin.networkState.tokenDecimals ?? [12])[0];
               final symbol =
-                  (widget.plugin.networkState.tokenSymbol ?? ['UNIT'])[0] ?? '';
+                  (widget.plugin.networkState.tokenSymbol ?? ['AXC'])[0] ?? '';
               final List<List<String>> params = [];
               bool hasProposal = false;
               if (proposal.image?.proposal != null) {

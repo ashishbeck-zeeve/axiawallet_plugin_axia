@@ -54,20 +54,20 @@ import 'package:axiawallet_ui/pages/txConfirmPage.dart';
 import 'package:axiawallet_ui/pages/walletExtensionSignPage.dart';
 
 class PluginAxia extends AXIAWalletPlugin {
-  /// the axialunar plugin support two networks: axialunar & axia, //axiasolar,
+  /// the axialunar plugin support two networks: axialunar & axia, //axia,
   /// so we need to identify the active network to connect & display UI.
-  PluginAxia({name = 'axiasolar'})
+  PluginAxia({name = 'axia'})
       : basic = PluginBasicData(
           name: name,
           genesisHash: name == network_name_axialunar
               ? genesis_hash_axialunar
-              : genesis_hash_axiasolar,
+              : genesis_hash_axia,
           ss58: name == network_name_axialunar ? 2 : 0,
-          primaryColor: name == network_name_axialunar
-              ? axialunar_black
-              : Colors.lightBlue,
-          gradientColor:
-              name == network_name_axialunar ? Color(0xFF555555) : Colors.blue,
+          primaryColor:
+              name == network_name_axialunar ? axialunar_black : axia_blue,
+          gradientColor: name == network_name_axialunar
+              ? Color(0xFF555555)
+              : axia_blue[500],
           backgroundImage: AssetImage(
               'packages/axiawallet_plugin_axia/assets/images/public/bg_$name.png'),
           icon: Image.asset(
@@ -81,7 +81,7 @@ class PluginAxia extends AXIAWalletPlugin {
         recoveryEnabled = name == network_name_axialunar,
         _cache = name == network_name_axialunar
             ? StoreCacheAXIALunar()
-            : StoreCacheAXIASolar();
+            : StoreCacheAXIA();
 
   @override
   final PluginBasicData basic;
@@ -92,16 +92,16 @@ class PluginAxia extends AXIAWalletPlugin {
   var customNodes = [];
   @override
   Future<List<NetworkParams>> get nodeList async {
-    if (basic.name == network_name_axiasolar) {
+    if (basic.name == network_name_axia) {
       if (customNodes.isEmpty) {
         customNodes = await _checkCustomEndpoints();
-        node_list_axiasolar += customNodes;
+        node_list_axia += customNodes;
         print(customNodes);
-        return _randomList(node_list_axiasolar)
+        return _randomList(node_list_axia)
             .map((e) => NetworkParams.fromJson(e))
             .toList();
       }
-      return _randomList(node_list_axiasolar)
+      return _randomList(node_list_axia)
           .map((e) => NetworkParams.fromJson(e))
           .toList();
     }
@@ -125,8 +125,8 @@ class PluginAxia extends AXIAWalletPlugin {
         'packages/axiawallet_plugin_axia/assets/images/tokens/KSM.png'),
     'DOT': Image.asset(
         'packages/axiawallet_plugin_axia/assets/images/tokens/AXIA.png'),
-    'AXIA': Image.asset(
-        'packages/axiawallet_plugin_axia/assets/images/tokens/AXIA.png'),
+    'AXC': Image.asset(
+        'packages/axiawallet_plugin_axia/assets/images/tokens/AXC.png'),
   };
 
   @override
@@ -206,8 +206,8 @@ class PluginAxia extends AXIAWalletPlugin {
 
   @override
   Future<void> onWillStart(Keyring keyring) async {
-    await GetStorage.init(basic.name == network_name_axiasolar
-        ? plugin_axiasolar_storage_key
+    await GetStorage.init(basic.name == network_name_axia
+        ? plugin_axia_storage_key
         : plugin_axialunar_storage_key);
 
     _store = PluginStore(_cache);
