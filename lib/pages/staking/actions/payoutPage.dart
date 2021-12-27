@@ -1,3 +1,4 @@
+import 'package:axiawallet_ui/components/animatedLoadingWheel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:axiawallet_plugin_axia/axiawallet_plugin_axia.dart';
@@ -6,7 +7,9 @@ import 'package:axiawallet_sdk/storage/keyring.dart';
 import 'package:axiawallet_sdk/utils/i18n.dart';
 import 'package:axiawallet_ui/components/addressFormItem.dart';
 import 'package:axiawallet_ui/components/txButton.dart';
+import 'package:axiawallet_ui/components/iosBackButton.dart';
 import 'package:axiawallet_ui/utils/format.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class PayoutPage extends StatefulWidget {
   PayoutPage(this.plugin, this.keyring);
@@ -185,56 +188,92 @@ class _PayoutPageState extends State<PayoutPage> {
       appBar: AppBar(
         title: Text(dicStaking['action.payout']),
         centerTitle: true,
+        leading: IOSBackButton(),
       ),
       body: SafeArea(
         child: Column(
           children: <Widget>[
             Expanded(
               child: ListView(
-                padding: EdgeInsets.only(top: 16),
+                padding: EdgeInsets.only(top: 16, left: 16, right: 16),
                 children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(left: 16, right: 16),
-                    child: AddressFormItem(
-                      widget.keyring.current,
-                      label: dicStaking['reward.sender'],
-                    ),
+                  AddressFormItem(
+                    widget.keyring.current,
+                    label: dicStaking['reward.sender'],
                   ),
                   _eraOptions.length > 0
-                      ? ListTile(
-                          title: Text(dicStaking['reward.time']),
-                          subtitle:
-                              Text(_getEraText(_eraOptions[_eraSelected])),
-                          trailing: Icon(Icons.arrow_forward_ios, size: 18),
-                          onTap: _loading ? null : () => _showEraSelect(),
+                      ? Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(height: 16),
+                            Text(dicStaking['reward.time']),
+                            SizedBox(
+                              height: 8,
+                            ),
+                            ListTile(
+                              title:
+                                  Text(_getEraText(_eraOptions[_eraSelected])),
+                              trailing:
+                                  Icon(Icons.keyboard_arrow_down, size: 18),
+                              onTap: _loading ? null : () => _showEraSelect(),
+                              shape: RoundedRectangleBorder(
+                                side: BorderSide(color: Colors.grey),
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(15),
+                                ),
+                              ),
+                            ),
+                          ],
                         )
                       : Container(),
                   _loading
                       ? Column(
                           children: <Widget>[
                             Padding(
-                              padding: EdgeInsets.all(16),
-                              child: CupertinoActivityIndicator(),
+                              padding: EdgeInsets.all(45),
+                              child: AnimatedLoadingWheel(
+                                  child: SvgPicture.asset(
+                                'packages/axiawallet_plugin_axia/assets/images/public/loading.svg',
+                                color: Theme.of(context).primaryColor,
+                              )),
                             ),
                             Container(
                               width: MediaQuery.of(context).size.width / 2,
-                              child: Text(dicStaking['reward.tip']),
+                              child: Text(
+                                dicStaking['reward.tip'],
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 14,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
                             ),
                           ],
                         )
-                      : Padding(
-                          padding: EdgeInsets.only(left: 16, right: 16),
-                          child: TextFormField(
-                            decoration: InputDecoration(
-                              labelText: dic['amount'],
+                      : Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            SizedBox(height: 16),
+                            Text(dic['amount']),
+                            SizedBox(
+                              height: 8,
                             ),
-                            initialValue: Fmt.token(
-                              rewardTotal,
-                              decimals,
-                              length: 8,
+                            TextFormField(
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(15))),
+                              ),
+                              initialValue: Fmt.token(
+                                rewardTotal,
+                                decimals,
+                                length: 8,
+                              ),
+                              readOnly: true,
                             ),
-                            readOnly: true,
-                          ),
+                          ],
                         ),
                 ],
               ),

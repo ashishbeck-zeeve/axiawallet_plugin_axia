@@ -1,3 +1,4 @@
+import 'package:axiawallet_ui/components/animatedLoadingWheel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -56,7 +57,8 @@ class _ProposalsState extends State<SpendProposals> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _refreshKey.currentState?.show();
+      // _refreshKey.currentState?.show();
+      _fetchData();
     });
   }
 
@@ -97,7 +99,7 @@ class _ProposalsState extends State<SpendProposals> {
                 margin: EdgeInsets.only(top: 8),
                 child: widget.plugin.store.gov.treasuryOverview.proposals ==
                         null
-                    ? Center(child: CupertinoActivityIndicator())
+                    ? Center(child: AnimatedLoadingWheel(alt: true))
                     : Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: <Widget>[
@@ -129,6 +131,7 @@ class _ProposalsState extends State<SpendProposals> {
                                   }).toList(),
                                 )
                               : ListTail(
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   isEmpty: widget.plugin.store.gov
                                           .treasuryOverview.proposals.length ==
                                       0,
@@ -136,6 +139,10 @@ class _ProposalsState extends State<SpendProposals> {
                                           .treasuryOverview.proposals ==
                                       null,
                                 ),
+                          Divider(
+                            indent: 16,
+                            endIndent: 16,
+                          ),
                           Padding(
                             padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
                             child: BorderedTitle(
@@ -170,6 +177,7 @@ class _ProposalsState extends State<SpendProposals> {
                                   ),
                                 )
                               : ListTail(
+                                  mainAxisAlignment: MainAxisAlignment.start,
                                   isEmpty: widget.plugin.store.gov
                                           .treasuryOverview.approvals.length ==
                                       0,
@@ -318,8 +326,9 @@ class _ProposalItem extends StatelessWidget {
       subtitle: Text(
           '${Fmt.balance(proposal.proposal.value.toString(), decimals)} $symbol'),
       trailing: Text(
-        '# ${int.parse(proposal.id)}',
-        style: Theme.of(context).textTheme.headline4,
+        '#${int.parse(proposal.id)}',
+        style:
+            Theme.of(context).textTheme.headline4.copyWith(color: Colors.black),
       ),
       onTap: () async {
         final res = await Navigator.of(context)

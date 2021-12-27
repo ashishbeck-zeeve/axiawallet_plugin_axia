@@ -1,3 +1,5 @@
+import 'package:axiawallet_ui/components/CupertinoTabBar.dart';
+import 'package:axiawallet_ui/components/animatedLoadingWheel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -46,29 +48,34 @@ class _TreasuryPageState extends State<TreasuryPage> {
                 children: <Widget>[
                   IconButton(
                     icon: Icon(
-                      Icons.arrow_back_ios,
+                      Icons.keyboard_arrow_left,
                       color: Theme.of(context).cardColor,
                     ),
                     onPressed: () => Navigator.of(context).pop(),
                   ),
-                  TopTabs(
-                    names: tabs,
-                    activeTab: _tab,
-                    onTab: (v) {
-                      setState(() {
-                        if (_tab != v) {
-                          _tab = v;
-                        }
-                      });
-                    },
+                  Expanded(
+                    child: CustomCupertinoTabBar(
+                      children: tabs,
+                      groupValue: _tab,
+                      onValueChanged: (v) {
+                        setState(() {
+                          if (_tab != v) {
+                            _tab = v;
+                          }
+                        });
+                      },
+                    ),
                   ),
+                  SizedBox(
+                    width: 24,
+                  )
                 ],
               ),
               Observer(
                 builder: (_) {
                   return Expanded(
                     child: widget.plugin.store.gov.council.members == null
-                        ? CupertinoActivityIndicator()
+                        ? AnimatedLoadingWheel(alt: true)
                         : _tab == 0
                             ? SpendProposals(widget.plugin, widget.keyring)
                             : MoneyTips(widget.plugin, widget.keyring),

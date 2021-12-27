@@ -1,3 +1,4 @@
+import 'package:axiawallet_ui/components/iosBackButton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:axiawallet_plugin_axia/axiawallet_plugin_axia.dart';
@@ -100,10 +101,12 @@ class _SubmitTipPageState extends State<SubmitTipPage> {
     final bool isCouncil = ModalRoute.of(context).settings.arguments;
     return Scaffold(
       appBar: AppBar(
-          title: Text(
-            dic[isCouncil ? 'treasury.tipNew' : 'treasury.report'],
-          ),
-          centerTitle: true),
+        title: Text(
+          dic[isCouncil ? 'treasury.tipNew' : 'treasury.report'],
+        ),
+        centerTitle: true,
+        leading: IOSBackButton(),
+      ),
       body: SafeArea(
         child: Column(
           children: <Widget>[
@@ -132,11 +135,23 @@ class _SubmitTipPageState extends State<SubmitTipPage> {
                         Form(
                           key: _formKey,
                           child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: <Widget>[
+                              SizedBox(
+                                height: 16,
+                              ),
+                              Text(dic['treasury.reason']),
+                              SizedBox(
+                                height: 8,
+                              ),
                               TextFormField(
                                 decoration: InputDecoration(
-                                  hintText: dic['treasury.reason'],
-                                  labelText: dic['treasury.reason'],
+                                  hintText: 'Type here',
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(15),
+                                    ),
+                                  ),
                                 ),
                                 controller: _reasonCtrl,
                                 maxLines: 3,

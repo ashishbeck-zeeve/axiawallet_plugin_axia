@@ -28,6 +28,7 @@ import 'package:axiawallet_ui/components/infoItem.dart';
 import 'package:axiawallet_ui/components/listTail.dart';
 import 'package:axiawallet_ui/components/outlinedCircle.dart';
 import 'package:axiawallet_ui/components/roundedCard.dart';
+import 'package:axiawallet_ui/components/animatedLoadingWheel.dart';
 import 'package:axiawallet_ui/utils/format.dart';
 import 'package:axiawallet_ui/utils/i18n.dart';
 import 'package:axiawallet_ui/utils/index.dart';
@@ -304,7 +305,12 @@ class _StakingActions extends State<StakingActions> {
       child: !hasData
           ? Container(
               padding: EdgeInsets.only(top: 80, bottom: 80),
-              child: CupertinoActivityIndicator(),
+              child: AnimatedLoadingWheel(
+                child: SvgPicture.asset(
+                  'packages/axiawallet_plugin_axia/assets/images/public/loading.svg',
+                  color: Theme.of(context).primaryColor,
+                ),
+              ),
             )
           : Column(
               children: <Widget>[
@@ -333,10 +339,14 @@ class _StakingActions extends State<StakingActions> {
                     Expanded(
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.end,
                         children: <Widget>[
                           Text(
                             '${Fmt.priceFloorBigInt(totalBalance, decimals, lengthMax: 4)}',
-                            style: Theme.of(context).textTheme.headline4,
+                            style: Theme.of(context)
+                                .textTheme
+                                .headline4
+                                .copyWith(color: Colors.black),
                           ),
                           Text(
                             dic['balance'],
@@ -406,7 +416,7 @@ class _StakingActions extends State<StakingActions> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (widget.plugin.store.staking.ownStashInfo == null) {
         if (_refreshKey.currentState != null) {
-          _refreshKey.currentState.show();
+          // _refreshKey.currentState.show();
         }
       } else {
         _updateStakingInfo();
@@ -682,7 +692,11 @@ class StakingInfoPanel extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
-                    Text(dic['bond.unlocking'], style: TextStyle(fontSize: 12)),
+                    Text(dic['bond.unlocking'],
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.grey,
+                        )),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -705,7 +719,7 @@ class StakingInfoPanel extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
-                            color: Theme.of(context).unselectedWidgetColor,
+                            color: Colors.black,
                           ),
                         )
                       ],
@@ -718,7 +732,10 @@ class StakingInfoPanel extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
                     Text(dic['bond.redeemable'],
-                        style: TextStyle(fontSize: 12)),
+                        style: TextStyle(
+                          fontSize: 12,
+                          color: Colors.grey,
+                        )),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
@@ -747,7 +764,7 @@ class StakingInfoPanel extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
-                            color: Theme.of(context).unselectedWidgetColor,
+                            color: Colors.black,
                           ),
                         ),
                       ],

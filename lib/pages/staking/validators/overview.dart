@@ -25,6 +25,7 @@ import 'package:axiawallet_ui/components/outlinedCircle.dart';
 import 'package:axiawallet_ui/components/roundedCard.dart';
 import 'package:axiawallet_ui/components/textTag.dart';
 import 'package:axiawallet_ui/components/txButton.dart';
+import 'package:axiawallet_ui/components/materialTabBar.dart';
 import 'package:axiawallet_ui/pages/txConfirmPage.dart';
 import 'package:axiawallet_ui/utils/format.dart';
 import 'package:axiawallet_ui/utils/i18n.dart';
@@ -230,7 +231,10 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
                 ),
                 Text(
                   Fmt.priceFloorBigInt(totalStaked, decimals),
-                  style: Theme.of(context).textTheme.headline4,
+                  style: Theme.of(context)
+                      .textTheme
+                      .headline4
+                      .copyWith(color: Colors.black),
                 )
               ],
             ),
@@ -263,7 +267,7 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
                   _expanded
                       ? Icons.keyboard_arrow_up
                       : Icons.keyboard_arrow_down,
-                  size: 32,
+                  size: 24,
                 ),
                 onPressed: () {
                   setState(() {
@@ -272,14 +276,25 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
                 },
               ),
             ),
-            title: Text(
-              hashData ? stashInfo.nominating.length.toString() : '0',
-              style: Theme.of(context).textTheme.headline4,
+            title: Align(
+              alignment: Alignment.centerLeft,
+              child: InfoItem(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                title: dicStaking['nominating'],
+                content:
+                    hashData ? stashInfo.nominating.length.toString() : '0',
+                lowTitle: true,
+                useExpanded: false,
+              ),
             ),
-            subtitle: Text(
-              dicStaking['nominating'],
-              style: TextStyle(fontSize: 12),
-            ),
+            // title: Text(
+            //   hashData ? stashInfo.nominating.length.toString() : '0',
+            //   style: Theme.of(context).textTheme.headline4,
+            // ),
+            // subtitle: Text(
+            //   dicStaking['nominating'],
+            //   style: TextStyle(fontSize: 12),
+            // ),
             trailing: Container(
               width: 100,
               child: stashInfo?.controllerId == null && isStash
@@ -475,22 +490,34 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
           Container(
             color: Theme.of(context).cardColor,
             padding: EdgeInsets.fromLTRB(16, 16, 16, 0),
-            child: MainTabBar(
+            child: MaterialTabBar(
               tabs: [
                 '${dicStaking['elected']} (${widget.plugin.store.staking.electedInfo.length})',
                 '${dicStaking['waiting']} (${widget.plugin.store.staking.nextUpsInfo.length})'
               ],
-              activeTab: _tab,
-              fontSize: 18,
-              lineWidth: 6,
               onTap: (i) {
                 setState(() {
                   _tab = i;
                 });
               },
             ),
+            // child: MainTabBar(
+            //   activeTab: _tab,
+            //   fontSize: 18,
+            //   lineWidth: 6,
+            //   onTap: (i) {
+            //     setState(() {
+            //       _tab = i;
+            //     });
+            //   },
+            // ),
           ),
         ];
+        // list.add(Container(
+        //   child: Divider(
+        //     thickness: 4,
+        //   ),
+        // ));
         if (widget.plugin.store.staking.validatorsInfo.length > 0) {
           // index_2: the filter Widget
           list.add(Container(
@@ -674,19 +701,24 @@ class _NomineeItem extends StatelessWidget {
       trailing: Container(
         width: 100,
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.end,
           children: <Widget>[
+            // Expanded(
+            //   child: Container(height: 2),
+            // ),
             Expanded(
-              child: Container(height: 4),
+              child: Text(dicStaking['commission'],
+                  style: TextStyle(fontSize: 12, color: Colors.grey)),
             ),
             Expanded(
               child: Text(
-                  NumberFormat('0.00%').format(validator.commission / 100)),
+                  NumberFormat('0.00%').format(validator.commission / 100),
+                  style: TextStyle(color: Colors.black, fontSize: 14)),
             ),
             Expanded(
-              child: Text(dicStaking['commission'],
-                  style: TextStyle(fontSize: 12)),
+              child: Container(height: 2),
             ),
           ],
         ),

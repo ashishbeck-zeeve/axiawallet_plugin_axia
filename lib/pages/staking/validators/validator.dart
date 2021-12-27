@@ -68,8 +68,12 @@ class Validator extends StatelessWidget {
             !isWaiting
                 ? Column(
                     mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.end,
                     children: <Widget>[
-                      Text(dic['reward']),
+                      Text(
+                        dic['reward'],
+                        style: TextStyle(color: Colors.grey),
+                      ),
                       Text(validator.isActive
                           ? '${validator.stakedReturnCmp.toStringAsFixed(2)}%'
                           : '~'),

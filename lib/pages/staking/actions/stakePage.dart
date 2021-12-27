@@ -66,7 +66,7 @@ class _StakePageState extends State<StakePage> {
         title: Text('${dic['staking']} ${_step + 1}/2'),
         centerTitle: true,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios),
+          icon: Icon(Icons.keyboard_arrow_left),
           onPressed: () {
             if (_step == 1) {
               setState(() {

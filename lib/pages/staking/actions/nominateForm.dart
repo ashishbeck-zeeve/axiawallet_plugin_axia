@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:axiawallet_plugin_axia/common/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -106,6 +107,7 @@ class _NominateFormState extends State<NominateForm> {
             ),
             CupertinoSwitch(
               value: _selectedMap[validator.accountId],
+              activeColor: appGreen,
               onChanged: (bool value) {
                 if (value && _selected.length >= MAX_NOMINATION) {
                   showCupertinoDialog(
@@ -218,6 +220,7 @@ class _NominateFormState extends State<NominateForm> {
         Container(
           color: Theme.of(context).cardColor,
           padding: EdgeInsets.only(top: 8, bottom: 8),
+          // margin: EdgeInsets.all(16),
           child: ValidatorListFilter(
             filters: _filters,
             onSearchChange: (v) {

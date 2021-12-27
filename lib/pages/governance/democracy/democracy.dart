@@ -1,5 +1,6 @@
 import 'dart:convert';
 
+import 'package:axiawallet_ui/components/animatedLoadingWheel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -34,6 +35,8 @@ class _DemocracyState extends State<Democracy> {
 
   List _unlocks = [];
 
+  bool _isLoading = true;
+
   Future<void> _queryDemocracyUnlocks() async {
     final List unlocks = await widget.plugin.sdk.api.gov
         .getDemocracyUnlocks(widget.keyring.current.address);
@@ -67,6 +70,11 @@ class _DemocracyState extends State<Democracy> {
     await widget.plugin.service.gov.queryReferendums();
 
     _queryDemocracyUnlocks();
+
+    if (this.mounted)
+      setState(() {
+        _isLoading = false;
+      });
   }
 
   Future<void> _submitCancelVote(int id) async {
@@ -116,7 +124,8 @@ class _DemocracyState extends State<Democracy> {
     }
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _refreshKey.currentState.show();
+      // _refreshKey.currentState.show();
+      _fetchReferendums();
     });
   }
 
@@ -138,69 +147,75 @@ class _DemocracyState extends State<Democracy> {
         final bestNumber = widget.plugin.store.gov.bestNumber;
 
         final count = list?.length ?? 0;
-        return RefreshIndicator(
-          key: _refreshKey,
-          onRefresh: _fetchReferendums,
-          child: ListView.builder(
-            itemCount: list.length + 2,
-            itemBuilder: (BuildContext context, int i) {
-              if (i == 0) {
-                return _unlocks.length > 0
-                    ? RoundedCard(
-                        margin: EdgeInsets.fromLTRB(16, 8, 16, 0),
-                        padding: EdgeInsets.all(16),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(dic['democracy.expire']),
-                            OutlinedButtonSmall(
-                              active: true,
-                              content: dic['democracy.unlock'],
-                              onPressed: _onUnlock,
-                              margin: EdgeInsets.all(0),
-                            )
-                          ],
-                        ),
-                      )
-                    : Container();
-              }
-              return i == list.length + 1
-                  ? Container(
-                      margin: EdgeInsets.only(
-                          top: count == 0
-                              ? MediaQuery.of(context).size.width / 2
-                              : 0),
-                      child: Center(
-                          child: ListTail(
-                        isEmpty: count == 0,
-                        isLoading: false,
-                      )),
-                    )
-                  : ReferendumPanel(
-                      data: list[i - 1],
-                      bestNumber: bestNumber,
-                      symbol: symbol,
-                      decimals: decimals,
-                      blockDuration: BigInt.parse(widget
-                              .plugin.networkConst['babe']['expectedBlockTime']
-                              .toString())
-                          .toInt(),
-                      onCancelVote: _submitCancelVote,
-                      links: FutureBuilder(
-                        future: _getExternalLinks(list[i - 1].index),
-                        builder: (_, AsyncSnapshot snapshot) {
-                          if (snapshot.hasData) {
-                            return GovExternalLinks(snapshot.data);
-                          }
-                          return Container();
-                        },
-                      ),
-                      onRefresh: () {
-                        _refreshKey.currentState.show();
-                      },
-                    );
-            },
-          ),
+        return Stack(
+          alignment: Alignment.center,
+          children: [
+            RefreshIndicator(
+              key: _refreshKey,
+              onRefresh: _fetchReferendums,
+              child: ListView.builder(
+                itemCount: list.length + 2,
+                itemBuilder: (BuildContext context, int i) {
+                  if (i == 0) {
+                    return _unlocks.length > 0
+                        ? RoundedCard(
+                            margin: EdgeInsets.fromLTRB(16, 8, 16, 0),
+                            padding: EdgeInsets.all(16),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text(dic['democracy.expire']),
+                                OutlinedButtonSmall(
+                                  active: true,
+                                  content: dic['democracy.unlock'],
+                                  onPressed: _onUnlock,
+                                  margin: EdgeInsets.all(0),
+                                )
+                              ],
+                            ),
+                          )
+                        : Container();
+                  }
+                  return i == list.length + 1
+                      ? Container(
+                          margin: EdgeInsets.only(
+                              top: count == 0
+                                  ? MediaQuery.of(context).size.width / 2
+                                  : 0),
+                          child: Center(
+                              child: ListTail(
+                            isEmpty: count == 0,
+                            isLoading: false,
+                          )),
+                        )
+                      : ReferendumPanel(
+                          data: list[i - 1],
+                          bestNumber: bestNumber,
+                          symbol: symbol,
+                          decimals: decimals,
+                          blockDuration: BigInt.parse(widget.plugin
+                                  .networkConst['babe']['expectedBlockTime']
+                                  .toString())
+                              .toInt(),
+                          onCancelVote: _submitCancelVote,
+                          links: FutureBuilder(
+                            future: _getExternalLinks(list[i - 1].index),
+                            builder: (_, AsyncSnapshot snapshot) {
+                              if (snapshot.hasData) {
+                                return GovExternalLinks(snapshot.data);
+                              }
+                              return Container();
+                            },
+                          ),
+                          onRefresh: () {
+                            _refreshKey.currentState.show();
+                          },
+                        );
+                },
+              ),
+            ),
+            _isLoading ? AnimatedLoadingWheel(alt: true) : Container()
+          ],
         );
       },
     );

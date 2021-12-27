@@ -62,6 +62,7 @@ flutter:
     # - assets/images/public/axia_gray.png
     - assets/images/public/axia.png
     - assets/images/public/axia_gray.png
+    - assets/images/public/loading.svg
     - assets/images/public/staking.png
     - assets/images/public/staking_black.png
     - assets/images/public/staking_pink.png

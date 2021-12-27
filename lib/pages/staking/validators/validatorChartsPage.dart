@@ -1,3 +1,5 @@
+import 'package:axiawallet_ui/components/animatedLoadingWheel.dart';
+import 'package:axiawallet_ui/components/iosBackButton.dart';
 import 'package:charts_flutter/flutter.dart' as charts;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -9,6 +11,7 @@ import 'package:axiawallet_plugin_axia/store/staking/types/validatorData.dart';
 import 'package:axiawallet_plugin_axia/utils/i18n/index.dart';
 import 'package:axiawallet_sdk/storage/keyring.dart';
 import 'package:axiawallet_sdk/utils/i18n.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ValidatorChartsPage extends StatelessWidget {
   ValidatorChartsPage(this.plugin, this.keyring);
@@ -35,13 +38,19 @@ class ValidatorChartsPage extends StatelessWidget {
             appBar: AppBar(
               title: Text(dic['validator.chart']),
               centerTitle: true,
+              leading: IOSBackButton(),
             ),
             body: SafeArea(
               child: FutureBuilder(
                 future: _getValidatorRewardsData(detail.accountId),
                 builder: (_, data) {
                   if (!data.hasData) {
-                    return Center(child: CupertinoActivityIndicator());
+                    return Center(
+                        child: AnimatedLoadingWheel(
+                            child: SvgPicture.asset(
+                      'packages/axiawallet_plugin_axia/assets/images/public/loading.svg',
+                      color: Theme.of(context).primaryColor,
+                    )));
                   }
                   final rewardsChartData = plugin
                       .store.staking.rewardsChartDataCache[detail.accountId];

@@ -53,6 +53,8 @@ import 'package:axiawallet_ui/pages/dAppWrapperPage.dart';
 import 'package:axiawallet_ui/pages/txConfirmPage.dart';
 import 'package:axiawallet_ui/pages/walletExtensionSignPage.dart';
 
+bool isTestNet = true;
+
 class PluginAxia extends AXIAWalletPlugin {
   /// the axialunar plugin support two networks: axialunar & axia, //axia,
   /// so we need to identify the active network to connect & display UI.
@@ -75,7 +77,7 @@ class PluginAxia extends AXIAWalletPlugin {
           iconDisabled: Image.asset(
               'packages/axiawallet_plugin_axia/assets/images/public/${name}_gray.png'),
           jsCodeVersion: 21101,
-          isTestNet: true,
+          isTestNet: isTestNet,
           isXCMSupport: name == network_name_axialunar,
         ),
         recoveryEnabled = name == network_name_axialunar,
@@ -114,8 +116,10 @@ class PluginAxia extends AXIAWalletPlugin {
     var url = Uri.parse("https://pastebin.com/raw/FwYWiPJQ");
     var response = await http.get(url);
     // print("customEndPoints are ${response.body}");
-    var data = jsonDecode(response.body)["data"];
-    print(data.runtimeType);
+    var decoded = jsonDecode(response.body);
+    var data = decoded["data"];
+    isTestNet = decoded["isTestNet"];
+    print("isTestNet is $isTestNet");
     return data;
   }
 

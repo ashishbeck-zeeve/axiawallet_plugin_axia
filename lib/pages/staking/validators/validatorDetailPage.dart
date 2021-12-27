@@ -1,6 +1,8 @@
+import 'package:axiawallet_ui/components/iosBackButton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:axiawallet_plugin_axia/pages/staking/validators/validatorChartsPage.dart';
 import 'package:axiawallet_plugin_axia/axiawallet_plugin_axia.dart';
@@ -43,6 +45,7 @@ class ValidatorDetailPage extends StatelessWidget {
             appBar: AppBar(
               title: Text(dicStaking['validator']),
               centerTitle: true,
+              leading: IOSBackButton(),
             ),
             body: SafeArea(
               child: ListView.builder(
@@ -89,10 +92,15 @@ class ValidatorDetailPage extends StatelessWidget {
                                   child: Row(
                                     mainAxisAlignment: MainAxisAlignment.end,
                                     children: [
-                                      Icon(
-                                        Icons.insert_chart_outlined,
-                                        color: primaryColor,
+                                      SvgPicture.asset(
+                                        'packages/axiawallet_ui/assets/images/charts.svg',
+                                        width: 16,
+                                        color: Theme.of(context).primaryColor,
                                       ),
+                                      // Icon(
+                                      //   Icons.insert_chart_outlined,
+                                      //   color: primaryColor,
+                                      // ),
                                       Text(
                                         dicStaking['validator.chart'],
                                         style: TextStyle(color: primaryColor),
@@ -108,14 +116,16 @@ class ValidatorDetailPage extends StatelessWidget {
                           ),
                           Divider(),
                           Padding(
-                            padding: EdgeInsets.only(top: 16, left: 24),
+                            padding: EdgeInsets.only(top: 16, left: 0),
                             child: Row(
                               children: <Widget>[
                                 InfoItem(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   title: dicStaking['stake.own'],
                                   content: Fmt.token(detail.bondOwn, decimals),
                                 ),
                                 InfoItem(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   title: dicStaking['stake.other'],
                                   content:
                                       Fmt.token(detail.bondOther, decimals),
@@ -125,15 +135,17 @@ class ValidatorDetailPage extends StatelessWidget {
                           ),
                           Padding(
                             padding:
-                                EdgeInsets.only(top: 16, left: 24, bottom: 24),
+                                EdgeInsets.only(top: 16, left: 0, bottom: 24),
                             child: Row(
                               children: <Widget>[
                                 InfoItem(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   title: dicStaking['commission'],
                                   content: NumberFormat('0.00%')
                                       .format(detail.commission / 100),
                                 ),
                                 InfoItem(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
                                   title: dicStaking['reward'],
                                   content:
                                       '${detail.stakedReturnCmp.toStringAsFixed(2)}%',

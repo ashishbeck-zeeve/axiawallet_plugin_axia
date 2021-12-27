@@ -1,3 +1,4 @@
+import 'package:axiawallet_ui/components/iosBackButton.dart';
 import 'package:flutter/material.dart';
 import 'package:axiawallet_plugin_axia/pages/governance/democracy/democracy.dart';
 import 'package:axiawallet_plugin_axia/pages/governance/democracy/proposals.dart';
@@ -7,6 +8,7 @@ import 'package:axiawallet_sdk/storage/keyring.dart';
 import 'package:axiawallet_sdk/utils/i18n.dart';
 import 'package:axiawallet_ui/ui.dart';
 import 'package:axiawallet_ui/components/topTaps.dart';
+import 'package:axiawallet_ui/components/cupertinoTabBar.dart';
 
 class DemocracyPage extends StatefulWidget {
   DemocracyPage(this.plugin, this.keyring);
@@ -38,21 +40,37 @@ class _DemocracyPageState extends State<DemocracyPage> {
                 children: <Widget>[
                   IconButton(
                     icon: Icon(
-                      Icons.arrow_back_ios,
+                      Icons.keyboard_arrow_left,
                       color: Theme.of(context).cardColor,
                     ),
                     onPressed: () => Navigator.of(context).pop(),
                   ),
-                  TopTabs(
-                    names: tabs,
-                    activeTab: _tab,
-                    onTab: (v) {
-                      setState(() {
-                        if (_tab != v) {
-                          _tab = v;
-                        }
-                      });
-                    },
+                  // TopTabs(
+                  //   names: tabs,
+                  //   activeTab: _tab,
+                  //   onTab: (v) {
+                  //     setState(() {
+                  //       if (_tab != v) {
+                  //         _tab = v;
+                  //       }
+                  //     });
+                  //   },
+                  // ),
+                  Expanded(
+                    child: CustomCupertinoTabBar(
+                      children: tabs,
+                      groupValue: _tab,
+                      onValueChanged: (v) {
+                        setState(() {
+                          if (_tab != v) {
+                            _tab = v;
+                          }
+                        });
+                      },
+                    ),
+                  ),
+                  SizedBox(
+                    width: 24,
                   ),
                 ],
               ),

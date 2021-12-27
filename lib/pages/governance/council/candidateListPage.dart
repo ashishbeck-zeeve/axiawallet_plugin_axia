@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:axiawallet_ui/components/iosBackButton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:axiawallet_plugin_axia/pages/governance/council/council.dart';
@@ -84,6 +85,7 @@ class _CandidateList extends State<CandidateListPage> {
       appBar: AppBar(
         title: Text(dic['candidate']),
         centerTitle: true,
+        leading: IOSBackButton(),
       ),
       body: SafeArea(
         child: Column(
@@ -94,14 +96,14 @@ class _CandidateList extends State<CandidateListPage> {
               child: Row(
                 children: <Widget>[
                   Expanded(
-                    child: CupertinoTextField(
-                      padding: EdgeInsets.fromLTRB(16, 6, 16, 6),
-                      placeholder: I18n.of(context)
-                          .getDic(i18n_full_dic_axialunar, 'staking')['filter'],
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.all(Radius.circular(24)),
-                        border: Border.all(
-                            width: 0.5, color: Theme.of(context).dividerColor),
+                    child: TextField(
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.symmetric(horizontal: 16),
+                        hintText: I18n.of(context).getDic(
+                            i18n_full_dic_axialunar, 'staking')['filter'],
+                        border: OutlineInputBorder(
+                            borderRadius:
+                                BorderRadius.all(Radius.circular(15))),
                       ),
                       onChanged: (value) {
                         setState(() {

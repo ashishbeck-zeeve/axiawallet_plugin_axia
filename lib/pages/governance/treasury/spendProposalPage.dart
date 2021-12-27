@@ -1,3 +1,4 @@
+import 'package:axiawallet_ui/components/iosBackButton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:axiawallet_plugin_axia/pages/governance/council/motionDetailPage.dart';
@@ -189,6 +190,7 @@ class _SpendProposalPageState extends State<SpendProposalPage> {
       appBar: AppBar(
         title: Text('${dic['treasury.proposal']} #${int.parse(proposal.id)}'),
         centerTitle: true,
+        leading: IOSBackButton(),
       ),
       body: SafeArea(
         child: ListView(

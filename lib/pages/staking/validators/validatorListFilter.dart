@@ -22,13 +22,13 @@ class ValidatorListFilter extends StatelessWidget {
       padding: EdgeInsets.fromLTRB(16, 8, 16, 8),
       child: Column(
         children: <Widget>[
-          CupertinoTextField(
-            clearButtonMode: OverlayVisibilityMode.editing,
-            padding: EdgeInsets.fromLTRB(16, 6, 16, 6),
-            placeholder: dic['filter'],
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.all(Radius.circular(24)),
-              border: Border.all(width: 0.5, color: theme.dividerColor),
+          TextField(
+            decoration: InputDecoration(
+              contentPadding: EdgeInsets.symmetric(horizontal: 16),
+              border: OutlineInputBorder(
+                  borderRadius: BorderRadius.all(Radius.circular(15))),
+              hintText: dic['filter'],
+              // hintStyle: TextStyle(color: Colors.grey),
             ),
             onChanged: (value) => onSearchChange(value.trim()),
           ),

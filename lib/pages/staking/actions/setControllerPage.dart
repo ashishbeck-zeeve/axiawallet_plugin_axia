@@ -8,6 +8,7 @@ import 'package:axiawallet_sdk/storage/types/keyPairData.dart';
 import 'package:axiawallet_sdk/utils/i18n.dart';
 import 'package:axiawallet_ui/components/addressFormItem.dart';
 import 'package:axiawallet_ui/components/txButton.dart';
+import 'package:axiawallet_ui/components/iosBackButton.dart';
 
 class SetControllerPage extends StatefulWidget {
   SetControllerPage(this.plugin, this.keyring);
@@ -50,6 +51,7 @@ class _SetControllerPageState extends State<SetControllerPage> {
       appBar: AppBar(
         title: Text(dic['action.control']),
         centerTitle: true,
+        leading: IOSBackButton(),
       ),
       body: Builder(builder: (BuildContext context) {
         final controller = _controller ?? widget.keyring.current;
@@ -89,7 +91,10 @@ class _SetControllerPageState extends State<SetControllerPage> {
                         builder: (BuildContext context) {
                           return CupertinoAlertDialog(
                             title: Container(),
-                            content: Text(dic['controller.warn']),
+                            content: Text(
+                              dic['controller.warn'],
+                              style: Theme.of(context).textTheme.bodyText1,
+                            ),
                             actions: <Widget>[
                               CupertinoButton(
                                 child: Text(I18n.of(context).getDic(

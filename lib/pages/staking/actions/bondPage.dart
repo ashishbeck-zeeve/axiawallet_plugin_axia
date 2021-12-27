@@ -1,3 +1,4 @@
+import 'package:axiawallet_plugin_axia/common/constants.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:axiawallet_plugin_axia/pages/staking/actions/setPayeePage.dart';
@@ -93,7 +94,7 @@ class _BondPageState extends State<BondPage> {
                           child: TextTag(
                         I18n.of(context).getDic(
                             i18n_full_dic_axialunar, 'staking')['stake.warn'],
-                        color: Colors.deepOrange,
+                        color: appRed,
                         fontSize: 12,
                         margin: EdgeInsets.all(0),
                         padding: EdgeInsets.all(8),
@@ -117,16 +118,27 @@ class _BondPageState extends State<BondPage> {
                     // onTap: () => _changeControllerId(context),
                   ),
                 ),
+                SizedBox(
+                  height: 16,
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: Text(
+                      '${dic['amount']} (${dicStaking['available']}: ${Fmt.priceFloor(
+                    available,
+                    lengthMax: 4,
+                  )} $symbol)'),
+                ),
+                SizedBox(
+                  height: 8,
+                ),
                 Padding(
                   padding: EdgeInsets.only(left: 16, right: 16),
                   child: TextFormField(
                     decoration: InputDecoration(
                       hintText: dic['amount'],
-                      labelText:
-                          '${dic['amount']} (${dicStaking['available']}: ${Fmt.priceFloor(
-                        available,
-                        lengthMax: 4,
-                      )} $symbol)',
+                      border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(15))),
                     ),
                     inputFormatters: [UI.decimalInputFormatter(decimals)],
                     controller: _amountCtrl,
@@ -149,11 +161,14 @@ class _BondPageState extends State<BondPage> {
                     },
                   ),
                 ),
-                PayeeSelector(
-                  widget.plugin,
-                  widget.keyring,
-                  initialValue: widget.plugin.store.staking.ownStashInfo,
-                  onChange: _onPayeeChanged,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: PayeeSelector(
+                    widget.plugin,
+                    widget.keyring,
+                    initialValue: widget.plugin.store.staking.ownStashInfo,
+                    onChange: _onPayeeChanged,
+                  ),
                 ),
               ],
             ),

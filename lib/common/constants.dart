@@ -107,6 +107,9 @@ Map<int, Color> getSwatch(Color color) {
 MaterialColor axia_blue =
     MaterialColor(Color(0xff178fe1).value, getSwatch(Color(0xff178fe1)));
 
+Color appRed = Color(0xffF12F2F);
+Color appGreen = Color(0xff35B994);
+
 const String genesis_hash_axialunar =
     '0xb0a8d493285c2df73290dfb7e61f870f17b41801197a149ca93654499ea3dafe';
 const String genesis_hash_axia =

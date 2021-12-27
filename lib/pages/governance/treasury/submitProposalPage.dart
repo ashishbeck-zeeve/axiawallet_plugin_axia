@@ -1,3 +1,4 @@
+import 'package:axiawallet_ui/components/iosBackButton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:axiawallet_plugin_axia/axiawallet_plugin_axia.dart';
@@ -85,9 +86,14 @@ class _SubmitProposalPageState extends State<SubmitProposalPage> {
     final balance = Fmt.balanceInt(
         widget.plugin.balances.native.availableBalance.toString());
     return Scaffold(
-      appBar: AppBar(title: Text(dic['treasury.submit']), centerTitle: true),
+      appBar: AppBar(
+        title: Text(dic['treasury.submit']),
+        centerTitle: true,
+        leading: IOSBackButton(),
+      ),
       body: SafeArea(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Expanded(
               child: _beneficiary == null
@@ -114,11 +120,23 @@ class _SubmitProposalPageState extends State<SubmitProposalPage> {
                         Form(
                           key: _formKey,
                           child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+                              SizedBox(
+                                height: 16,
+                              ),
+                              Text('${dicCommon['amount']} ($symbol)'),
+                              SizedBox(
+                                height: 8,
+                              ),
                               TextFormField(
                                 decoration: InputDecoration(
                                   hintText: dicCommon['amount'],
-                                  labelText: '${dicCommon['amount']} ($symbol)',
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(15),
+                                    ),
+                                  ),
                                 ),
                                 inputFormatters: [
                                   UI.decimalInputFormatter(decimals)
@@ -133,15 +151,25 @@ class _SubmitProposalPageState extends State<SubmitProposalPage> {
                                   return null;
                                 },
                               ),
+                              SizedBox(
+                                height: 16,
+                              ),
+                              Text('${dic['treasury.bond']} ($symbol)'),
+                              SizedBox(
+                                height: 8,
+                              ),
                               TextFormField(
                                 decoration: InputDecoration(
-                                  labelText:
-                                      '${dic['treasury.bond']} ($symbol)',
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(15),
+                                    ),
+                                  ),
                                 ),
                                 initialValue: '$bondPercentage%',
                                 readOnly: true,
-                                style: TextStyle(
-                                    color: Theme.of(context).disabledColor),
+                                // style: TextStyle(
+                                //     color: Theme.of(context).disabledColor),
                                 validator: (v) {
                                   final BigInt bond = Fmt.tokenInt(
                                           _amountCtrl.text.trim(), decimals) *
@@ -153,10 +181,20 @@ class _SubmitProposalPageState extends State<SubmitProposalPage> {
                                   return null;
                                 },
                               ),
+                              SizedBox(
+                                height: 16,
+                              ),
+                              Text('${dic['treasury.bond.min']} ($symbol)'),
+                              SizedBox(
+                                height: 8,
+                              ),
                               TextFormField(
                                 decoration: InputDecoration(
-                                  labelText:
-                                      '${dic['treasury.bond.min']} ($symbol)',
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(15),
+                                    ),
+                                  ),
                                 ),
                                 initialValue: Fmt.priceCeilBigInt(
                                   minBond,
@@ -164,8 +202,8 @@ class _SubmitProposalPageState extends State<SubmitProposalPage> {
                                   lengthFixed: 3,
                                 ),
                                 readOnly: true,
-                                style: TextStyle(
-                                    color: Theme.of(context).disabledColor),
+                                // style: TextStyle(
+                                //     color: Theme.of(context).disabledColor),
                                 validator: (v) {
                                   if (balance <= minBond) {
                                     return dicCommon['amount.low'];

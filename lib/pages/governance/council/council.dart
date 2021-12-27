@@ -1,3 +1,4 @@
+import 'package:axiawallet_ui/components/animatedLoadingWheel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -32,6 +33,7 @@ class _CouncilState extends State<Council> {
       new GlobalKey<RefreshIndicatorState>();
 
   bool _votesExpanded = false;
+  bool _isLoading = true;
 
   Future<void> _fetchCouncilInfo() async {
     if (widget.plugin.sdk.api.connectedNode == null) {
@@ -39,6 +41,10 @@ class _CouncilState extends State<Council> {
     }
     await widget.plugin.service.gov.queryCouncilVotes();
     widget.plugin.service.gov.queryUserCouncilVote();
+    if (this.mounted)
+      setState(() {
+        _isLoading = false;
+      });
   }
 
   Future<void> _submitCancelVotes() async {
@@ -93,7 +99,8 @@ class _CouncilState extends State<Council> {
     super.initState();
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      _refreshKey.currentState.show();
+      // _refreshKey.currentState.show();
+      _fetchCouncilInfo();
     });
   }
 
@@ -149,7 +156,7 @@ class _CouncilState extends State<Council> {
                       _votesExpanded
                           ? Icons.keyboard_arrow_up
                           : Icons.keyboard_arrow_down,
-                      size: 28,
+                      size: 24,
                       color: Theme.of(context).unselectedWidgetColor,
                     ),
                     onPressed: () {
@@ -209,7 +216,7 @@ class _CouncilState extends State<Council> {
               )
             ],
           ),
-          Divider(height: 24),
+          SizedBox(height: 16),
           RoundedButton(
             text: dic['vote'],
             onPressed: () async {
@@ -231,93 +238,102 @@ class _CouncilState extends State<Council> {
     return Observer(builder: (_) {
       final decimals = (widget.plugin.networkState.tokenDecimals ?? [12])[0];
       final symbol = (widget.plugin.networkState.tokenSymbol ?? ['AXC'])[0];
-      return RefreshIndicator(
-        key: _refreshKey,
-        onRefresh: _fetchCouncilInfo,
-        child: widget.plugin.store.gov.council == null
-            ? Container()
-            : ListView(
-                children: <Widget>[
-                  _buildTopCard(symbol),
-                  Container(
-                    padding: EdgeInsets.only(top: 16, left: 16, bottom: 8),
-                    color: Theme.of(context).cardColor,
-                    child: BorderedTitle(
-                      title: dic['member'],
-                    ),
+      return Stack(
+        alignment: Alignment.center,
+        children: [
+          RefreshIndicator(
+            key: _refreshKey,
+            onRefresh: _fetchCouncilInfo,
+            child: widget.plugin.store.gov.council == null
+                ? Container()
+                : ListView(
+                    children: <Widget>[
+                      _buildTopCard(symbol),
+                      Container(
+                        padding: EdgeInsets.only(top: 16, left: 16, bottom: 8),
+                        color: Theme.of(context).cardColor,
+                        child: BorderedTitle(
+                          title: dic['member'],
+                        ),
+                      ),
+                      Container(
+                        color: Theme.of(context).cardColor,
+                        child: Column(
+                          children:
+                              widget.plugin.store.gov.council.members.map((i) {
+                            return CandidateItem(
+                              accInfo: widget
+                                  .plugin.store.accounts.addressIndexMap[i[0]],
+                              icon: widget
+                                  .plugin.store.accounts.addressIconsMap[i[0]],
+                              balance: i,
+                              tokenSymbol: symbol,
+                              decimals: decimals,
+                            );
+                          }).toList(),
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(top: 16, left: 16, bottom: 8),
+                        color: Theme.of(context).cardColor,
+                        child: BorderedTitle(
+                          title: dic['up'],
+                        ),
+                      ),
+                      Container(
+                        color: Theme.of(context).cardColor,
+                        child: Column(
+                          children: widget.plugin.store.gov.council.runnersUp
+                              .map((i) {
+                            return CandidateItem(
+                              accInfo: widget
+                                  .plugin.store.accounts.addressIndexMap[i[0]],
+                              icon: widget
+                                  .plugin.store.accounts.addressIconsMap[i[0]],
+                              balance: i,
+                              tokenSymbol: symbol,
+                              decimals: decimals,
+                            );
+                          }).toList(),
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.only(top: 16, left: 16, bottom: 8),
+                        color: Theme.of(context).cardColor,
+                        child: BorderedTitle(
+                          title: dic['candidate'],
+                        ),
+                      ),
+                      Container(
+                        color: Theme.of(context).cardColor,
+                        child:
+                            widget.plugin.store.gov.council.candidates.length >
+                                    0
+                                ? Column(
+                                    children: widget
+                                        .plugin.store.gov.council.candidates
+                                        .map((i) {
+                                      return CandidateItem(
+                                        accInfo: widget.plugin.store.accounts
+                                            .addressIndexMap[i],
+                                        icon: widget.plugin.store.accounts
+                                            .addressIconsMap[i],
+                                        balance: [i],
+                                        tokenSymbol: symbol,
+                                        decimals: decimals,
+                                      );
+                                    }).toList(),
+                                  )
+                                : Padding(
+                                    padding: EdgeInsets.all(16),
+                                    child: Text(dic['candidate.empty']),
+                                  ),
+                      ),
+                    ],
                   ),
-                  Container(
-                    color: Theme.of(context).cardColor,
-                    child: Column(
-                      children:
-                          widget.plugin.store.gov.council.members.map((i) {
-                        return CandidateItem(
-                          accInfo: widget
-                              .plugin.store.accounts.addressIndexMap[i[0]],
-                          icon: widget
-                              .plugin.store.accounts.addressIconsMap[i[0]],
-                          balance: i,
-                          tokenSymbol: symbol,
-                          decimals: decimals,
-                        );
-                      }).toList(),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.only(top: 16, left: 16, bottom: 8),
-                    color: Theme.of(context).cardColor,
-                    child: BorderedTitle(
-                      title: dic['up'],
-                    ),
-                  ),
-                  Container(
-                    color: Theme.of(context).cardColor,
-                    child: Column(
-                      children:
-                          widget.plugin.store.gov.council.runnersUp.map((i) {
-                        return CandidateItem(
-                          accInfo: widget
-                              .plugin.store.accounts.addressIndexMap[i[0]],
-                          icon: widget
-                              .plugin.store.accounts.addressIconsMap[i[0]],
-                          balance: i,
-                          tokenSymbol: symbol,
-                          decimals: decimals,
-                        );
-                      }).toList(),
-                    ),
-                  ),
-                  Container(
-                    padding: EdgeInsets.only(top: 16, left: 16, bottom: 8),
-                    color: Theme.of(context).cardColor,
-                    child: BorderedTitle(
-                      title: dic['candidate'],
-                    ),
-                  ),
-                  Container(
-                    color: Theme.of(context).cardColor,
-                    child: widget.plugin.store.gov.council.candidates.length > 0
-                        ? Column(
-                            children: widget.plugin.store.gov.council.candidates
-                                .map((i) {
-                              return CandidateItem(
-                                accInfo: widget
-                                    .plugin.store.accounts.addressIndexMap[i],
-                                icon: widget
-                                    .plugin.store.accounts.addressIconsMap[i],
-                                balance: [i],
-                                tokenSymbol: symbol,
-                                decimals: decimals,
-                              );
-                            }).toList(),
-                          )
-                        : Padding(
-                            padding: EdgeInsets.all(16),
-                            child: Text(dic['candidate.empty']),
-                          ),
-                  ),
-                ],
-              ),
+          ),
+          _isLoading ? AnimatedLoadingWheel(alt: true) : Container()
+        ],
       );
     });
   }

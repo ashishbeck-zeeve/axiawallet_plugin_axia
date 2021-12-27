@@ -1,3 +1,4 @@
+import 'package:axiawallet_ui/components/animatedLoadingWheel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -8,6 +9,7 @@ import 'package:axiawallet_plugin_axia/utils/i18n/index.dart';
 import 'package:axiawallet_sdk/plugin/index.dart';
 import 'package:axiawallet_sdk/utils/i18n.dart';
 import 'package:axiawallet_ui/components/entryPageCard.dart';
+import 'package:axiawallet_ui/components/cupertinoTabBar.dart';
 import 'package:axiawallet_ui/pages/dAppWrapperPage.dart';
 
 class Gov extends StatelessWidget {
@@ -22,37 +24,51 @@ class Gov extends StatelessWidget {
         I18n.of(context).getDic(i18n_full_dic_axialunar, 'common');
 
     return Scaffold(
-      backgroundColor: Colors.transparent,
+      // backgroundColor: Colors.transparent,
+      appBar: AppBar(
+        title: Text(
+          I18n.of(context)
+              .getDic(i18n_full_dic_axialunar, 'common')['governance'],
+          style: TextStyle(
+            fontSize: 20,
+            color: Theme.of(context).cardColor,
+            fontWeight: FontWeight.w500,
+          ),
+        ),
+        centerTitle: true,
+      ),
       body: SafeArea(
         child: Column(
           children: <Widget>[
-            Padding(
-              padding: EdgeInsets.all(16),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    I18n.of(context).getDic(
-                        i18n_full_dic_axialunar, 'common')['governance'],
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Theme.of(context).cardColor,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  )
-                ],
-              ),
-            ),
+            // Padding(
+            //   padding: EdgeInsets.all(16),
+            //   child: Row(
+            //     mainAxisAlignment: MainAxisAlignment.center,
+            //     children: <Widget>[
+            //       Text(
+            //         I18n.of(context).getDic(
+            //             i18n_full_dic_axialunar, 'common')['governance'],
+            //         style: TextStyle(
+            //           fontSize: 20,
+            //           color: Theme.of(context).cardColor,
+            //           fontWeight: FontWeight.w500,
+            //         ),
+            //       )
+            //     ],
+            //   ),
+            // ),
             Expanded(
               child: plugin.sdk.api.connectedNode == null
-                  ? Container(
-                      padding: EdgeInsets.only(
-                          top: MediaQuery.of(context).size.width / 2),
-                      child: Column(
-                        children: [
-                          CupertinoActivityIndicator(),
-                          Text(dicCommon['node.connecting']),
-                        ],
+                  ? Center(
+                      child: Container(
+                        padding: EdgeInsets.only(
+                            top: MediaQuery.of(context).size.width / 2),
+                        child: Column(
+                          children: [
+                            AnimatedLoadingWheel(alt: true),
+                            Text(dicCommon['node.connecting']),
+                          ],
+                        ),
                       ),
                     )
                   : ListView(
@@ -66,8 +82,8 @@ class Gov extends StatelessWidget {
                               dic['democracy.brief'],
                               SvgPicture.asset(
                                 'packages/axiawallet_plugin_axia/assets/images/gov/democracy.svg',
-                                width: 96,
-                                color: Theme.of(context).primaryColor,
+                                width: 48,
+                                // color: Theme.of(context).primaryColor,
                               ),
                               color: Colors.transparent,
                             ),
@@ -83,8 +99,8 @@ class Gov extends StatelessWidget {
                               dic['council.brief'],
                               SvgPicture.asset(
                                 'packages/axiawallet_plugin_axia/assets/images/gov/council.svg',
-                                width: 96,
-                                color: Theme.of(context).primaryColor,
+                                width: 48,
+                                // color: Theme.of(context).primaryColor,
                               ),
                               color: Colors.transparent,
                             ),
@@ -100,8 +116,8 @@ class Gov extends StatelessWidget {
                               dic['treasury.brief'],
                               SvgPicture.asset(
                                 'packages/axiawallet_plugin_axia/assets/images/gov/treasury.svg',
-                                width: 96,
-                                color: Theme.of(context).primaryColor,
+                                width: 48,
+                                // color: Theme.of(context).primaryColor,
                               ),
                               color: Colors.transparent,
                             ),

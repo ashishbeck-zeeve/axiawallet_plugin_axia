@@ -1,3 +1,4 @@
+import 'package:axiawallet_ui/components/iosBackButton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:axiawallet_plugin_axia/axiawallet_plugin_axia.dart';
@@ -41,6 +42,7 @@ class _BondExtraPageState extends State<BondExtraPage> {
       appBar: AppBar(
         title: Text(dicStaking['action.bondExtra']),
         centerTitle: true,
+        leading: IOSBackButton(),
       ),
       body: Builder(builder: (BuildContext context) {
         return SafeArea(
@@ -56,14 +58,25 @@ class _BondExtraPageState extends State<BondExtraPage> {
                         widget.keyring.current,
                         label: dicStaking['stash'],
                       ),
+                      SizedBox(
+                        height: 16,
+                      ),
+                      Text(
+                          '${dic['amount']} (${dicStaking['available']}: ${Fmt.priceFloor(
+                        available,
+                        lengthMax: 4,
+                      )} $symbol)'),
+                      SizedBox(
+                        height: 8,
+                      ),
                       TextFormField(
                         decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(15),
+                            ),
+                          ),
                           hintText: dic['amount'],
-                          labelText:
-                              '${dic['amount']} (${dicStaking['available']}: ${Fmt.priceFloor(
-                            available,
-                            lengthMax: 4,
-                          )} $symbol)',
                         ),
                         inputFormatters: [UI.decimalInputFormatter(decimals)],
                         controller: _amountCtrl,

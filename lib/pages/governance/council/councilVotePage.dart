@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:math';
 
+import 'package:axiawallet_ui/components/iosBackButton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -74,6 +75,7 @@ class _CouncilVote extends State<CouncilVotePage> {
       appBar: AppBar(
         title: Text(govDic['vote.candidate']),
         centerTitle: true,
+        leading: IOSBackButton(),
       ),
       body: Observer(
         builder: (_) {
@@ -91,16 +93,23 @@ class _CouncilVote extends State<CouncilVotePage> {
                 Expanded(
                   child: Form(
                     key: _formKey,
-                    child: ListView(
-                      children: <Widget>[
-                        Padding(
-                          padding:
-                              EdgeInsets.only(left: 16, right: 16, bottom: 16),
-                          child: TextFormField(
+                    child: Padding(
+                      padding: EdgeInsets.only(left: 16, right: 16, top: 16),
+                      child: ListView(
+                        children: <Widget>[
+                          Text(
+                              '${dic['amount']} (${dic['balance']}: ${Fmt.token(balance, decimals)})'),
+                          SizedBox(
+                            height: 8,
+                          ),
+                          TextFormField(
                             decoration: InputDecoration(
                               hintText: dic['amount'],
-                              labelText:
-                                  '${dic['amount']} (${dic['balance']}: ${Fmt.token(balance, decimals)})',
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(15),
+                                ),
+                              ),
                             ),
                             inputFormatters: [
                               UI.decimalInputFormatter(decimals)
@@ -120,53 +129,81 @@ class _CouncilVote extends State<CouncilVotePage> {
                               return null;
                             },
                           ),
-                        ),
-                        ListTile(
-                          title: Text(govDic['candidate']),
-                          trailing: Icon(Icons.arrow_forward_ios, size: 18),
-                          onTap: () {
-                            _handleCandidateSelect();
-                          },
-                        ),
-                        Column(
-                          children: _selected.map((i) {
-                            final accInfo = widget
-                                .plugin.store.accounts.addressIndexMap[i[0]];
-                            return Container(
-                              margin: EdgeInsets.fromLTRB(16, 0, 16, 8),
+                          SizedBox(
+                            height: 16,
+                          ),
+                          OutlinedButton(
+                              onPressed: () {
+                                _handleCandidateSelect();
+                              },
+                              style: OutlinedButton.styleFrom(
+                                  padding: EdgeInsets.all(16),
+                                  side: BorderSide(
+                                      color: Theme.of(context).primaryColor,
+                                      width: 2),
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(15)))),
                               child: Row(
-                                children: <Widget>[
-                                  Container(
-                                    width: 32,
-                                    margin: EdgeInsets.only(right: 8),
-                                    child: AddressIcon(
-                                      i[0],
-                                      svg: widget.plugin.store.accounts
-                                          .addressIconsMap[i[0]],
-                                      size: 32,
-                                      tapToCopy: false,
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: <Widget>[
-                                        UI.accountDisplayName(i[0], accInfo),
-                                        Text(
-                                          Fmt.address(i[0]),
-                                          style:
-                                              TextStyle(color: Colors.black54),
-                                        ),
-                                      ],
+                                mainAxisSize: MainAxisSize.min,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text(govDic['candidate']),
+                                  Padding(
+                                    padding: const EdgeInsets.only(left: 4),
+                                    child: Icon(
+                                      Icons.arrow_right_alt,
                                     ),
                                   )
                                 ],
-                              ),
-                            );
-                          }).toList(),
-                        )
-                      ],
+                              )),
+                          // ListTile(
+                          //   title: Text(govDic['candidate']),
+                          //   trailing: Icon(Icons.arrow_forward_ios, size: 18),
+                          //   onTap: () {
+                          //     _handleCandidateSelect();
+                          //   },
+                          // ),
+                          Column(
+                            children: _selected.map((i) {
+                              final accInfo = widget
+                                  .plugin.store.accounts.addressIndexMap[i[0]];
+                              return Container(
+                                margin: EdgeInsets.fromLTRB(16, 0, 16, 8),
+                                child: Row(
+                                  children: <Widget>[
+                                    Container(
+                                      width: 32,
+                                      margin: EdgeInsets.only(right: 8),
+                                      child: AddressIcon(
+                                        i[0],
+                                        svg: widget.plugin.store.accounts
+                                            .addressIconsMap[i[0]],
+                                        size: 32,
+                                        tapToCopy: false,
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: <Widget>[
+                                          UI.accountDisplayName(i[0], accInfo),
+                                          Text(
+                                            Fmt.address(i[0]),
+                                            style: TextStyle(
+                                                color: Colors.black54),
+                                          ),
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                ),
+                              );
+                            }).toList(),
+                          )
+                        ],
+                      ),
                     ),
                   ),
                 ),

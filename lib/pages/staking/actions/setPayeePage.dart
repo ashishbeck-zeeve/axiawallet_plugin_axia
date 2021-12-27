@@ -1,5 +1,7 @@
 import 'dart:convert';
 
+import 'package:axiawallet_plugin_axia/common/constants.dart';
+import 'package:axiawallet_ui/components/iosBackButton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:axiawallet_plugin_axia/axiawallet_plugin_axia.dart';
@@ -93,6 +95,7 @@ class _SetPayeePageState extends State<SetPayeePage> {
       appBar: AppBar(
         title: Text(dic['action.setting']),
         centerTitle: true,
+        leading: IOSBackButton(),
       ),
       body: Builder(builder: (BuildContext context) {
         return SafeArea(
@@ -108,11 +111,14 @@ class _SetPayeePageState extends State<SetPayeePage> {
                         label: dic['controller'],
                       ),
                     ),
-                    PayeeSelector(
-                      widget.plugin,
-                      widget.keyring,
-                      initialValue: widget.plugin.store.staking.ownStashInfo,
-                      onChange: _onPayeeChanged,
+                    Padding(
+                      padding: EdgeInsets.only(left: 16, right: 16),
+                      child: PayeeSelector(
+                        widget.plugin,
+                        widget.keyring,
+                        initialValue: widget.plugin.store.staking.ownStashInfo,
+                        onChange: _onPayeeChanged,
+                      ),
                     )
                   ],
                 ),
@@ -171,12 +177,25 @@ class _PayeeSelectorState extends State<PayeeSelector> {
     }
 
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
+        SizedBox(
+          height: 16,
+        ),
+        Text(dic['bond.reward']),
+        SizedBox(
+          height: 8,
+        ),
         ListTile(
-          title: Text(dic['bond.reward']),
-          subtitle: Text(rewardToOptions[
+          title: Text(rewardToOptions[
               _rewardTo ?? widget.initialValue.destinationId ?? 0]),
-          trailing: Icon(Icons.arrow_forward_ios, size: 18),
+          trailing: Icon(Icons.keyboard_arrow_down, size: 18),
+          shape: RoundedRectangleBorder(
+            side: BorderSide(color: Colors.grey),
+            borderRadius: BorderRadius.all(
+              Radius.circular(15),
+            ),
+          ),
           onTap: () {
             showCupertinoModalPopup(
               context: context,
@@ -208,21 +227,21 @@ class _PayeeSelectorState extends State<PayeeSelector> {
             );
           },
         ),
+        SizedBox(
+          height: 16,
+        ),
         (_rewardTo ?? widget.initialValue.destinationId) == 3
-            ? Padding(
-                padding: EdgeInsets.only(left: 16, right: 16),
-                child: AddressInputField(
-                  widget.plugin.sdk.api,
-                  widget.keyring.allWithContacts,
-                  initialValue: _rewardAccount ?? defaultAcc,
-                  onChanged: (acc) {
-                    setState(() {
-                      _rewardAccount = acc;
-                    });
-                    widget.onChange(_rewardTo, acc.address);
-                  },
-                  key: ValueKey<KeyPairData>(_rewardAccount),
-                ),
+            ? AddressInputField(
+                widget.plugin.sdk.api,
+                widget.keyring.allWithContacts,
+                initialValue: _rewardAccount ?? defaultAcc,
+                onChanged: (acc) {
+                  setState(() {
+                    _rewardAccount = acc;
+                  });
+                  widget.onChange(_rewardTo, acc.address);
+                },
+                key: ValueKey<KeyPairData>(_rewardAccount),
               )
             : Container(),
         _rewardTo == 3
@@ -231,9 +250,9 @@ class _PayeeSelectorState extends State<PayeeSelector> {
                   Expanded(
                       child: TextTag(
                     dic['stake.payee.warn'],
-                    color: Colors.deepOrange,
+                    color: appRed,
                     fontSize: 12,
-                    margin: EdgeInsets.all(16),
+                    margin: EdgeInsets.symmetric(vertical: 16),
                     padding: EdgeInsets.all(8),
                   ))
                 ],

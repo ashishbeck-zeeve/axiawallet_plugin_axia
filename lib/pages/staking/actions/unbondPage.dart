@@ -1,3 +1,4 @@
+import 'package:axiawallet_ui/components/iosBackButton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:axiawallet_plugin_axia/axiawallet_plugin_axia.dart';
@@ -63,6 +64,7 @@ class _UnBondPageState extends State<UnBondPage> {
       appBar: AppBar(
         title: Text(dicStaking['action.unbond']),
         centerTitle: true,
+        leading: IOSBackButton(),
       ),
       body: Builder(builder: (BuildContext context) {
         return SafeArea(
@@ -78,14 +80,25 @@ class _UnBondPageState extends State<UnBondPage> {
                         widget.keyring.current,
                         label: dicStaking['controller'],
                       ),
+                      SizedBox(
+                        height: 16,
+                      ),
+                      Text(
+                          '${dic['amount']} (${dicStaking['bonded']}: ${Fmt.priceFloor(
+                        bonded,
+                        lengthMax: 4,
+                      )} $symbol)'),
+                      SizedBox(
+                        height: 8,
+                      ),
                       TextFormField(
                         decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(15),
+                            ),
+                          ),
                           hintText: dic['amount'],
-                          labelText:
-                              '${dic['amount']} (${dicStaking['bonded']}: ${Fmt.priceFloor(
-                            bonded,
-                            lengthMax: 4,
-                          )} $symbol)',
                           errorMaxLines: 3,
                         ),
                         inputFormatters: [UI.decimalInputFormatter(decimals)],

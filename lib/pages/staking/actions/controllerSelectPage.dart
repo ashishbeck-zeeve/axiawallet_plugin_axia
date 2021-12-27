@@ -1,3 +1,4 @@
+import 'package:axiawallet_ui/components/iosBackButton.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -24,6 +25,7 @@ class ControllerSelectPage extends StatelessWidget {
             appBar: AppBar(
               title: Text(dic['controller']),
               centerTitle: true,
+              leading: IOSBackButton(),
             ),
             body: SafeArea(
               child: Container(
@@ -48,8 +50,13 @@ class ControllerSelectPage extends StatelessWidget {
                     Color grey = Theme.of(context).disabledColor;
                     return GestureDetector(
                       child: Container(
-                        padding: EdgeInsets.only(bottom: 16),
-                        color: Theme.of(context).cardColor,
+                        margin: EdgeInsets.only(top: 4, bottom: 4),
+                        padding: EdgeInsets.fromLTRB(8, 10, 8, 10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(15)),
+                          border: Border.all(width: 0.5),
+                          color: Theme.of(context).cardColor,
+                        ),
                         child: Row(
                           children: <Widget>[
                             Padding(
@@ -90,7 +97,7 @@ class ControllerSelectPage extends StatelessWidget {
                             ),
                             unavailable == null
                                 ? Icon(
-                                    Icons.arrow_forward_ios,
+                                    Icons.keyboard_arrow_down,
                                     size: 18,
                                   )
                                 : Container()
