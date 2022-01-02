@@ -246,7 +246,7 @@ class _StakingOverviewPageState extends State<StakingOverviewPage> {
                 InfoItem(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   title: dicStaking['overview.reward'],
-                  content: Fmt.ratio(overview['stakedReturn'] / 100),
+                  content: Fmt.ratio(overview['stakedReturn'] ?? 0/ 100),
                 ),
                 InfoItem(
                   crossAxisAlignment: CrossAxisAlignment.center,

@@ -14,10 +14,13 @@ class ValidatorData extends _ValidatorData {
       data.numNominators = json['numNominators'];
       data.rankBondTotal = json['rankBondTotal'];
       data.rankReward = json['rankReward'];
+      print("jsoniss ${json['stakedReturn']}");
 
-      data.stakedReturn = double.parse(json['stakedReturn'].toString());
-      data.stakedReturnCmp = double.parse(json['stakedReturnCmp'].toString());
-
+      data.stakedReturn =
+          double.parse((json['stakedReturn'] ?? "0.0").toString());
+      data.stakedReturnCmp =
+          double.parse((json['stakedReturnCmp'] ?? "0.0").toString());
+      print(data.stakedReturn + data.stakedReturnCmp);
       data.commission = double.parse(json['commissionPer'].toString());
       data.nominators =
           List<Map<String, dynamic>>.from(json['exposure']['others']);
