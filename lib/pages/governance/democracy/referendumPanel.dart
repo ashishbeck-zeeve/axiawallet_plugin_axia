@@ -141,7 +141,7 @@ class ReferendumPanel extends StatelessWidget {
             padding: EdgeInsets.only(left: 4),
             child: Text(
               dic['passing.${data.isPassing}'],
-              style: TextStyle(fontWeight: FontWeight.bold),
+              style: TextStyle(fontWeight: FontWeight.w500),
             ),
           ),
         ],

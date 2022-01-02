@@ -454,7 +454,7 @@ class _ProposalVotingListState extends State<ProposalVotingList> {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontSize: 18,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w500,
                         color: tabColor,
                       ),
                     ),

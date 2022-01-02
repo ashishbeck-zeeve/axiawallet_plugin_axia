@@ -20,7 +20,7 @@ import 'package:flutter/material.dart';
 //             content ?? '-',
 //             style: TextStyle(
 //               fontSize: 14,
-//               fontWeight: FontWeight.bold,
+//               fontWeight: FontWeight.w500,
 //               color: Theme.of(context).unselectedWidgetColor,
 //             ),
 //           )

@@ -415,9 +415,10 @@ class _StakingActions extends State<StakingActions> {
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (widget.plugin.store.staking.ownStashInfo == null) {
-        if (_refreshKey.currentState != null) {
-          // _refreshKey.currentState.show();
-        }
+        if (this.mounted) _updateStakingInfo();
+        // if (_refreshKey.currentState != null) {
+        //   _refreshKey.currentState.show();
+        // }
       } else {
         _updateStakingInfo();
       }
@@ -718,7 +719,7 @@ class StakingInfoPanel extends StatelessWidget {
                               lengthMax: 4),
                           style: TextStyle(
                             fontSize: 14,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w500,
                             color: Colors.black,
                           ),
                         )
@@ -763,7 +764,7 @@ class StakingInfoPanel extends StatelessWidget {
                           ),
                           style: TextStyle(
                             fontSize: 14,
-                            fontWeight: FontWeight.bold,
+                            fontWeight: FontWeight.w500,
                             color: Colors.black,
                           ),
                         ),
