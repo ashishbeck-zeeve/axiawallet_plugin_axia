@@ -53,7 +53,7 @@ import 'package:axiawallet_ui/pages/dAppWrapperPage.dart';
 import 'package:axiawallet_ui/pages/txConfirmPage.dart';
 import 'package:axiawallet_ui/pages/walletExtensionSignPage.dart';
 
-bool isTestNet = true;
+bool isTestNet = false;
 
 class PluginAxia extends AXIAWalletPlugin {
   /// the axialunar plugin support two networks: axialunar & axia, //axia,
@@ -118,8 +118,6 @@ class PluginAxia extends AXIAWalletPlugin {
     // print("customEndPoints are ${response.body}");
     var decoded = jsonDecode(response.body);
     var data = decoded["data"];
-    isTestNet = decoded["isTestNet"];
-    print("isTestNet is $isTestNet");
     return data;
   }
 
