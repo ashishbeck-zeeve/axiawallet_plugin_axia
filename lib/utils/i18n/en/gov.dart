@@ -76,5 +76,5 @@ const Map<String, String> enGov = {
   'locked.no': 'no lockup period(0.1x)',
   'day': 'days',
   'detail': 'Details',
-  'polkassembly': 'Discussion platform for axia governance',
+  'axiassembly': 'Discussion platform for axia governance',
 };

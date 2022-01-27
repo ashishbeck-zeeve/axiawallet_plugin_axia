@@ -80,7 +80,7 @@ flutter:
     - assets/images/tokens/DOT.png
     - assets/images/tokens/AXIA.png
     - assets/images/tokens/AXC.png
-    - assets/images/public/polkassembly.png
+    - assets/images/public/axiassembly.png
     - assets/images/public/nav_staking.svg
     - assets/images/public/nav_governance.svg
   #

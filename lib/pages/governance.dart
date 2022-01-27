@@ -129,10 +129,10 @@ class Gov extends StatelessWidget {
                         //   padding: EdgeInsets.only(bottom: 16),
                         //   child: GestureDetector(
                         //     child: EntryPageCard(
-                        //       'Polkassembly',
-                        //       dic['polkassembly'],
+                        //       'axiassembly',
+                        //       dic['axiassembly'],
                         //       Image.asset(
-                        //         'packages/axiawallet_plugin_axia/assets/images/public/polkassembly.png',
+                        //         'packages/axiawallet_plugin_axia/assets/images/public/axiassembly.png',
                         //         width: 48,
                         //       ),
                         //       color: Colors.transparent,
@@ -140,7 +140,7 @@ class Gov extends StatelessWidget {
                         //     onTap: () => Navigator.of(context).pushNamed(
                         //       DAppWrapperPage.route,
                         //       arguments:
-                        //           'https://${plugin.basic.name}.polkassembly.io/',
+                        //           'https://${plugin.basic.name}.axiassembly.io/',
                         //       // "https://axia.js.org/apps/",
                         //     ),
                         //   ),
