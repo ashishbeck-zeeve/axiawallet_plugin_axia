@@ -896,6 +896,7 @@ class StakingActionsPanel extends StatelessWidget {
                       color: actionButtonColor,
                       fontSize: 11,
                     ),
+                    textAlign: TextAlign.center,
                   )
                 ],
               ),
@@ -997,6 +998,7 @@ class StakingActionsPanel extends StatelessWidget {
                             ? disabledColor
                             : actionButtonColor,
                         fontSize: 11),
+                    textAlign: TextAlign.center,
                   )
                 ],
               ),
@@ -1023,6 +1025,7 @@ class StakingActionsPanel extends StatelessWidget {
                             ? disabledColor
                             : actionButtonColor,
                         fontSize: 11),
+                    textAlign: TextAlign.center,
                   )
                 ],
               ),
