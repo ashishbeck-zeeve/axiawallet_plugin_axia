@@ -99,11 +99,11 @@ class PluginAxia extends AXIAWalletPlugin {
         customNodes = await _checkCustomEndpoints();
         node_list_axia += customNodes;
         print(customNodes);
-        return _randomList(node_list_axia)
+        return node_list_axia
             .map((e) => NetworkParams.fromJson(e))
             .toList();
       }
-      return _randomList(node_list_axia)
+      return node_list_axia
           .map((e) => NetworkParams.fromJson(e))
           .toList();
     }
