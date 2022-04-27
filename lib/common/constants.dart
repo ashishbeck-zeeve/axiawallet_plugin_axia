@@ -21,16 +21,6 @@ const node_list_axialunar = [
   },
 ];
 List<dynamic> node_list_axia = [
-  {
-    'name': 'AXIA (Live, hosted by PatractLabs)',
-    'ss58': 0,
-    'endpoint': 'wss://axia.elara.patract.io',
-  },
-  {
-    'name': 'Altair',
-    'ss58': 0,
-    'endpoint': 'wss://fullnode.altair.centrifuge.io',
-  },
   // {
   //   'name': 'Prod node',
   //   'ss58': 0,
@@ -41,11 +31,6 @@ List<dynamic> node_list_axia = [
   //   'ss58': 0,
   //   'endpoint': 'wss://wss.dev.axiaswap.io',
   // },
-  {
-    'name': 'Stage node',
-    'ss58': 0,
-    'endpoint': 'wss://wss.stage.axiacoin.network ',
-  },
   // {
   //   'name': 'Mobile node',
   //   'ss58': 0,
