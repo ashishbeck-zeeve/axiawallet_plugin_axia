@@ -99,13 +99,9 @@ class PluginAxia extends AXIAWalletPlugin {
         customNodes = await _checkCustomEndpoints();
         node_list_axia += customNodes;
         print(customNodes);
-        return node_list_axia
-            .map((e) => NetworkParams.fromJson(e))
-            .toList();
+        return node_list_axia.map((e) => NetworkParams.fromJson(e)).toList();
       }
-      return node_list_axia
-          .map((e) => NetworkParams.fromJson(e))
-          .toList();
+      return node_list_axia.map((e) => NetworkParams.fromJson(e)).toList();
     }
     return _randomList(node_list_axialunar)
         .map((e) => NetworkParams.fromJson(e))
@@ -113,12 +109,45 @@ class PluginAxia extends AXIAWalletPlugin {
   }
 
   Future<List> _checkCustomEndpoints() async {
-    var url = Uri.parse("https://pastebin.com/raw/FwYWiPJQ");
-    var response = await http.get(url);
-    // print("customEndPoints are ${response.body}");
-    var decoded = jsonDecode(response.body);
-    var data = decoded["data"];
-    return data;
+    try {
+      var url = Uri.parse("https://pastebin.com/raw/FwYWiPJQ");
+      var response = await http.get(url);
+      // print("customEndPoints are ${response.body}");
+      var decoded = jsonDecode(response.body);
+      var data = decoded["data"];
+      return data;
+    } catch (e) {
+      try {
+        var url = Uri.parse(
+            "https://rentry.co/axia_endpoints/raw"); //editcode: axia_custom
+        var response = await http.get(url);
+        // print("customEndPoints are ${response.body}");
+        var decoded = jsonDecode(response.body);
+        var data = decoded["data"];
+        return data;
+      } catch (e) {
+        return [
+          {
+            "name": "Axia Mainnet",
+            "ss58": 0,
+            "endpoint": "wss://wss.axiacoin.network",
+            "isTestNet": false
+          },
+          {
+            "name": "Axia TestNet",
+            "ss58": 0,
+            "endpoint": "wss://wss.test.axiacoin.network",
+            "isTestNet": true
+          },
+          {
+            "name": "Canary Node",
+            "ss58": 0,
+            "endpoint": "wss://wss.canary.axiacoin.network",
+            "isTestNet": true
+          }
+        ];
+      }
+    }
   }
 
   @override
